@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   head.h                                             :+:      :+:    :+:   */
+/*   validation_vm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 16:04:13 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/17 18:09:04 by oklymeno         ###   ########.fr       */
+/*   Created: 2017/05/17 17:22:42 by oklymeno          #+#    #+#             */
+/*   Updated: 2017/05/17 18:09:47 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTROLLER_H
-# define CONTROLLER_H
+#include "../includes/controller.h"
 
-# include "libft.h"
-# include "op.h"
+int		read_file_vm(char *file)
+{
+	int fd;
 
-//validation functions
-void	check_magic(int magic);
-int		read_file_vm(char *file);
-char	*ft_itoa_base_cor(int value, int base);
-
-#endif
+	fd = open(file, O_RDONLY);
+	check_magic(fd);
+	return (0);
+}
