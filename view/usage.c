@@ -1,21 +1,36 @@
 #include "../libft/libft.h"
 
-static void				print_usage_second_part()
+typedef struct	vm_header_s
+{
+	unsigned int	magic;
+	char	prog_name[10 + 1];
+	unsigned int	prog_size;
+	char	comment[10 + 1];
+}	header_t;
+
+
+void	vm_print_view(char **array)
+{
+
+
+}
+
+static void				vm_print_usage_second_part()
 {
 	ft_putstr("#### BINARY OUTPUT MODE ########################################################\n"
-			"    -b        : Binary output mode for corewar.42.fr\n"
-			"    --stealth : Hides the real contents of the memory\n"
-			"#### NCURSES OUTPUT MODE #######################################################\n"
-			"    -n        : Ncurses output mode\n"
-			"    --stealth : Hides the real contents of the memory\n"
-			"################################################################################\n");
+					  "    -b        : Binary output mode for corewar.42.fr\n"
+					  "    --stealth : Hides the real contents of the memory\n"
+					  "#### NCURSES OUTPUT MODE #######################################################\n"
+					  "    -n        : Ncurses output mode\n"
+					  "    --stealth : Hides the real contents of the memory\n"
+					  "################################################################################\n");
 }
 
 /*
  * prints usage
  * */
 
-void				print_usage()
+void				vm_print_usage()
 {
 	ft_putstr("Usage: ./corewar [-d N -s N -v N | -b --stealth | "
 			"-n --stealth] [-a] <champion1.cor> <...>\n"
@@ -35,7 +50,7 @@ void				print_usage()
 			"(Params are NOT litteral ...)\n"
 			"                - 8 : Show deaths\n"
 			"                - 16 : Show PC movements (Except for jumps)\n");
-	print_usage_second_part();
+	vm_print_usage_second_part();
 }
 
 /*	displays an error "Can't read source file <file_name>"
@@ -50,5 +65,5 @@ void	print_cant_read_source_file(char *name)
 
 int main()
 {
-	print_usage();
+	vm_print_usage();
 }
