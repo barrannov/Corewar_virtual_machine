@@ -82,6 +82,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/nfs/2016/a/abaranov/projects/Corewar/virtual_machine/main.c">
+			<Option target="virtual_machine"/>
+		</Unit>
 		<Unit filename="/nfs/2016/a/abaranov/projects/Corewar/virtual_machine/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
