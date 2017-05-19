@@ -12,77 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f560cb1d-8095-4548-831b-060433a29d9a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/model.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/includes/view.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_amount_d.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_atoi.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_bzero.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_count_l.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_count_w.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_isalnum.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_isalpha.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_isascii.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_isdigit.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_isprint.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_itoa.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_lstadd.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_lstdel.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_lstdelone.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_lstiter.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_lstmap.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_lstnew.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memalloc.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memccpy.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memchr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memcmp.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memcpy.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memdel.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memmove.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_memset.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putchar.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putchar_fd.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putendl.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putendl_fd.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putnbr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putnbr_fd.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putstr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_putstr_fd.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_square.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strcat.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strchr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strclr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strcmp.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strcpy.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strdel.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strdup.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strequ.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_striter.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_striteri.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strjoin.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strlcat.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strlen.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strmap.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strmapi.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strncat.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strncmp.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strncpy.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strnequ.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strnew.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strnstr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strrchr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strsplit.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strstr.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strsub.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_strtrim.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_tolower.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/ft_toupper.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/full.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libft/libft.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/Operations/ld.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/model/Operations/live.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/view/usage.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -120,8 +50,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="3" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -194,7 +124,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="virtual_machine" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="virtual_machine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Operations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -413,12 +369,12 @@
       <workItem from="1495199422172" duration="712000" />
       <workItem from="1495205055506" duration="240000" />
       <workItem from="1495210333798" duration="1830000" />
-      <workItem from="1495213676586" duration="1537000" />
+      <workItem from="1495213676586" duration="1744000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11444000" />
+    <option name="totallyTimeSpent" value="11651000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -661,8 +617,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="3" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
