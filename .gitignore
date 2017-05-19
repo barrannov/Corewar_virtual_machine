@@ -10,6 +10,6 @@ gen
 .gitignore
 .idea/
 CMakeLists.txt
-cmake-build-debugrm -
+cmake-build-debug
 main.c
 /CMakeLists.txt
