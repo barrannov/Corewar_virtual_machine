@@ -1,6 +1,6 @@
 #include "../libft/libft.h"
 
-static void				print_usage_second_part()
+static void			print_usage_second_part()
 {
 	ft_putstr("#### BINARY OUTPUT MODE ########################################################\n"
 			"    -b        : Binary output mode for corewar.42.fr\n"
@@ -41,14 +41,9 @@ void				print_usage()
 /*	displays an error "Can't read source file <file_name>"
 	function takes <file_name> */
 
-void	print_cant_read_source_file(char *name)
+void				print_cant_read_source_file(char *name)
 {
 	ft_putstr("Can't read source file ");
 	ft_putstr(name);
 	ft_putstr("\n");
-}
-
-int main()
-{
-	print_usage();
 }
