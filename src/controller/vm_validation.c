@@ -6,11 +6,11 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 17:22:42 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 21:58:46 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/19 22:16:46 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/vm_header.h"
+#include "../../includes/controller.h"
 
 unsigned int	move_bits(unsigned int num)
 {
@@ -76,6 +76,6 @@ t_player		*read_file_vm(header_t *header, char *file)
 	header->magic = move_bits(header->magic);
 	header->prog_size = move_bits(header->prog_size);
 	if (header->magic != COREWAR_EXEC_MAGIC)
-		print_cant_read_source_file();
+		print_cant_read_source_file(file);
 	return (get_player(header, fd));
 }

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 21:54:10 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/19 22:20:57 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "controller.h"
 # include "view.h"
 # include "libft.h"
+# include <stdio.h>
 
 typedef struct			s_param
 {
@@ -40,5 +41,7 @@ typedef	struct			s_processor
 }						t_processor;
 
 void					logic(t_player *player);
+
+t_player        		*read_file_vm(header_t *header, char *file);
 
 #endif
