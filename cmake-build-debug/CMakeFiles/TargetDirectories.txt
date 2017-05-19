@@ -1,3 +1,0 @@
-/nfs/2016/a/abaranov/projects/Corewar/virtual_machine/cmake-build-debug/CMakeFiles/edit_cache.dir
-/nfs/2016/a/abaranov/projects/Corewar/virtual_machine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/nfs/2016/a/abaranov/projects/Corewar/virtual_machine/cmake-build-debug/CMakeFiles/virtual_machine.dir
