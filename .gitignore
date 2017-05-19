@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 .gitignore
-cmake-build-debug/
+cmake-build-debug
 main.c
 CMakeLists.txt
 git
+.idea
