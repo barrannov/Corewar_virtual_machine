@@ -6,14 +6,14 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 18:52:14 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/19 21:54:10 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_HEADER_H
 # define VM_HEADER_H
 
-# include "conroller.h"
+# include "controller.h"
 # include "view.h"
 # include "libft.h"
 
@@ -38,5 +38,7 @@ typedef	struct			s_processor
 	int					prog_counter;
 	struct s_processor	*next;
 }						t_processor;
+
+void					logic(t_player *player);
 
 #endif
