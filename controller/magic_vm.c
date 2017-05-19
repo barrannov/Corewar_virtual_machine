@@ -6,19 +6,19 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 18:06:43 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/17 18:08:52 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/19 13:38:19 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/controller.h"
 
-void		magic_error(void)
+void	magic_error(void)
 {
 	ft_putstr("Error\n");
 	exit(1);
 }
 
-static char	*get_magic(char *read_m)
+char	*get_string_from_byte(char *string)
 {
 	char			*tmp;
 	char			*tmp_result;
@@ -29,9 +29,9 @@ static char	*get_magic(char *read_m)
 	n = -1;
 	result = NULL;
 	tmp = NULL;
-	while (++n < sizeof(COREWAR_EXEC_MAGIC))
+	while (++n < 1)
 	{
-		byte = read_m[n];
+		byte = string[n];
 		tmp = ft_itoa_base_cor(byte, 16);
 		result != NULL ? (tmp_result = ft_strdup(result)) :
 			(tmp_result = NULL);
@@ -44,7 +44,7 @@ static char	*get_magic(char *read_m)
 	return (result);
 }
 
-void		check_magic(int fd)
+void	check_magic(int fd)
 {
 	char	read_m[sizeof(COREWAR_EXEC_MAGIC) + 1];
 	int		res;
@@ -53,7 +53,8 @@ void		check_magic(int fd)
 	res = read(fd, &read_m, sizeof(COREWAR_EXEC_MAGIC));
 	if (res < 1)
 		magic_error();
-	magic = get_magic(read_m);
+	magic = get_string_from_byte(read_m);
 	if (ft_atoi_base(magic, 16) != COREWAR_EXEC_MAGIC)
 		magic_error();
+	free(magic);
 }
