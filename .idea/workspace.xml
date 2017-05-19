@@ -12,9 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f560cb1d-8095-4548-831b-060433a29d9a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/virtual_machine.dir/main.c.o" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/virtual_machine.dir/main.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/virtual_machine" afterPath="$PROJECT_DIR$/cmake-build-debug/virtual_machine" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -349,12 +346,12 @@
       <workItem from="1495210333798" duration="1830000" />
       <workItem from="1495213128855" duration="95000" />
       <workItem from="1495213228072" duration="7000" />
-      <workItem from="1495213253684" duration="132000" />
+      <workItem from="1495213253684" duration="210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10112000" />
+    <option name="totallyTimeSpent" value="10190000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />

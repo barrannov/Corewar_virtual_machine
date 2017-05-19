@@ -1,4 +1,1 @@
-/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /nfs/2016/a/abaranov/projects/Corewar/virtual_machine
--- Configuring done
--- Generating done
--- Build files have been written to: /nfs/2016/a/abaranov/projects/Corewar/virtual_machine/cmake-build-debug
+CMakeLists.txt not found in /nfs/2016/a/abaranov/projects/Corewar/virtual_machine
