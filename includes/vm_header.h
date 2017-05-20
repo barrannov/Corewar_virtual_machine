@@ -22,6 +22,7 @@ typedef struct			s_param
 {
 	int					cycle;
 	int					cycle_to_die;
+	char				**map;
 	struct s_player		*player;
 }						t_param;
 
@@ -37,10 +38,11 @@ typedef struct			s_player
 typedef	struct			s_processor
 {
 	int					prog_counter;
+	int 				waite_cycles; //How money cycles left to wait
 	struct s_processor	*next;
 }						t_processor;
 
-void					logic(t_player *player);
+void					logic(t_param *params);
 
 t_player        		*read_file_vm(header_t *header, char *file);
 
