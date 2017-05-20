@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   view.h                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/19 22:21:49 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 22:21:52 by oklymeno         ###   ########.fr       */
+/*   Created: 2017/05/17 11:47:44 by oklymeno          #+#    #+#             */
+/*   Updated: 2017/05/19 22:14:13 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIRTUAL_MACHINE_VIEW_H
-#define VIRTUAL_MACHINE_VIEW_H
+#include "../../includes/controller.h"
 
-void				print_cant_read_source_file(char *name);
-void				print_usage();
+int		main(int argc, char **argv)
+{
+	t_player	*player;
+	header_t	*header;
 
-#endif //VIRTUAL_MACHINE_VIEW_H
+	if (!argc || !argv)
+		return (0);
+	header = malloc(sizeof(header_t));
+	player = read_file_vm(header, argv[1]);
+	logic(player);
+	return (0);
+}
