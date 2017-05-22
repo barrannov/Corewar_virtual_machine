@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:32:31 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 20:25:03 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 22:08:16 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static t_player	*get_player(header_t *header, int fd, int numb)
 
 	player = malloc(sizeof(t_player) + 1);
 	player->header = header;
-	fd++;
 	com = malloc(sizeof(header->prog_size));
 	read(fd, com, header->prog_size);
 	player->commands = com;

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 18:00:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 20:04:59 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 22:07:44 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,21 @@ void	get_dump(t_fl *flags, char **argv)
 		if (!ft_strcmp(argv[i], "-d"))
 			res++;
 	if (res > 1)
-		print_cant_read_source_file(argv[i]); /* to much -d flags */
+		print_cant_read_source_file(argv[i]);
 	i = 0;
 	while (argv[++i])
 	{
 		if (!ft_strcmp(argv[i], "-d"))
 		{
+			if (!argv[i + 1])
+				print_cant_read_source_file(argv[i]);
 			flags->dump = ft_atoi(argv[i + 1]);
 			if (flags->dump == 0)
-				print_cant_read_source_file(argv[i]);/* incorrect argument passing to -d flag*/
+				print_cant_read_source_file(argv[i]);
 		}
 	}
 	if (flags->dump < 0)
-		print_cant_read_source_file(argv[i]);//use only integers
+		print_cant_read_source_file(argv[i]);
 }
 
 void	get_vis(t_fl *flags, char **argv)
@@ -60,7 +62,7 @@ void	get_vis(t_fl *flags, char **argv)
 		if (!ft_strcmp(argv[i], "-v"))
 			res++;
 	if (res > 1)
-		print_cant_read_source_file(argv[i]);//to much -v flags
+		print_cant_read_source_file(argv[i]);
 	i = 0;
 	while (argv[++i])
 		if (!ft_strcmp(argv[i], "-v"))

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 11:47:44 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 22:01:57 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 22:09:04 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int		not_flag(char **argv, int n)
 {
 	if (!ft_strcmp(argv[n], "-d") || !ft_strcmp(argv[n], "-n") ||
-			!ft_strcmp(argv[n], "-n"))
+			!ft_strcmp(argv[n], "-v"))
 		return (0);
 	else if (digit(argv[n]) && (!ft_strcmp(argv[n - 1], "-d") ||
 			!ft_strcmp(argv[n - 1], "-n")))
