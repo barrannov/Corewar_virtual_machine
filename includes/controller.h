@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 19:42:02 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 22:20:01 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 20:00:25 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 
 //validation functions
 //t_player		*read_file_vm(header_t *header, char *file);
+int		vm_get_numb(char **argv,  int n,  int *numb);
+int		digit(char *str);
 
 #endif
