@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 20:02:16 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 20:10:51 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void logic(t_player *player)
 	printf("%s\n", player->next->header->prog_name);
 	printf("%d\n", player->numb);
 	printf("%d\n", player->next->numb);
+	printf("%d\n", player->next->next->numb);
 	if (!player)
 		return ;
 }
