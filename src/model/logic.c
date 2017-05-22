@@ -28,11 +28,11 @@ void execute_process(t_processor *process)
 	 * */
 }
 
-void execute_champ(t_player *player)
+void execute_champ(t_player *player, t_processor *processors)
 {
 	t_processor *temp_process;
 
-	temp_process = player->processors;
+	temp_process = processors;
 	while (temp_process)
 	{
 		execute_process(temp_process);
@@ -51,7 +51,7 @@ void logic(t_param *params)
 		temp_chemp = params->player;
 		while (temp_chemp)
 		{
-			execute_champ(temp_chemp);
+			execute_champ(temp_chemp, params->processors);
 			temp_chemp = temp_chemp->next;
 		}
 

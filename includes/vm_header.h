@@ -24,19 +24,19 @@ typedef struct			s_param
 	int					cycle_to_die;
 	char				**map;
 	struct s_player		*player;
+	struct s_processor	*processors;
 }						t_param;
 
 typedef struct			s_player
 {
 	header_t			*header;
-	struct s_processor	*processors;
-	int					reg[REG_SIZE];
 	char				*commands;
 	struct s_player		*next;
 }						t_player;
 
 typedef	struct			s_processor
 {
+	int					reg[REG_SIZE];
 	int					prog_counter;
 	int 				waite_cycles; //How money cycles left to wait
 	struct s_processor	*next;
