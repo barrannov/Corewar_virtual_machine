@@ -16,13 +16,14 @@
 # include "controller.h"
 # include "view.h"
 # include "libft.h"
+# include "model.h"
 # include <stdio.h>
 
 typedef struct			s_param
 {
 	int					cycle;
 	int					cycle_to_die;
-	char				**map;
+	char				*map;
 	struct s_player		*player;
 	struct s_processor	*processors;
 }						t_param;
@@ -36,9 +37,9 @@ typedef struct			s_player
 
 typedef	struct			s_processor
 {
-	int					reg[REG_SIZE];
+	int					reg[REG_NUMBERG][REG_SIZE];
 	int					prog_counter;
-	int 				waite_cycles; //How money cycles left to wait
+	int 				waite_cycles; //How many cycles left to wait
 	struct s_processor	*next;
 }						t_processor;
 

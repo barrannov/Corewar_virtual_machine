@@ -12,8 +12,21 @@
 
 #include "../../includes/vm_header.h"
 
+void execute_command(t_processor *process, t_param *param)
+{
+	if (param->map[process->prog_counter] == 0 && param->map[process->prog_counter] == 2)
+		handle_ld(param, process);
+}
 
-void execute_process(t_processor *process)
+void set_command_for_proc(t_processor *process, t_param *param)
+{
+	if (process->prog_counter != 0)
+		return;
+	if (param->map[process->prog_counter] == 0 && param->map[process->prog_counter] == 2)
+		set_cycles_ld(process);
+}
+
+void execute_process(t_processor *process, t_param *param)
 {
 /*
  * At the beginning we are checking waite_cycles, if waite_cycles > 0, it means that process needs to wait this cycles
@@ -22,39 +35,41 @@ void execute_process(t_processor *process)
 	if (process->waite_cycles > 0)
 	{
 		process->waite_cycles--;
-		return ;
+		if (process->waite_cycles > 0)
+			return;
 	}
+	execute_command(process, param);
 	/*execute command here
 	 * */
 }
 
-void execute_champ(t_player *player, t_processor *processors)
-{
-	t_processor *temp_process;
-
-	temp_process = processors;
-	while (temp_process)
-	{
-		execute_process(temp_process);
-		temp_process = temp_process->next;
-	}
-}
+//void execute_champ(t_processor *processors)
+//{
+//	t_processor *temp_process;
+//
+//	temp_process = processors;
+//	while (temp_process)
+//	{
+//		execute_process(temp_process);
+//		temp_process = temp_process->next;
+//	}
+//}
 
 void logic(t_param *params)
 {
-	t_player *temp_chemp;
+	t_processor *temp_proc;
 
 	if (!params)
 		return;
 	while (params->cycle_to_die > 0)
 	{
-		temp_chemp = params->player;
-		while (temp_chemp)
+		temp_proc = params->processors;
+		while (temp_proc)
 		{
-			execute_champ(temp_chemp, params->processors);
-			temp_chemp = temp_chemp->next;
+			set_command_for_proc(temp_proc, params);
+			execute_process(params->processors, params);
+			temp_proc = temp_proc->next;
 		}
-
 	}
 }
 

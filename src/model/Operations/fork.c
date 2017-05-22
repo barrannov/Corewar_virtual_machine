@@ -5,5 +5,5 @@ void set_cycles_fork(t_processor *processor)
 
 void handle_fork(t_player *player, t_processor *processor)
 {
-	processor
+
 }
