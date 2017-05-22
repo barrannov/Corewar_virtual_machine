@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 11:47:44 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 20:02:43 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 22:01:57 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ int				main(int argc, char **argv)
 
 	flags = malloc(sizeof(t_fl));
 	vm_get_flags(flags, argv);
-	if (!argc || !argv)
+	if (argc == 1)
+	{
+		vm_print_usage();
 		return (0);
+	}
 	logic(get_player(argc, argv));
 	return (0);
 }
