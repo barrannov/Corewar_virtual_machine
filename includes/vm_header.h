@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 22:20:57 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 17:23:14 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct			s_player
 	header_t			*header;
 	struct s_processor	*processors;
 	int					reg[REG_SIZE];
-	char				*commands;
+	unsigned char				*commands;
 	struct s_player		*next;
 }						t_player;
 
