@@ -6,11 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2017/05/22 17:23:14 by oklymeno         ###   ########.fr       */
-=======
-/*   Updated: 2017/05/22 20:20:19 by oklymeno         ###   ########.fr       */
->>>>>>> controller
+/*   Updated: 2017/05/22 20:27:32 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +30,8 @@ typedef struct			s_player
 	header_t			*header;
 	struct s_processor	*processors;
 	int					reg[REG_SIZE];
-<<<<<<< HEAD
-	unsigned char				*commands;
-=======
 	int					numb;
 	unsigned char		*commands;
->>>>>>> controller
 	struct s_player		*next;
 }						t_player;
 
