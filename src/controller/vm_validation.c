@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation_vm.c                                    :+:      :+:    :+:   */
+/*   vm_validation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 17:22:42 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 15:10:29 by oklymeno         ###   ########.fr       */
+/*   Created: 2017/05/22 16:32:31 by oklymeno          #+#    #+#             */
+/*   Updated: 2017/05/22 20:03:01 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,30 @@ char			*get_commands(unsigned char *com, unsigned int size)
 	return (res);
 }
 
-t_player		*get_player(header_t *header, int fd)
+static t_player	*get_player(header_t *header, int fd, int numb)
 {
 	t_player		*player;
 	unsigned char	*com;
 
 	player = malloc(sizeof(t_player) + 1);
 	player->header = header;
+	fd++;
 	com = malloc(sizeof(header->prog_size));
 	read(fd, com, header->prog_size);
 	player->commands = get_commands(com, header->prog_size);
 	free(com);
+	player->numb = numb;
+	player->next = NULL;
 	return (player);
 }
 
-t_player		*read_file_vm(header_t *header, char *file)
+t_player		*read_file_vm(char *file, int numb)
 {
-	int		fd;
-	char	*res;
+	int			fd;
+	char		*res;
+	header_t	*header;
 
+	header = malloc(sizeof(header_t));
 	res = malloc(sizeof(char *) * sizeof(header_t));
 	fd = open(file, O_RDONLY);
 	read(fd, res, sizeof(header_t));
@@ -78,5 +83,5 @@ t_player		*read_file_vm(header_t *header, char *file)
 	header->prog_size = move_bits(header->prog_size);
 	if (header->magic != COREWAR_EXEC_MAGIC)
 		print_cant_read_source_file(file);
-	return (get_player(header, fd));
+	return (get_player(header, fd, numb));
 }
