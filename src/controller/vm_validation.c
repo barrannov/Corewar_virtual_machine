@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/controller.h"
+#include "../../includes/vm_header.h"
 
 unsigned int	move_bits(unsigned int num)
 {

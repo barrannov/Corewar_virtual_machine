@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/controller.h"
+#include "../../includes/vm_header.h"
 
 int		main(int argc, char **argv)
 {
@@ -20,7 +20,9 @@ int		main(int argc, char **argv)
 	if (!argc || !argv)
 		return (0);
 	header = malloc(sizeof(header_t));
+//	if(!argv[1])
+//		return (0);
 	player = read_file_vm(header, argv[1]);
-	logic(player);
+	//logic(player);
 	return (0);
 }

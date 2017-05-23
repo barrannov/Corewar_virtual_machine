@@ -14,15 +14,15 @@
 
 void execute_command(t_processor *process, t_param *param)
 {
-	if (param->map[process->prog_counter] == 0 && param->map[process->prog_counter] == 2)
+	if (param->map[process->prog_counter] == 2)
 		handle_ld(param, process);
 }
 
 void set_command_for_proc(t_processor *process, t_param *param)
 {
-	if (process->prog_counter != 0)
+	if (process->waite_cycles != 0)
 		return;
-	if (param->map[process->prog_counter] == 0 && param->map[process->prog_counter] == 2)
+	if (param->map[process->prog_counter] == 2)
 		set_cycles_ld(process);
 }
 
@@ -71,9 +71,4 @@ void logic(t_param *params)
 			temp_proc = temp_proc->next;
 		}
 	}
-}
-
-int main()
-{
-	return (0);
 }

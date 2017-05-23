@@ -15,9 +15,11 @@
 
 # include "controller.h"
 # include "view.h"
+# include "op.h"
 # include "libft.h"
 # include "model.h"
 # include <stdio.h>
+
 
 typedef struct			s_param
 {
@@ -37,7 +39,7 @@ typedef struct			s_player
 
 typedef	struct			s_processor
 {
-	int					reg[REG_NUMBERG][REG_SIZE];
+	int					reg[REG_NUMBER];
 	int					prog_counter;
 	int 				waite_cycles; //How many cycles left to wait
 	struct s_processor	*next;
@@ -46,5 +48,9 @@ typedef	struct			s_processor
 void					logic(t_param *params);
 
 t_player        		*read_file_vm(header_t *header, char *file);
+void set_cycles_ld(t_processor *pro);
+void handle_ld(t_param *params, t_processor *proc);
+void create_map(t_player *players, t_param *params);
+t_player		*read_file_vm(header_t *header, char *file);
 
 #endif
