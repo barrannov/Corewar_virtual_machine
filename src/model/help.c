@@ -30,3 +30,13 @@ t_op get_command(int pc)
 		};
 	return (op_tab[pc - 1]);
 }
+
+void get_args(t_val *val, char *map, t_processor *proc)
+{
+	val = malloc(sizeof(t_val));
+
+	val->val1 = map[proc->prog_counter + 1] >> 6;
+	val->val2 = (map[proc->prog_counter + 1] << 2) >> 6;
+	val->val3 = (map[proc->prog_counter + 1] << 4) >> 6;
+
+}

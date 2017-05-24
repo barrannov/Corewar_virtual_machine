@@ -6,23 +6,65 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 11:47:44 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 22:14:13 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 22:09:04 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm_header.h"
 
-int		main(int argc, char **argv)
+static int		not_flag(char **argv, int n)
+{
+	if (!ft_strcmp(argv[n], "-d") || !ft_strcmp(argv[n], "-n") ||
+		!ft_strcmp(argv[n], "-v"))
+		return (0);
+	else if (digit(argv[n]) && (!ft_strcmp(argv[n - 1], "-d") ||
+								!ft_strcmp(argv[n - 1], "-n")))
+		return (0);
+	return (1);
+}
+
+static t_player	*get_player(int argc, char **argv)
 {
 	t_player	*player;
-	header_t	*header;
+	t_player	*tmp;
+	int			n;
+	int			numb;
 
-	if (!argc || !argv)
+	n = 0;
+	player = NULL;
+	numb = 0;
+	while (++n < argc)
+	{
+		if (not_flag(argv, n))
+		{
+			if (!player)
+				player = read_file_vm(argv[n], vm_get_numb(argv, n, &numb));
+			else
+			{
+				tmp = player;
+				while (tmp->next)
+					tmp = tmp->next;
+				tmp->next = read_file_vm(argv[n], vm_get_numb(argv, n, &numb));
+			}
+		}
+	}
+	 return (player);
+}
+
+int				main(int argc, char **argv)
+{
+	t_fl	*flags;
+	t_param *param;
+
+	param = malloc(sizeof(t_param));
+	flags = malloc(sizeof(t_fl));
+	vm_get_flags(flags, argv);
+	if (argc == 1)
+	{
+		vm_print_usage();
 		return (0);
-	header = malloc(sizeof(header_t));
-//	if(!argv[1])
-//		return (0);
-	player = read_file_vm(header, argv[1]);
-	//logic(player);
+	}
+	param->amount_champs = argc - 1;
+	create_map(get_player(argc, argv), param);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 22:20:57 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 20:27:32 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ typedef struct			s_param
 	char				*map;
 	struct s_player		*player;
 	struct s_processor	*processors;
+	int					amount_champs;
 }						t_param;
 
 typedef struct			s_player
 {
 	header_t			*header;
-	char				*commands;
+	struct s_processor	*processors;
+	int					reg[REG_SIZE];
+	int					numb;
+	unsigned char		*commands;
 	struct s_player		*next;
 }						t_player;
 
@@ -46,11 +50,22 @@ typedef	struct			s_processor
 }						t_processor;
 
 void					logic(t_param *params);
-
-t_player        		*read_file_vm(header_t *header, char *file);
 void set_cycles_ld(t_processor *pro);
 void handle_ld(t_param *params, t_processor *proc);
-void create_map(t_player *players, t_param *params);
-t_player		*read_file_vm(header_t *header, char *file);
+void create_map(t_player *players, t_param *param);
+
+typedef	struct			s_fl
+{
+	int	dump;
+	int vis;
+}						t_fl;
+
+void	get_vis(t_fl *flags, char **argv);
+int		digit(char *str);
+void	vm_get_flags(t_fl *flags, char **argv);
+int		vm_get_numb(char **argv, int n, int *numb);
+void get_args(t_val *val, char *map, t_processor *proc);
+t_player        		*read_file_vm(char *file, int numb);
+void					vm_get_flags(t_fl *flags, char **argv);
 
 #endif
