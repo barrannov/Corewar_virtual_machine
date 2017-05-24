@@ -6,28 +6,31 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/19 22:17:36 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/22 22:00:14 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../../includes/vm_header.h"
 
-static void			print_usage_second_part()
+static void			vm_print_usage_second_part(void)
 {
-	ft_putstr("#### BINARY OUTPUT MODE ########################################################\n"
+	ft_putstr("#### BINARY OUTPUT MODE ######################################"
+			"##################\n"
 			"    -b        : Binary output mode for corewar.42.fr\n"
 			"    --stealth : Hides the real contents of the memory\n"
-			"#### NCURSES OUTPUT MODE #######################################################\n"
+			"#### NCURSES OUTPUT MODE #######################################"
+			"################\n"
 			"    -n        : Ncurses output mode\n"
 			"    --stealth : Hides the real contents of the memory\n"
-			"################################################################################\n");
+			"################################################################"
+			"################\n");
 }
 
 /*
- * prints usage
- * */
+** prints usage
+*/
 
-void				print_usage()
+void				vm_print_usage(void)
 {
 	ft_putstr("Usage: ./corewar [-d N -s N -v N | -b --stealth | "
 			"-n --stealth] [-a] <champion1.cor> <...>\n"
@@ -47,15 +50,18 @@ void				print_usage()
 			"(Params are NOT litteral ...)\n"
 			"                - 8 : Show deaths\n"
 			"                - 16 : Show PC movements (Except for jumps)\n");
-	print_usage_second_part();
+	vm_print_usage_second_part();
 }
 
-/*	displays an error "Can't read source file <file_name>"
-	function takes <file_name> */
+/*
+**	displays an error "Can't read source file <file_name>"
+**	function takes <file_name>
+*/
 
 void				print_cant_read_source_file(char *name)
 {
 	ft_putstr("Can't read source file ");
 	ft_putstr(name);
 	ft_putstr("\n");
+	exit (1);
 }
