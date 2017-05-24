@@ -35,7 +35,7 @@ void create_map(t_player *players, t_param *param)
 	pc = 0;
 	temp_players = players;
 	param->map = ft_strnew(MEM_SIZE);
-	add_null(param->map);
+	//add_null(param->map);
 	while (temp_players)
 	{
 		//TODO  add pc to players process
@@ -49,11 +49,15 @@ void create_map(t_player *players, t_param *param)
 	{
 		if (i % 64 == 0)
 		{
-			write(1, "\n", 1);
-			write(1, "row #", 4);
-			ft_putnbr(++n);
-			ft_putstr(" ");
+			//write(1, "\n", 1);
+			printf("\n");
+			printf("row #");
+			printf("%d ", ++n);
+			//write(1, "row #", 4);
+			//ft_putnbr(++n);
+			//ft_putstr(" ");
 		}
-		write(1, &param->map[i], 1);
+		printf("%x ", (unsigned char)param->map[i]);
+//		write(1, &param->map[i], 1);
 	}
 }

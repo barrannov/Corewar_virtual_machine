@@ -14,6 +14,8 @@
 
 void execute_command(t_processor *process, t_param *param)
 {
+	if (process->waite_cycles != 0)
+		return;
 	if (param->map[process->prog_counter] == 2)
 		handle_ld(param, process);
 }
