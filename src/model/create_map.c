@@ -5,7 +5,7 @@ void add_to_map(t_player *players, t_param *params, int pc)
 	int i;
 
 	i = 0;
-	while (i < players->header->prog_size)
+	while (i < (int)players->header->prog_size)
 	{
 		params->map[pc] = players->commands[i];
 		pc++;
@@ -44,20 +44,19 @@ void create_map(t_player *players, t_param *param)
 		pc += MEM_SIZE / param->amount_champs;
 	}
 	int i = -1;
-	int n = 0;
 	while (++i < MEM_SIZE)
 	{
 		if (i % 64 == 0)
 		{
-			//write(1, "\n", 1);
 			printf("\n");
-			printf("row #");
-			printf("%d ", ++n);
-			//write(1, "row #", 4);
-			//ft_putnbr(++n);
-			//ft_putstr(" ");
+			printf("row # ");
 		}
-		printf("%x ", (unsigned char)param->map[i]);
-//		write(1, &param->map[i], 1);
+		if (param->map[i] == 0)
+			printf("%.2x ", (unsigned char)param->map[i]);
+		else
+			printf("\033[32;1m%.2x\033[0m ", (unsigned char)param->map[i]);
 	}
+	param->processors = malloc(sizeof(t_processor) + 1);
+	param->processors->next = NULL;
+	logic(param);
 }

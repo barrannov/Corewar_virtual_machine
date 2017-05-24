@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/20 15:03:33 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/05/24 18:25:03 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void execute_command(t_processor *process, t_param *param)
 {
-	if (process->waite_cycles != 0)
-		return;
+//	if ( process->waite_cycles!= 0)
+//		return;
+	process->prog_counter = 11;
 	if (param->map[process->prog_counter] == 2)
 		handle_ld(param, process);
 }
@@ -59,18 +60,21 @@ void execute_process(t_processor *process, t_param *param)
 
 void logic(t_param *params)
 {
-	t_processor *temp_proc;
+//	t_processor *temp_proc;
 
 	if (!params)
 		return;
-	while (params->cycle_to_die > 0)
-	{
-		temp_proc = params->processors;
-		while (temp_proc)
-		{
-			set_command_for_proc(temp_proc, params);
-			execute_process(params->processors, params);
-			temp_proc = temp_proc->next;
-		}
-	}
+
+	execute_command(params->processors, params);	
+//	while (params->cycle_to_die > 0)
+//	{
+//		temp_proc = params->processors;
+//		params->cycle_to_die--;
+	//	while (temp_proc)
+	//	{
+	//		set_command_for_proc(temp_proc, params);
+	//		execute_process(params->processors, params);
+	//		temp_proc = temp_proc->next;
+	//	}
+//	}
 }

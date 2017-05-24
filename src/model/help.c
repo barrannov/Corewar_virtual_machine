@@ -1,6 +1,6 @@
-#include "op.h"
+#include "../../includes/vm_header.h"
 
-t_op get_command(int pc)
+/*t_op get_command(int pc)
 {
 	t_op    op_tab[17] =
 		{
@@ -29,14 +29,14 @@ t_op get_command(int pc)
 				{0, 0, {0}, 0, 0, 0, 0, 0}
 		};
 	return (op_tab[pc - 1]);
-}
+}*/
 
 void get_args(t_val *val, char *map, t_processor *proc)
 {
-	val = malloc(sizeof(t_val));
-
-	val->val1 = map[proc->prog_counter + 1] >> 6;
-	val->val2 = (map[proc->prog_counter + 1] << 2) >> 6;
-	val->val3 = (map[proc->prog_counter + 1] << 4) >> 6;
-
+	val->val1 = (unsigned char)map[proc->prog_counter] >> 6;
+	val->val2 = ((unsigned char)map[proc->prog_counter] << 26) >> 30;
+	val->val3 = ((unsigned char)map[proc->prog_counter] << 28) >> 30;
 }
+/*TODO find why here we need to move for 26 bits to left and 30 to right and so long..
+ *
+ */
