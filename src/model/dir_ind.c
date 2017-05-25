@@ -6,28 +6,32 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 20:59:37 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/25 22:29:59 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../includes/vm_header.h"
 
-unsigned int	bInd_to_litInd(unsigned char *big_ptr, int am_byte)
+unsigned int	change_endian(unsigned char *big_ptr, int am_byte)
 {
 	unsigned int	little;
+	unsigned char	*ptr;
 	int				i;
 	int				j;
 
 	j = am_byte - 1;
 	i = 0;
-	unsigned char *little_ptr = malloc(sizeof(unsigned char) * am_byte);
+	ptr = malloc(sizeof(unsigned char) * am_byte);
 	while (i < am_byte)
 	{
-		little_ptr[i] = big_ptr[i];
+		ptr[i] = big_ptr[i];
 		j--;
 		i++;
 	}
-	little = (unsigned int)little_ptr[0] * 16777216 + (unsigned int)little_ptr[1] * 65536 + (unsigned int)little_ptr[2] * 256 + (unsigned int)little_ptr[3];
+	if (am_byte == 4)
+		little = ptr[0] * 16777216 + ptr[1] * 65536 + ptr[2] * 256 + ptr[3];
+	else
+		little = ptr[0] * 256 + ptr[1];
 	return (little);
 }
 
@@ -35,7 +39,7 @@ unsigned int	bInd_to_litInd(unsigned char *big_ptr, int am_byte)
  *
  */
 
-unsigned int	handle_direct(t_param *param, t_processor *proc, int am_byte)
+unsigned int	handle_direct(t_param *param, t_processor *proc, int am_byte, int pos)
 {
 	unsigned char	dir[am_byte];
 	unsigned int	res;
@@ -44,24 +48,23 @@ unsigned int	handle_direct(t_param *param, t_processor *proc, int am_byte)
 	i = 0;
 	while (i < am_byte)
 	{
-		dir[i] = (unsigned char)param->map[proc->prog_counter + i];
+		dir[i] = param->map[proc->pc + pos + i];
 		i++;
 	}
-	res = bInd_to_litInd(dir, am_byte);
-	proc->prog_counter += am_byte;
+	res = change_endian(dir, am_byte);
 	return (res);
 }
 
-unsigned int	handle_indirect(t_param *param, t_processor *proc, int am_byte)
+unsigned int	handle_indirect(t_param *param, t_processor *proc, int pos)
 {
-	unsigned char	dir[am_byte];
+	unsigned char	dir[2];
 	unsigned int	res;
 	int				i;
 
 	i = 0;
-	while (i < am_byte)
+	while (i < 2)
 	{
-		dir[i] = (unsigned char)param->map[proc->prog_counter + 3 + i];
+		dir[i] = param->map[proc->pc + pos + i];
 		i++;
 	}
 	res = dir[0] * 255 + dir[1];

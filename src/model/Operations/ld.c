@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 15:48:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 21:46:13 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/25 22:27:38 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ void	print_reg(t_processor *proc)// for testing, delete it
 
 void	load_value(t_param *param, t_processor *proc, unsigned int value)
 {
-	if (param->map[proc->prog_counter] > 0 && param->map[proc->prog_counter] < REG_NUMBER)
+	if (param->map[proc->pc + 6] > 0 && param->map[proc->pc + 6] < REG_NUMBER)
 	{
 		if (value == 0)
 			proc->carry = 1;
-		proc->reg[param->map[proc->prog_counter] - 1] = value;
+		proc->reg[param->map[proc->pc + 6] - 1] = value;
+		proc->pc += 7; 
 	}
-	proc->prog_counter++;
+	else
+		proc->pc++;
 }
 
 void	handle_ld(t_param *params, t_processor *proc)
@@ -44,15 +46,14 @@ void	handle_ld(t_param *params, t_processor *proc)
 	unsigned int	arg;
 
 	val = malloc(sizeof(t_val));
-	proc->prog_counter++;
 	get_args(val, params->map, proc);
 	if (val->val1 == 2)
-		arg = handle_direct(params, proc, 4);
+		arg = handle_direct(params, proc, 4, 2);
 	else if (val->val1 == 3)
 		arg = handle_indirect(params, proc, 2);
 	else
 	{
-		proc->prog_counter++;
+		proc->pc++;
 		return ;
 	}
 	load_value(params, proc, arg);

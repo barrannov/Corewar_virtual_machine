@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 20:34:42 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/25 22:13:24 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct			s_player
 typedef	struct			s_processor
 {
 	int					reg[REG_NUMBER];
-	int					prog_counter;
+	int					pc;
 	char				carry;
 	int 				waite_cycles; //How many cycles left to wait
 	struct s_processor	*next;
@@ -82,6 +82,6 @@ int						vm_get_numb(char **argv, int n, int *numb);
 void					get_args(t_val *val, unsigned char *map, t_processor *proc);
 t_player        		*read_file_vm(char *file, int numb);
 void					vm_get_flags(t_fl *flags, char **argv);
-unsigned int			handle_direct(t_param *param, t_processor *proc, int am_byte);
-unsigned int			handle_indirect(t_param *param, t_processor *proc, int am_byte);
+unsigned int			handle_direct(t_param *param, t_processor *proc, int am_byte, int pos);
+unsigned int			handle_indirect(t_param *param, t_processor *proc, int pos);
 #endif
