@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dir_ind.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
+/*   Updated: 2017/05/25 20:59:37 by oklymeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "../../includes/vm_header.h"
 
 unsigned int	bInd_to_litInd(unsigned char *big_ptr, int am_byte)
 {
-	unsigned int little;
-	int i;
-	int j;
+	unsigned int	little;
+	int				i;
+	int				j;
 
 	j = am_byte - 1;
 	i = 0;
@@ -23,11 +35,11 @@ unsigned int	bInd_to_litInd(unsigned char *big_ptr, int am_byte)
  *
  */
 
-unsigned int handle_direct(t_param *param, t_processor *proc, int am_byte)
+unsigned int	handle_direct(t_param *param, t_processor *proc, int am_byte)
 {
-	unsigned char dir[am_byte];
-	unsigned int res;
-	int i;
+	unsigned char	dir[am_byte];
+	unsigned int	res;
+	int				i;
 
 	i = 0;
 	while (i < am_byte)
@@ -36,5 +48,22 @@ unsigned int handle_direct(t_param *param, t_processor *proc, int am_byte)
 		i++;
 	}
 	res = bInd_to_litInd(dir, am_byte);
+	proc->prog_counter += am_byte;
+	return (res);
+}
+
+unsigned int	handle_indirect(t_param *param, t_processor *proc, int am_byte)
+{
+	unsigned char	dir[am_byte];
+	unsigned int	res;
+	int				i;
+
+	i = 0;
+	while (i < am_byte)
+	{
+		dir[i] = (unsigned char)param->map[proc->prog_counter + 3 + i];
+		i++;
+	}
+	res = dir[0] * 255 + dir[1];
 	return (res);
 }

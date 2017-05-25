@@ -31,11 +31,11 @@
 	return (op_tab[pc - 1]);
 }*/
 
-void get_args(t_val *val, char *map, t_processor *proc)
+void get_args(t_val *val, unsigned char *map, t_processor *proc)
 {
-	val->val1 = (unsigned char)map[proc->prog_counter] >> 6;
-	val->val2 = ((unsigned char)map[proc->prog_counter] << 26) >> 30;
-	val->val3 = ((unsigned char)map[proc->prog_counter] << 28) >> 30;
+	val->val1 = (map[proc->prog_counter + 1] & 0xc0) >> 6;
+	val->val2 = (map[proc->prog_counter + 1] & 0x30) >> 4;
+	val->val3 = (map[proc->prog_counter + 1] & 0x0c) >> 2;
 }
 /*TODO find why here we need to move for 26 bits to left and 30 to right and so long..
  *
