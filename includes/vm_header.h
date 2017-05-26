@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 22:13:24 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:17:12 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void 					set_cycles_ld(t_processor *pro);
 //operations
 void 					handle_ld(t_param *params, t_processor *proc);
 void 					handle_st(t_param *params, t_processor *proc);
+void 					handle_add(t_param *params, t_processor *proc);
+void 					handle_sub(t_param *params, t_processor *proc);
 //
 void 					create_map(t_player *players, t_param *param);
 void					print_map(t_param *param);
