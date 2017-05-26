@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:29:15 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 18:20:31 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:42:10 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,4 @@ void create_map(t_player *players, t_param *param)
 		else
 			printf("\033[32;1m%.2x\033[0m ", param->map[i]);
 	}
-	param->processors = malloc(sizeof(t_processor) + 1);
-	param->processors->next = NULL;
-	logic(param);
 }

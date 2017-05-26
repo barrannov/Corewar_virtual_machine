@@ -6,7 +6,7 @@
 #    By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/29 11:45:35 by oklymeno          #+#    #+#              #
-#    Updated: 2017/05/26 15:15:08 by oklymeno         ###   ########.fr        #
+#    Updated: 2017/05/26 15:42:35 by oklymeno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ SOURCES=src/controller/main.c\
 		src/view/usage.c\
 		src/model/logic.c\
 		src/model/create_map.c\
-		src/model/Operations/ld.c\
-		src/model/Operations/st.c\
-		src/model/Operations/add.c\
-		src/model/Operations/sub.c\
+		src/model/operations/ld.c\
+		src/model/operations/st.c\
+		src/model/operations/add.c\
+		src/model/operations/sub.c\
 		src/model/help.c\
 		src/model/get_processes.c\
 		src/model/dir_ind.c

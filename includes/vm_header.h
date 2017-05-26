@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/26 15:21:51 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 16:43:24 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int						vm_get_numb(char **argv, int n, int *numb);
 void					get_args(t_val *val, unsigned char *map, t_processor *proc);
 t_player        		*read_file_vm(char *file, int numb);
 void					vm_get_flags(t_fl *flags, char **argv);
-unsigned int			handle_direct(t_param *param, t_processor *proc, int am_byte, int pos);
-unsigned int			handle_indirect(t_param *param, t_processor *proc, int pos);
+unsigned int			handle_dir(t_param *param, t_processor *proc, int am_byte, int pos);
+unsigned int			handle_ind(t_param *param, t_processor *proc, int pos);
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ld.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/26 15:50:05 by oklymeno          #+#    #+#             */
+/*   Updated: 2017/05/26 16:43:19 by oklymeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/vm_header.h"
 
 void	set_cycles_ld(t_processor *proc)
@@ -35,9 +47,9 @@ void	handle_ld(t_param *params, t_processor *proc)
     val = malloc(sizeof(t_val));
     get_args(val, params->map, proc);
     if (val->val1 == 2)
-        arg = handle_direct(params, proc, 4, 2);
+        arg = handle_dir(params, proc, 4, 2);
     else if (val->val1 == 3)
-        arg = handle_indirect(params, proc, 2);
+        arg = handle_ind(params, proc, 2);
     else
     {
         proc->pc++;

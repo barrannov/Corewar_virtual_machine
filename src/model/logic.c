@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/24 18:25:03 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:47:01 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ void execute_command(t_processor *process, t_param *param)
 	else if (param->map[process->pc] == 3)
 		handle_st(param, process);
     else if (param->map[process->pc] == 4)
-        handle_fork(param, process);
+        handle_add(param, process);
+    else if (param->map[process->pc] == 5)
+        handle_sub(param, process);
 
 }
 
-void set_command_for_proc(t_processor *process, t_param *param)
+/*void set_command_for_proc(t_processor *process, t_param *param)
 {
 	if (process->waite_cycles != 0)
 		return;
@@ -35,7 +37,7 @@ void set_command_for_proc(t_processor *process, t_param *param)
 		set_cycles_ld(process);
     if (param->map[process->pc] == 3)
         set_cycles_fork(process);
-}
+}*/
 
 void execute_process(t_processor *process, t_param *param)
 {
@@ -138,4 +140,4 @@ void	logic(t_player *players)
 	//		temp_proc = temp_proc->next;
 	//	}
 //	}
-}
+}*/

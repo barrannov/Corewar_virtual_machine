@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 22:29:59 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 16:43:10 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ unsigned int	change_endian(unsigned char *big_ptr, int am_byte)
  *
  */
 
-unsigned int	handle_direct(t_param *param, t_processor *proc, int am_byte, int pos)
+unsigned int	handle_dir(t_param *param, t_processor *proc, int am_byte, int pos)
 {
 	unsigned char	dir[am_byte];
 	unsigned int	res;
@@ -55,18 +55,7 @@ unsigned int	handle_direct(t_param *param, t_processor *proc, int am_byte, int p
 	return (res);
 }
 
-unsigned int	handle_indirect(t_param *param, t_processor *proc, int pos)
+unsigned int handle_ind(t_param *param, t_processor *proc, int pos)
 {
-	unsigned char	dir[2];
-	unsigned int	res;
-	int				i;
-
-	i = 0;
-	while (i < 2)
-	{
-		dir[i] = param->map[proc->pc + pos + i];
-		i++;
-	}
-	res = dir[0] * 255 + dir[1];
-	return (res);
+	return (handle_dir(param, proc, 2, handle_dir(param, proc, 2, pos)));
 }

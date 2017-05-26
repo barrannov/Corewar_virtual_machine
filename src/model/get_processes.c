@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:34:21 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 18:49:54 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:43:46 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	add_process(t_player *player, int pc)
 	t_processor *tmp;
 
 	new = malloc(sizeof(t_processor) + 1);
-	new->prog_counter = pc;
+	new->pc = pc;
 	init_reg(new);
 	new->reg[0] = player->numb;
 	new->carry = 0;
