@@ -27,14 +27,16 @@ typedef struct			s_param
 	int					cycle_to_die;
 	unsigned char		*map;
 	struct s_player		*players;
-
+	struct s_processor	*processors;
+    int                 amount_checks;
 	int					amount_champs;
 }						t_param;
 
 typedef struct			s_player
 {
 	header_t			*header;
-	struct s_processor	*processors;
+	int					live;
+    int                 live_amount;
 	int					reg[REG_SIZE];
 	int					numb;
 	unsigned char		*commands;
@@ -43,8 +45,9 @@ typedef struct			s_player
 
 typedef	struct			s_processor
 {
+    int                 is_alive;
 	int					reg[REG_NUMBER];
-	int					pc;
+	unsigned int		pc;
 	char				carry;
 	int 				waite_cycles; //How many cycles left to wait
 	struct s_processor	*next;
@@ -57,6 +60,8 @@ typedef struct			s_val
 	char	val3;
 }						t_val;
 
+
+void handle_check(t_param *param);
 void					logic(t_player *players);
 //void logic(t_param *params);
 void 					set_cycles_ld(t_processor *pro);
@@ -66,7 +71,10 @@ void 					handle_st(t_param *params, t_processor *proc);
 void 					handle_add(t_param *params, t_processor *proc);
 void 					handle_sub(t_param *params, t_processor *proc);
 void 					handle_and(t_param *params, t_processor *proc);
+void                    handle_live(t_param *params, t_processor *proc);
 //
+
+void set_cycles_live(t_processor *proc);
 void 					create_map(t_player *players, t_param *param);
 void					print_map(t_param *param);
 void					get_processes(t_param *param);
