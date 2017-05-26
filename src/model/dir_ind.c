@@ -29,9 +29,9 @@ unsigned int	change_endian(unsigned char *big_ptr, int am_byte)
 		i++;
 	}
 	if (am_byte == 4)
-		little = ptr[0] * 16777216 + ptr[1] * 65536 + ptr[2] * 256 + ptr[3];
+		little = (unsigned int)ptr[0] * 16777216 + ptr[1] * 65536 + ptr[2] * 256 + ptr[3];
 	else
-		little = ptr[0] * 256 + ptr[1];
+		little = (unsigned int)ptr[0] * 256 + ptr[1];
 	return (little);
 }
 

@@ -12,9 +12,9 @@
 
 #include "../../includes/vm_header.h"
 
-void	add_to_map(t_player *players, t_param *params, int pc)
+void add_to_map(t_player *players, t_param *params, int pc)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < (int)players->header->prog_size)
@@ -25,7 +25,7 @@ void	add_to_map(t_player *players, t_param *params, int pc)
 	}
 }
 
-void	add_null(char *map)
+void add_null(char *map)
 {
 	int i;
 
@@ -38,11 +38,11 @@ void	add_null(char *map)
 }
 //void add_to_map(int pc, )
 
-
-void	create_map(t_player *players, t_param *param)
+void create_map(t_player *players, t_param *param)
 {
-	t_player	*temp_players;
-	int			pc;
+	t_player *temp_players;
+	int pc;
+
 
 	pc = 0;
 	temp_players = players;
@@ -56,4 +56,20 @@ void	create_map(t_player *players, t_param *param)
 		temp_players = temp_players->next;
 		pc += MEM_SIZE / param->amount_champs;
 	}
+	int i = -1;
+	while (++i < MEM_SIZE)
+	{
+		if (i % 64 == 0)
+		{
+			printf("\n");
+			printf("row # ");
+		}
+		if (param->map[i] == 0)
+			printf("%.2x ",param->map[i]);
+		else
+			printf("\033[32;1m%.2x\033[0m ", param->map[i]);
+	}
+	param->processors = malloc(sizeof(t_processor) + 1);
+	param->processors->next = NULL;
+	logic(param);
 }
