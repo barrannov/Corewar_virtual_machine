@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 22:13:24 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/24 20:47:53 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct			s_val
 }						t_val;
 
 void					logic(t_player *players);
+//void logic(t_param *params);
 void 					set_cycles_ld(t_processor *pro);
 //operations
 void 					handle_ld(t_param *params, t_processor *proc);
@@ -66,7 +67,8 @@ void 					handle_st(t_param *params, t_processor *proc);
 void 					create_map(t_player *players, t_param *param);
 void					print_map(t_param *param);
 void					get_processes(t_param *param);
-
+void handle_fork(t_param *player, t_processor *processor);
+void set_cycles_fork(t_processor *processor);
 typedef	struct			s_fl
 {
 	int	dump;
