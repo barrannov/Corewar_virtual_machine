@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:50:05 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/26 16:43:19 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:03:52 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	load_value(t_param *param, t_processor *proc, unsigned int value)
 {
     if (param->map[proc->pc + 6] > 0 && param->map[proc->pc + 6] < REG_NUMBER)
     {
-        if (value == 0)
-            proc->carry = 1;
+        value == 0 ? (proc->carry = 1) : (proc->carry = 0);
         proc->reg[param->map[proc->pc + 6] - 1] = value;
         proc->pc += 7;
     }

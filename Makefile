@@ -6,7 +6,7 @@
 #    By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/29 11:45:35 by oklymeno          #+#    #+#              #
-#    Updated: 2017/05/26 15:42:35 by oklymeno         ###   ########.fr        #
+#    Updated: 2017/05/26 17:52:19 by oklymeno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SOURCES=src/controller/main.c\
 		src/model/operations/ld.c\
 		src/model/operations/st.c\
 		src/model/operations/add.c\
+		src/model/operations/and.c\
 		src/model/operations/sub.c\
 		src/model/help.c\
 		src/model/get_processes.c\
