@@ -21,21 +21,21 @@ void	init_reg(t_processor *proc)
 		proc->reg[i] = 0;
 }
 
-void	add_process(t_player *player, int pc)
+void add_process(t_param *params, int pc, int numb)
 {
 	t_processor	*new;
 	t_processor *tmp;
-
+//TODO put new proccesses at the top
 	new = malloc(sizeof(t_processor) + 1);
-	new->pc = pc;
+	new->pc = (unsigned int)pc;
 	init_reg(new);
-	new->reg[0] = player->numb;
+	new->reg[0] = numb;
 	new->carry = 0;
 	new->waite_cycles = 0;
 	new->next = NULL;
-	tmp = player->processors;
-	if (!player->processors)
-		player->processors = new;
+	tmp = params->processors;
+	if (!params->processors)
+		params->processors = new;
 	else
 	{
 		while (tmp->next)
@@ -51,7 +51,7 @@ void	get_processes(t_param *param)
 	tmp = param->players;
 	while (tmp)
 	{
-		add_process(tmp, 0);
+		add_process(param, 0, tmp->numb);
 		tmp = tmp->next;
 	}
 }

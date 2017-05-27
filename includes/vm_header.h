@@ -37,7 +37,6 @@ typedef struct			s_player
 	header_t			*header;
 	int					live;
     int                 live_amount;
-	int					reg[REG_SIZE];
 	int					numb;
 	unsigned char		*commands;
 	struct s_player		*next;
@@ -62,10 +61,14 @@ typedef struct			s_val
 
 
 void handle_check(t_param *param);
+static int	check_args(t_val *val);
+void add_process(t_param *params, int pc, int numb);
 void					logic(t_player *players);
 //void logic(t_param *params);
 void 					set_cycles_ld(t_processor *pro);
 //operations
+static int	get_arg(t_param *params, t_processor *proc, char val, int pos);
+int			get_move(char val);
 void 					handle_ld(t_param *params, t_processor *proc);
 void 					handle_st(t_param *params, t_processor *proc);
 void 					handle_add(t_param *params, t_processor *proc);

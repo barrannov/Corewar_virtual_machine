@@ -12,9 +12,22 @@
 
 #include "../../includes/vm_header.h"
 
+int amount_lst_el(t_processor *procs)
+{
+    int i;
+
+    i = 0;
+    while (procs)
+    {
+        i++;
+        procs = procs->next;
+    }
+    return (i);
+}
+
 void execute_command(t_processor *process, t_param *param) {
-    //	if ( process->waite_cycles!= 0)
-    //		return;
+    if (process->waite_cycles != 0)
+        return;
 //	if (process->prog_counter == 0) //delete it
 //		process->prog_counter = 3;
     if (param->map[process->pc] == 1)
@@ -27,7 +40,6 @@ void execute_command(t_processor *process, t_param *param) {
         handle_add(param, process);
     else if (param->map[process->pc] == 5)
         handle_sub(param, process);
-
 }
 
 void set_command_for_proc(t_processor *process, t_param *param) {
@@ -109,22 +121,39 @@ void unset_is_alive_process(t_processor *proc) {
 
 }
 
-void algorithm(t_param *params) {
-    int cycles;
+void output_the_winner(t_player *players) {
+    t_player *temp_player;
 
-    cycles = 0;
+    temp_player = players;
+    while (temp_player) {
+        if (temp_player->live == 1) {
+            //TODO output the winner
+            return;
+        }
+        temp_player = temp_player->next;
+    }
+}
+
+void algorithm(t_param *params) {
     t_processor *temp_proc;
-    while (params->cycle_to_die > 0) {
+
+    params->cycle = 0;
+    while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
+    {
         temp_proc = params->processors;
-        while (temp_proc) {
+        while (temp_proc)
+        {
             set_command_for_proc(temp_proc, params);
             execute_process(params->processors, params);
             temp_proc = temp_proc->next;
         }
-        if (cycles % params->cycle_to_die == 0) {
+        if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0)
+        {
             handle_check(params);
             unset_is_alive_process(params->processors);
         }
+        params->cycle++;
+        output_the_winner(params->players);
     }
 }
 
@@ -138,12 +167,10 @@ void logic(t_player *players) {
     get_processes(param);
     param->cycle_to_die = CYCLE_TO_DIE;
     print_map(param);
-    execute_command(param->processors, param);
-
+//    execute_command(param->processors, param);
     algorithm(param); //start of algorithm
-
-    printf("step 2\n");
+//    printf("step 2\n");
 //	execute_command(param->players->processors, param);
-    print_map(param);
+//    print_map(param);
 
 }

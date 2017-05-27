@@ -38,7 +38,7 @@ unsigned int	change_endian(unsigned char *big_ptr, int am_byte)
 /*TODO chech how to change return of little endian with more universal solution
  *
  */
-
+//TODO change skip bytes aamount
 unsigned int	handle_dir(t_param *param, t_processor *proc, int am_byte, int pos)
 {
 	unsigned char	dir[am_byte];

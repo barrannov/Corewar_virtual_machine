@@ -57,16 +57,16 @@ void create_map(t_player *players, t_param *param)
 		pc += MEM_SIZE / param->amount_champs;
 	}
 	int i = -1;
-	while (++i < MEM_SIZE)
-	{
-		if (i % 64 == 0)
-		{
-			printf("\n");
-			printf("row # ");
-		}
-		if (param->map[i] == 0)
-			printf("%.2x ",param->map[i]);
-		else
-			printf("\033[32;1m%.2x\033[0m ", param->map[i]);
-	}
+//	while (++i < MEM_SIZE)
+//	{
+//		if (i % 64 == 0)
+//		{
+//			printf("\n");
+//			printf("row # ");
+//		}
+//		if (param->map[i] == 0)
+//			printf("%.2x ",param->map[i]);
+//		else
+//			printf("\033[32;1m%.2x\033[0m ", param->map[i]);
+//	}
 }

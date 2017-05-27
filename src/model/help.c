@@ -1,6 +1,6 @@
 #include "../../includes/vm_header.h"
 
-/*t_op get_command(int pc)
+t_op get_command(int pc)
 {
 	t_op    op_tab[17] =
 		{
@@ -29,7 +29,7 @@
 				{0, 0, {0}, 0, 0, 0, 0, 0}
 		};
 	return (op_tab[pc - 1]);
-}*/
+}
 
 void get_args(t_val *val, unsigned char *map, t_processor *proc)
 {

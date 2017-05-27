@@ -11,7 +11,7 @@ void deleteFirst(t_processor** list)
 }
 
 void delete_dead_processes(t_processor *processes) {
-    //TODO func deleats all nodes with 'is_alive = 0'
+    //TODO func delets all nodes with 'is_alive = 0'
     t_processor *temp_proc;
     t_processor *next;
     t_processor *before;
@@ -32,22 +32,25 @@ void delete_dead_processes(t_processor *processes) {
     }
 }
 
-int amount_lives_player(t_player *player) {
+int more_then_nbr_lives(t_player *player) {
     t_player *temp_play;
+    int am;
 
+    am = 0;
     temp_play = player;
     while (temp_play) {
         if (player->live_amount >= NBR_LIVE)
-            return (1);
-        temp_play = temp_play->next;
+            am++;
+         temp_play = temp_play->next;
     }
     return (0);
 }
 
 void handle_check(t_param *param) {
     delete_dead_processes(param->processors);
-    if (amount_lives_player(param->players))
+    if (more_then_nbr_lives(param->players))
     {
+        //TODO ? all processec must to say more then 21
         param->cycle_to_die -= CYCLE_DELTA;
         param->amount_checks = 0;
     }
