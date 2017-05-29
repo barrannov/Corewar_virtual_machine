@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 17:47:07 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:51:47 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ typedef struct			s_val
 void	handle_check(t_param *param);
 int		check_args(t_val *val);
 void	add_process(t_param *params, int pc, int numb);
+void handle_check(t_param *param);
+int	check_args(t_val *val);
+void add_process(t_param *params, int pc, int numb);
 void					logic(t_player *players);
 void 					set_cycles_ld(t_processor *pro);
 //operations
@@ -79,12 +82,19 @@ void                    handle_xor(t_param *params, t_processor *proc);
 void                    handle_ldi(t_param *params, t_processor *proc);
 void                    handle_sti(t_param *params, t_processor *proc);
 void					handle_fork(t_param *player, t_processor *proc);
-//
+void	handle_lfork(t_param *param, t_processor *proc);
+void				handle_lldi(t_param *params, t_processor *proc);
+void	handle_lld(t_param *params, t_processor *proc);
+void	handle_zjmp(t_param *par, t_processor *proc);
+void	handle_aff(t_param *params, t_processor *proc);
 
-void set_cycles_live(t_processor *proc);
+//
+int                     check_args(t_val *val);
+void					set_cycles_live(t_processor *proc);
 void 					create_map(t_player *players, t_param *param);
 void					print_map(t_param *param);
 void					get_processes(t_param *param);
+void handle_fork(t_param *player, t_processor *processor);
 void set_cycles_fork(t_processor *processor);
 typedef	struct			s_fl
 {

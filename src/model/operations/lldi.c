@@ -34,7 +34,7 @@ static unsigned int	arg_2(t_param *params, t_processor *proc, t_val *val)
 		return (handle_dir(params, proc, 2, 2 + pos));
 }
 
-void				handle_ldi(t_param *params, t_processor *proc)
+void				handle_lldi(t_param *params, t_processor *proc)
 {
 	t_val			*val;
 	unsigned int	arg1;

@@ -12,7 +12,7 @@
 
 #include "../../../includes/vm_header.h"
 
-void	load_value(t_param *param, t_processor *proc, unsigned int value)
+static void	load_value(t_param *param, t_processor *proc, unsigned int value)
 {
     if (param->map[(proc->pc + 6) % MEM_SIZE] > 0 &&
 			param->map[(proc->pc + 6) % MEM_SIZE] < REG_NUMBER)
@@ -26,7 +26,7 @@ void	load_value(t_param *param, t_processor *proc, unsigned int value)
         proc->pc = (proc->pc + 1) % MEM_SIZE;
 }
 
-void	handle_ld(t_param *params, t_processor *proc)
+void	handle_lld(t_param *params, t_processor *proc)
 {
     t_val			*val;
     unsigned int	arg;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/vm_header.h"
+#include "../../../includes/model.h"
 
 void	handle_aff(t_param *params, t_processor *proc)
 {

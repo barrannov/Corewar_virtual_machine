@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:41:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 18:41:56 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/28 18:26:19 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,25 @@ void				handle_sti(t_param *params, t_processor *proc)
 	unsigned int	arg2;
 	unsigned int	reg_n;
 	static int		move[2] = {0, 0};
-	
+
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
 	val->val1 == 1 ? move[0]++ : (move[0] += 2);
 	val->val2 == 1 ? move[1]++ : (move[1] += 2);
-	reg_n = param->map[(proc->pc + 2) % MEM_SIZE];
+	reg_n = params->map[(proc->pc + 2) % MEM_SIZE];
 	if (check_args(val))
 	{
 		arg1 = arg_1(params, proc, val);
 		arg2 = arg_2(params, proc, val);
 		write_value(params, proc, reg_n, arg1 + arg2);
-		proc->reg[reg_n] == 0 ? (carry = 1) :
-			(carry = 0);
+		proc->reg[reg_n] == 0 ? (proc->carry = 1) :
+			(proc->carry = 0);
 		proc->pc = (proc->pc + 2 + move[0] + move[1]) % MEM_SIZE;
 	}
 	else
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 }
+
+/* TODO Find how to handle first argument in case it will be IND
+ *
+ */

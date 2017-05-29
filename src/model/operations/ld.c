@@ -6,13 +6,27 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:50:05 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 17:50:55 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/29 14:25:21 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-void	load_value(t_param *param, t_processor *proc, unsigned int value)
+void	set_cycles_ld(t_processor *proc)
+{
+    proc->waite_cycles = 5;
+}
+
+void	print_reg(t_processor *proc)// for testing, delete it
+{
+    int i;
+
+    i = -1;
+    while (++i < REG_NUMBER)
+        printf("reg %d = %d\n", i + 1, proc->reg[i]);
+}
+
+static void	load_value(t_param *param, t_processor *proc, unsigned int value)
 {
     if (param->map[(proc->pc + 6) % MEM_SIZE] > 0 &&
 			param->map[(proc->pc + 6) % MEM_SIZE] < REG_NUMBER)

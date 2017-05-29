@@ -12,7 +12,7 @@
 
 #include "../../../includes/vm_header.h"
 
-void	copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
+static void	copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
 {
     t_processor	*new;
     int			i;

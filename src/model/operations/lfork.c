@@ -12,7 +12,7 @@
 
 #include "../../../includes/vm_header.h"
 
-void	copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
+static void	copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
 {
     t_processor	*new;
     int			i;
@@ -32,7 +32,7 @@ void	copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
     param->processors = new;
 }
 
-void	handle_fork(t_param *param, t_processor *proc)
+void	handle_lfork(t_param *param, t_processor *proc)
 {
     unsigned int	adr;
 

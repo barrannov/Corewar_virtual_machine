@@ -30,7 +30,7 @@ int	get_arg(t_param *params, t_processor *proc, char val, int pos)
 	else if (val == 2)
 		return ((int)handle_dir(params, proc, 4, pos));
 	else if (val == 3)
-		return ((int)handle_ind(params, proc, pos, 1));
+		return ((int)handle_ind(params, proc,2, 1));
 	else
 		return (0);
 }
