@@ -1,13 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   live.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/29 18:17:30 by oklymeno          #+#    #+#             */
+/*   Updated: 2017/05/29 18:18:50 by oklymeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../includes/vm_header.h"
 
-void set_cycles_live(t_processor *proc)
+void	live_to_chemp(t_player *players, int arg)
 {
-	proc->waite_cycles = 10;
-}
-
-void live_to_chemp(t_player *players, int arg)
-{
-    t_player *temp_player;
+    t_player	*temp_player;
 
     temp_player = players;
     while (temp_player)
@@ -20,12 +27,12 @@ void live_to_chemp(t_player *players, int arg)
     }
 }
 
-void handle_live(t_param *params, t_processor *proc)
+void	handle_live(t_param *params, t_processor *proc)
 {
-    int arg;
+    int	arg;
 
     arg = handle_dir(params, proc, 4, 1);
     live_to_chemp(params->players, arg);
     proc->is_alive = 1;
-    proc->pc += 4;
+    proc->pc = (proc->pc + 4) % MEM_SIZE;
 }

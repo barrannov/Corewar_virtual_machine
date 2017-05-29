@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:47:37 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/28 13:37:12 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/29 17:55:32 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_args(t_val *val)
 int	get_arg(t_param *params, t_processor *proc, char val, int pos)
 {
 	if (val == 1)
-		return (proc->reg[params->map[proc->pc + pos] - 1]);
+		return (proc->reg[params->map[(proc->pc + pos) % MEM_SIZE] - 1]);
 	else if (val == 2)
 		return ((int)handle_dir(params, proc, 4, pos));
 	else if (val == 3)
@@ -60,14 +60,14 @@ void		handle_and(t_param *params, t_processor *proc)
 	mv1 = get_move(val->val1);
 	mv2 = get_move(val->val2);
 	if (!check_args(val))
-		proc->pc++;
+		proc->pc = (proc->pc + 1) % MEM_SIZE;
 	else
 	{
 		arg1 = get_arg(params, proc, val->val1, 2);
 		arg2 = get_arg(params, proc, val->val2, 2 + mv1);
-		proc->reg[params->map[proc->pc + 1 + mv1 + mv2]] = arg1 & arg2;
+		proc->reg[params->map[(proc->pc + 1 + mv1 + mv2) % MEM_SIZE]] = arg1 & arg2;
 		(arg1 & arg2) == 0 ? (proc->carry = 1) :
 			(proc->carry = 0);
-		proc->pc += 4 + mv1 + mv2;
+		proc->pc = (proc->pc + 4 + mv1 + mv2) % MEM_SIZE;
 	}
 }

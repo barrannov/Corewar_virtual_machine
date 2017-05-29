@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 19:35:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/28 18:14:18 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/29 18:28:47 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,18 @@ void		handle_st(t_param *params, t_processor *proc)
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
-	r1 = params->map[proc->pc + 2] - 1;
-	r2 = params->map[proc->pc + 3] - 1;
+	r1 = params->map[(proc->pc + 2) % MEM_SIZE] - 1;
+	r2 = params->map[(proc->pc + 3) % MEM_SIZE] - 1;
 	if (val->val2 == 1 && r1 > 0 && r1 < REG_NUMBER && r2 > 0 && r2 < REG_NUMBER)
 	{
 		proc->reg[params->map[r2]] = proc->reg[r1];
-		proc->pc += 4;
+		proc->pc = (proc->pc + 4) % MEM_SIZE;
 	}
 	else if (val->val2 == 3)
 	{
 		write_value(params, proc, r1);
-		proc->pc += 5;
+		proc->pc = (proc->pc + 5) % MEM_SIZE;
 	}
 	else
-	{
-		proc->pc++;
-		return ;
-	}
+		proc->pc = (proc->pc + 1) % MEM_SIZE;
 }

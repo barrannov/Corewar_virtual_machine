@@ -6,16 +6,16 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:29:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 14:30:11 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/29 18:17:19 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-void copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
+void	copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
 {
-    t_processor *new;
-    int i;
+    t_processor	*new;
+    int			i;
 
     i = 0;
     new = (t_processor *)malloc(sizeof(t_processor));
@@ -32,15 +32,11 @@ void copy_process_on_the_top(t_param *param, t_processor *proc, unsigned int pc)
     param->processors = new;
 }
 
-void set_cycles_fork(t_processor *processor)
-{
-	processor->waite_cycles = 800;
-}
-
-void handle_fork(t_param *param, t_processor *processor)
+void	handle_fork(t_param *param, t_processor *proc)
 {
     unsigned int	adr;
 
-    adr = processor->pc + handle_dir(param, processor, 2, 1);
-    copy_process_on_the_top(param, processor, adr);
+    adr = (proc->pc + handle_dir(param, proc, 2, 1)) % MEM_SIZE;
+    copy_process_on_the_top(param, proc, adr);
+	proc->pc = (proc->pc + 2) % MEM_SIZE;
 }

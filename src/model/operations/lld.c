@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:20:57 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 14:25:43 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/29 18:21:38 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 void	load_value(t_param *param, t_processor *proc, unsigned int value)
 {
-    if (param->map[proc->pc + 6] > 0 && param->map[proc->pc + 6] < REG_NUMBER)
+    if (param->map[(proc->pc + 6) % MEM_SIZE] > 0 &&
+			param->map[(proc->pc + 6) % MEM_SIZE] < REG_NUMBER)
     {
         value == 0 ? (proc->carry = 1) :
 			(proc->carry = 0);
-        proc->reg[param->map[proc->pc + 6] - 1] = value;
-        proc->pc += 7;
+        proc->reg[param->map[(proc->pc + 6) % MEM_SIZE] - 1] = value;
+        proc->pc = (proc->pc + 7) % MEM_SIZE;
     }
     else
-        proc->pc++;
+        proc->pc = (proc->pc + 1) % MEM_SIZE;
 }
 
 void	handle_ld(t_param *params, t_processor *proc)
@@ -38,9 +39,8 @@ void	handle_ld(t_param *params, t_processor *proc)
         arg = handle_ind(params, proc, 2, 0);
     else
     {
-        proc->pc++;
+        proc->pc = (proc->pc + 1) % MEM_SIZE;
         return ;
     }
     load_value(params, proc, arg);
-    print_reg(proc);
 }

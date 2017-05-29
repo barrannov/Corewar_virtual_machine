@@ -6,37 +6,24 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:50:05 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 14:25:21 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/29 17:50:55 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-void	set_cycles_ld(t_processor *proc)
-{
-    proc->waite_cycles = 5;
-}
-
-void	print_reg(t_processor *proc)// for testing, delete it
-{
-    int i;
-
-    i = -1;
-    while (++i < REG_NUMBER)
-        printf("reg %d = %d\n", i + 1, proc->reg[i]);
-}
-
 void	load_value(t_param *param, t_processor *proc, unsigned int value)
 {
-    if (param->map[proc->pc + 6] > 0 && param->map[proc->pc + 6] < REG_NUMBER)
+    if (param->map[(proc->pc + 6) % MEM_SIZE] > 0 &&
+			param->map[(proc->pc + 6) % MEM_SIZE] < REG_NUMBER)
     {
         value == 0 ? (proc->carry = 1) :
 			(proc->carry = 0);
-        proc->reg[param->map[proc->pc + 6] - 1] = value;
-        proc->pc += 7;
+        proc->reg[(param->map[proc->pc + 6]) % MEM_SIZE - 1] = value;
+        proc->pc = (proc->pc + 7) % MEM_SIZE;
     }
     else
-        proc->pc++;
+        proc->pc = (proc->pc + 1) % MEM_SIZE;
 }
 
 void	handle_ld(t_param *params, t_processor *proc)
@@ -52,7 +39,7 @@ void	handle_ld(t_param *params, t_processor *proc)
         arg = handle_ind(params, proc, 2, 1);
     else
     {
-        proc->pc++;
+        proc->pc = (proc->pc + 1) % MEM_SIZE;
         return ;
     }
     load_value(params, proc, arg);

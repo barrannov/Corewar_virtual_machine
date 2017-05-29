@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 22:29:59 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/29 18:46:35 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,18 @@ unsigned int	handle_dir(t_param *param, t_processor *proc, int am_byte, int pos)
 	i = 0;
 	while (i < am_byte)
 	{
-		dir[i] = param->map[proc->pc + pos + i];
+		dir[i] = param->map[(proc->pc + pos + i) % MEM_SIZE];
 		i++;
 	}
 	res = change_endian(dir, am_byte);
 	return (res);
 }
 
-unsigned int handle_ind(t_param *param, t_processor *proc, int pos)
+unsigned int	handle_ind(t_param *param, t_processor *proc, int pos, char idx)
 {
-	return (handle_dir(param, proc, 2, handle_dir(param, proc, 2, pos)));
+	if (idx == 0)
+		return (handle_dir(param, proc, 2, handle_dir(param, proc, 2, pos)));
+	else
+		return (handle_dir(param, proc, 2, handle_dir(param, proc, 2, pos)
+					% IDX_MOD));
 }
