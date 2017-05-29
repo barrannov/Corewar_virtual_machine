@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 20:27:32 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:51:47 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,28 @@
 
 # include "controller.h"
 # include "view.h"
+# include "op.h"
 # include "libft.h"
+# include "model.h"
 # include <stdio.h>
+
 
 typedef struct			s_param
 {
 	int					cycle;
 	int					cycle_to_die;
-	struct s_player		*player;
+	unsigned char		*map;
+	struct s_player		*players;
+	struct s_processor	*processors;
+    int                 amount_checks;
+	int					amount_champs;
 }						t_param;
 
 typedef struct			s_player
 {
 	header_t			*header;
-	struct s_processor	*processors;
-	int					reg[REG_SIZE];
+	int					live;
+    int                 live_amount;
 	int					numb;
 	unsigned char		*commands;
 	struct s_player		*next;
@@ -37,19 +44,73 @@ typedef struct			s_player
 
 typedef	struct			s_processor
 {
-	int					prog_counter;
+    int                 is_alive;
+	int					reg[REG_NUMBER];
+	unsigned int		pc;
+	char				carry;
+	int 				waite_cycles; //How many cycles left to wait
 	struct s_processor	*next;
 }						t_processor;
 
+typedef struct			s_val
+{
+	char	val1;
+	char	val2;
+	char	val3;
+}						t_val;
+
+
+void	handle_check(t_param *param);
+int		check_args(t_val *val);
+void	add_process(t_param *params, int pc, int numb);
+void handle_check(t_param *param);
+int	check_args(t_val *val);
+void add_process(t_param *params, int pc, int numb);
+void					logic(t_player *players);
+void 					set_cycles_ld(t_processor *pro);
+//operations
+int	get_arg(t_param *params, t_processor *proc, char val, int pos);
+int			get_move(char val);
+void 					handle_ld(t_param *params, t_processor *proc);
+void 					handle_st(t_param *params, t_processor *proc);
+void 					handle_add(t_param *params, t_processor *proc);
+void 					handle_sub(t_param *params, t_processor *proc);
+void 					handle_and(t_param *params, t_processor *proc);
+void                    handle_live(t_param *params, t_processor *proc);
+void                    handle_or(t_param *params, t_processor *proc);
+void                    handle_xor(t_param *params, t_processor *proc);
+void                    handle_ldi(t_param *params, t_processor *proc);
+void                    handle_sti(t_param *params, t_processor *proc);
+void					handle_fork(t_param *player, t_processor *proc);
+void	handle_lfork(t_param *param, t_processor *proc);
+void				handle_lldi(t_param *params, t_processor *proc);
+void	handle_lld(t_param *params, t_processor *proc);
+void	handle_zjmp(t_param *par, t_processor *proc);
+void	handle_aff(t_param *params, t_processor *proc);
+
+//
+int                     check_args(t_val *val);
+void					set_cycles_live(t_processor *proc);
+void 					create_map(t_player *players, t_param *param);
+void					print_map(t_param *param);
+void					get_processes(t_param *param);
+void handle_fork(t_param *player, t_processor *processor);
+void set_cycles_fork(t_processor *processor);
 typedef	struct			s_fl
 {
 	int	dump;
 	int vis;
 }						t_fl;
 
-void					logic(t_player *player);
+void					print_reg(t_processor *proc);//for testing, delete it
 
+void					get_vis(t_fl *flags, char **argv);
+int						digit(char *str);
+void					vm_get_flags(t_fl *flags, char **argv);
+int						vm_get_numb(char **argv, int n, int *numb);
+void					get_args(t_val *val, unsigned char *map, t_processor *proc);
 t_player        		*read_file_vm(char *file, int numb);
 void					vm_get_flags(t_fl *flags, char **argv);
-
+unsigned int			handle_dir(t_param *param, t_processor *proc, int am_byte, int pos);
+unsigned int			handle_ind(t_param *param, t_processor *proc, int pos, char idx);
 #endif

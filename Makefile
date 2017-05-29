@@ -6,7 +6,7 @@
 #    By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/29 11:45:35 by oklymeno          #+#    #+#              #
-#    Updated: 2017/05/22 18:02:19 by oklymeno         ###   ########.fr        #
+#    Updated: 2017/05/26 17:52:19 by oklymeno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,17 @@ SOURCES=src/controller/main.c\
 		src/controller/vm_validation.c\
 		src/controller/vm_flags.c\
 		src/view/usage.c\
-		src/model/logic.c
+		src/model/logic.c\
+		src/model/create_map.c\
+		src/model/operations/ld.c\
+		src/model/operations/st.c\
+		src/model/operations/add.c\
+		src/model/operations/and.c\
+		src/model/operations/sub.c\
+		src/model/help.c\
+		src/model/get_processes.c\
+		src/model/dir_ind.c
+
 FLAGS=-Wall -Wextra -Werror
 OBJECTS=$(SOURCES:.c=.o)
 
