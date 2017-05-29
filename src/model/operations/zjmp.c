@@ -19,7 +19,7 @@ static short	get_swap_short_value(unsigned char *number_ptr)
     unsigned char	tmp;
 
     ft_memmove((char*)&value, number_ptr, 2);
-    value_ptr = (char*)&value;
+    value_ptr = (unsigned char*)&value;
     tmp = value_ptr[0];
     value_ptr[0] = value_ptr[1];
     value_ptr[1] = tmp;

@@ -198,7 +198,7 @@ void algorithm(t_param *params) {
         while (temp_proc) {
              set_command_for_proc(temp_proc, params);
             execute_process(params->processors, params);
-            print_map(params);
+          // print_map(params);
             if (params->map[temp_proc->pc] == 0)
                 temp_proc->pc = (temp_proc->pc + 1) % MEM_SIZE;
             temp_proc = temp_proc->next;
@@ -221,7 +221,7 @@ void logic(t_player *players) {
     create_map(players, param);
     get_processes(param);
     param->cycle_to_die = CYCLE_TO_DIE;
-    print_map(param);
+   // print_map(param);
 //    execute_command(param->processors, param);
     algorithm(param); //start of algorithm
 //    printf("step 2\n");
