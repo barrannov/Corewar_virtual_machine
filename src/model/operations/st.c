@@ -6,24 +6,24 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 19:35:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/26 16:42:54 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/28 18:14:18 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-void	write_value(t_param *params, t_processor *proc, unsigned int r)
+static void	write_value(t_param *params, t_processor *proc, unsigned int r)
 {
 	unsigned int	adr;
 
-	adr = proc->pc + (handle_ind(params, proc, 3) % IDX_MOD);
+	adr = proc->pc + handle_ind(params, proc, 3, 1);
 	params->map[adr] = proc->reg[r] >> 24;
 	params->map[adr + 1] = (proc->reg[r] << 8) >> 24;
 	params->map[adr + 2] = (proc->reg[r] << 16) >> 24;
 	params->map[adr + 3] = (proc->reg[r] << 24) >> 24;
 }
 
-void	handle_st(t_param *params, t_processor *proc)
+void		handle_st(t_param *params, t_processor *proc)
 {
 	t_val			*val;
 	unsigned int	r1;

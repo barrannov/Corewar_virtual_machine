@@ -1,6 +1,6 @@
 #include "../../../includes/vm_header.h"
 
-void		handle_or(t_param *params, t_processor *proc)
+void		handle_xor(t_param *params, t_processor *proc)
 {
     t_val	*val;
     int		arg1;

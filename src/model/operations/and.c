@@ -6,13 +6,13 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:47:37 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/26 18:23:47 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/28 13:37:12 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-static int	check_args(t_val *val)
+int	check_args(t_val *val)
 {
 	if (val->val1 != 1 && val->val1 != 2 && val->val1 != 3)
 		return (0);
@@ -23,14 +23,14 @@ static int	check_args(t_val *val)
 	return (1);
 }
 
-static int	get_arg(t_param *params, t_processor *proc, char val, int pos)
+int	get_arg(t_param *params, t_processor *proc, char val, int pos)
 {
 	if (val == 1)
 		return (proc->reg[params->map[proc->pc + pos] - 1]);
 	else if (val == 2)
 		return ((int)handle_dir(params, proc, 4, pos));
 	else if (val == 3)
-		return ((int)handle_ind(params, proc, pos));
+		return ((int)handle_ind(params, proc, pos, 1));
 	else
 		return (0);
 }
