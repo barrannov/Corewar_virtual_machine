@@ -6,7 +6,7 @@
 #    By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/29 11:45:35 by oklymeno          #+#    #+#              #
-#    Updated: 2017/05/29 21:04:50 by oklymeno         ###   ########.fr        #
+#    Updated: 2017/05/30 21:27:49 by oklymeno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SOURCES=src/controller/main.c\
 		src/model/help.c\
 		src/model/get_processes.c\
 		src/model/handle_check.c\
+		src/model/steps.c\
 		src/model/dir_ind.c
 
 FLAGS=-Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 21:01:56 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/30 22:00:29 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void 					create_map(t_player *players, t_param *param);
 void					print_map(t_param *param);
 void					get_processes(t_param *param);
 void					set_cycles_fork(t_processor *processor);
+short int				count_steps(t_val *val, short int opcode);
 typedef	struct			s_fl
 {
 	int	dump;
@@ -109,6 +110,6 @@ int						vm_get_numb(char **argv, int n, int *numb);
 void					get_args(t_val *val, unsigned char *map, t_processor *proc);
 t_player        		*read_file_vm(char *file, int numb);
 void					vm_get_flags(t_fl *flags, char **argv);
-unsigned int			handle_dir(t_param *param, t_processor *proc, int am_byte, int pos);
+unsigned int			handle_dir(t_param *param, t_processor *proc, short int am_byte, short int pos);
 unsigned int			handle_ind(t_param *param, t_processor *proc, int pos, char idx);
 #endif
