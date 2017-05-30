@@ -68,10 +68,10 @@ int	check_args(t_val *val);
 void add_process(t_param *params, int pc, int numb);
 void					logic(t_player *players);
 void 					set_cycles_ld(t_processor *pro);
-//operations
-void sort_players(t_param *param);
 int	get_arg(t_param *params, t_processor *proc, char val, int pos);
 int			get_move(char val);
+
+//operations
 void 					handle_ld(t_param *params, t_processor *proc);
 void 					handle_st(t_param *params, t_processor *proc);
 void 					handle_add(t_param *params, t_processor *proc);
@@ -83,11 +83,11 @@ void                    handle_xor(t_param *params, t_processor *proc);
 void                    handle_ldi(t_param *params, t_processor *proc);
 void                    handle_sti(t_param *params, t_processor *proc);
 void					handle_fork(t_param *player, t_processor *proc);
-void	handle_lfork(t_param *param, t_processor *proc);
-void				handle_lldi(t_param *params, t_processor *proc);
-void	handle_lld(t_param *params, t_processor *proc);
-void	handle_zjmp(t_param *par, t_processor *proc);
-void	handle_aff(t_param *params, t_processor *proc);
+void					handle_lfork(t_param *param, t_processor *proc);
+void					handle_lldi(t_param *params, t_processor *proc);
+void					handle_lld(t_param *params, t_processor *proc);
+void					handle_zjmp(t_param *par, t_processor *proc);
+void					handle_aff(t_param *params, t_processor *proc);
 
 //
 int amount_lst_el(t_processor *procs);
@@ -96,15 +96,12 @@ void					set_cycles_live(t_processor *proc);
 void 					create_map(t_player *players, t_param *param);
 void					print_map(t_param *param);
 void					get_processes(t_param *param);
-void handle_fork(t_param *player, t_processor *processor);
-void set_cycles_fork(t_processor *processor);
+void					set_cycles_fork(t_processor *processor);
 typedef	struct			s_fl
 {
 	int	dump;
 	int vis;
 }						t_fl;
-
-void					print_reg(t_processor *proc);//for testing, delete it
 
 void					get_vis(t_fl *flags, char **argv);
 int						digit(char *str);
