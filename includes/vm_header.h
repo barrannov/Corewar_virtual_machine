@@ -69,6 +69,7 @@ void add_process(t_param *params, int pc, int numb);
 void					logic(t_player *players);
 void 					set_cycles_ld(t_processor *pro);
 //operations
+void sort_players(t_param *param);
 int	get_arg(t_param *params, t_processor *proc, char val, int pos);
 int			get_move(char val);
 void 					handle_ld(t_param *params, t_processor *proc);
@@ -89,6 +90,7 @@ void	handle_zjmp(t_param *par, t_processor *proc);
 void	handle_aff(t_param *params, t_processor *proc);
 
 //
+int amount_lst_el(t_processor *procs);
 int                     check_args(t_val *val);
 void					set_cycles_live(t_processor *proc);
 void 					create_map(t_player *players, t_param *param);
