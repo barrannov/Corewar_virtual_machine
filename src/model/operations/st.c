@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 19:35:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/30 22:16:08 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/30 22:39:26 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ static void	write_value(t_param *params, t_processor *proc, unsigned int r)
 	if (adr < 0)
 		adr = adr + MEM_SIZE;
 	params->map[adr] = proc->reg[r] >> 24;
-	print_map(params);
 	params->map[adr + 1] = (proc->reg[r] << 8) >> 24;
-	print_map(params);
 	params->map[adr + 2] = (proc->reg[r] << 16) >> 24;
-	print_map(params);
 	params->map[adr + 3] = (proc->reg[r] << 24) >> 24;
 }
 
@@ -44,13 +41,13 @@ void		handle_st(t_param *params, t_processor *proc)
 			r2 > 0 && r2 < REG_NUMBER)
 	{
 		proc->reg[params->map[r2]] = proc->reg[r1];
-		proc->pc = (proc->pc + count_steps(val, 2)) % MEM_SIZE;
+		proc->pc = (proc->pc + count_steps(val, 3)) % MEM_SIZE;
 	}
 	else if (val->val1 == 1 && val->val2 == 3 && r1 > 0 && r1 < REG_NUMBER)
 	{
 		write_value(params, proc, r1);
-		proc->pc = (proc->pc + count_steps(val, 2)) % MEM_SIZE;
+		proc->pc = (proc->pc + count_steps(val, 3)) % MEM_SIZE;
 	}
 	else
-		proc->pc = (proc->pc + count_steps(val, 2)) % MEM_SIZE;
+		proc->pc = (proc->pc + count_steps(val, 3)) % MEM_SIZE;
 }
