@@ -192,24 +192,31 @@ void output_the_winner(t_player *players)
         }
 }
 
-void algorithm(t_param *params) {
+void special_for_denchik(t_param *params)
+{
     t_processor *temp_proc;
 
-    params->cycle = 0;
-    while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0) {
-        temp_proc = params->processors;
-        while (temp_proc) {
-          //  set_command_for_proc(temp_proc, params);
-            execute_process(temp_proc, params);
-          //  print_map(params);
+    temp_proc = params->processors;
+    while (temp_proc) {
+        //  set_command_for_proc(temp_proc, params);
+        execute_process(temp_proc, params);
+        //  print_map(params);
 //            if (params->map[temp_proc->pc] == 0)
 //                 temp_proc->pc = (temp_proc->pc + 1) % MEM_SIZE;
-            temp_proc = temp_proc->next;
-        }
-        if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0) {
-            handle_check(params);
-            unset_is_alive_process(params->processors);
-        }
+        temp_proc = temp_proc->next;
+    }
+    if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0) {
+        handle_check(params);
+        unset_is_alive_process(params->processors);
+    }
+}
+
+void algorithm(t_param *params) {
+
+    params->cycle = 0;
+    while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
+    {
+        special_for_denchik(params);
         params->cycle++;
     }
     output_the_winner(params->players);
