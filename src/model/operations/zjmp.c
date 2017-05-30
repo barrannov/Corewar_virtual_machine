@@ -12,7 +12,7 @@
 
 #include "../../../includes/vm_header.h"
 
-static short	get_swap_short_value(unsigned char *number_ptr)
+static short                get_swap_short_value(unsigned char *number_ptr)
 {
     short   		value;
     unsigned char	*value_ptr;
@@ -25,7 +25,7 @@ static short	get_swap_short_value(unsigned char *number_ptr)
     value_ptr[1] = tmp;
     return (value);
 }
-void	handle_zjmp(t_param *par, t_processor *proc) {
+void                        handle_zjmp(t_param *par, t_processor *proc) {
     short value;
 
     value = get_swap_short_value(&par->map[proc->pc + 1]);

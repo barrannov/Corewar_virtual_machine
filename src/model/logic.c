@@ -124,7 +124,8 @@ void set_command_for_proc(t_processor *process, t_param *param) {
             return;
     }
     execute_command(process, param);
-    /*execute command here
+     //   print_map(param);
+        /*execute command here
      * */
 }
 
@@ -152,9 +153,9 @@ void print_map(t_param *param)//this func must be in view
             printf("row # ");
         }
         if (param->map[i] == 0)
-            printf("%.2x ", (unsigned char) param->map[i]);
+            printf("%.2x ",  param->map[i]);
         else
-            printf("\033[32;1m%.2x\033[0m ", (unsigned char) param->map[i]);
+            printf("\033[32;1m%.2x\033[0m ", param->map[i]);
     }
     printf("\n");
 
@@ -171,48 +172,58 @@ void unset_is_alive_process(t_processor *proc) {
 
 }
 
-void output_the_winner(t_player *players) {
+void output_the_winner(t_player *players)
+{
     t_player *temp_player;
 
     temp_player = players;
-    ft_putstr("\nThe winner is");
+    ft_putstr("\nThe winner is ");
     if (amount_lst_el_players(players) == 1)
         ft_putstr(temp_player->header->prog_name);
-else
-    while (temp_player)
-    {
-        if (temp_player->live == 1) {
-            ft_putstr(temp_player->header->prog_name);
-            return;
+    else
+        while (temp_player)
+        {
+            if (temp_player->live == 1)
+            {
+                ft_putstr(temp_player->header->prog_name);
+                    return;
+            }
+            temp_player = temp_player->next;
         }
-        temp_player = temp_player->next;
+}
+
+void special_for_denchik(t_param *params)
+{
+    t_processor *temp_proc;
+
+    temp_proc = params->processors;
+    while (temp_proc) {
+        //  set_command_for_proc(temp_proc, params);
+        execute_process(temp_proc, params);
+        //  print_map(params);
+//            if (params->map[temp_proc->pc] == 0)
+//                 temp_proc->pc = (temp_proc->pc + 1) % MEM_SIZE;
+        temp_proc = temp_proc->next;
+    }
+    if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0) {
+        handle_check(params);
+        unset_is_alive_process(params->processors);
     }
 }
 
 void algorithm(t_param *params) {
-    t_processor *temp_proc;
 
     params->cycle = 0;
-    while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0) {
-        temp_proc = params->processors;
-        while (temp_proc) {
-             set_command_for_proc(temp_proc, params);
-            execute_process(params->processors, params);
-          // print_map(params);
-            if (params->map[temp_proc->pc] == 0)
-                temp_proc->pc = (temp_proc->pc + 1) % MEM_SIZE;
-            temp_proc = temp_proc->next;
-        }
-        if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0) {
-            handle_check(params);
-            unset_is_alive_process(params->processors);
-        }
+    while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
+    {
+        special_for_denchik(params);
         params->cycle++;
     }
     output_the_winner(params->players);
 }
 
-void logic(t_player *players) {
+void logic(t_player *players)
+{
     t_param *param;
 
     param = malloc(sizeof(t_param));
@@ -221,11 +232,11 @@ void logic(t_player *players) {
     create_map(players, param);
     get_processes(param);
     param->cycle_to_die = CYCLE_TO_DIE;
-   // print_map(param);
+    print_map(param);
 //    execute_command(param->processors, param);
     algorithm(param); //start of algorithm
 //    printf("step 2\n");
 //	execute_command(param->players->processors, param);
-//    print_map(param);
+    print_map(param);
 
 }

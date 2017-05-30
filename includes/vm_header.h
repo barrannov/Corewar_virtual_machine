@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/30 22:00:29 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/30 22:15:22 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct			s_val
 }						t_val;
 
 
+void sort_players(t_param *param);
 void	handle_check(t_param *param);
 int		check_args(t_val *val);
 void	add_process(t_param *params, int pc, int numb);
@@ -90,6 +91,7 @@ void					handle_zjmp(t_param *par, t_processor *proc);
 void					handle_aff(t_param *params, t_processor *proc);
 
 //
+int amount_lst_el(t_processor *procs);
 int                     check_args(t_val *val);
 void					set_cycles_live(t_processor *proc);
 void 					create_map(t_player *players, t_param *param);

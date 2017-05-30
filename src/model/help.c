@@ -1,5 +1,72 @@
 #include "../../includes/vm_header.h"
 
+void sort_players(t_param *param) {
+
+    t_player *tmpPtr = param->players;
+    t_player *tmpNxt = param->players->next;
+
+    int tmp;
+
+    while (tmpNxt != NULL) {
+        while (tmpNxt != tmpPtr) {
+            if (tmpNxt->numb > tmpPtr->numb) {
+                tmp = tmpPtr->numb;
+                tmpPtr->numb= tmpNxt->numb;
+                tmpNxt->numb = tmp;
+            }
+            tmpPtr = tmpPtr->next;
+        }
+        tmpPtr = param->players;
+        tmpNxt = tmpNxt->next;
+    }
+
+}
+
+//void add_players(t_param *params, int numb)
+//{
+//    t_player	*new;
+//    t_player *tmp;
+////TODO put new proccesses at the top
+//    new = malloc(sizeof(t_processor) + 1);
+//    new->numb = numb;
+//    new->next = NULL;
+//    tmp = params->players;
+//    if (!params->players)
+//        params->players= new;
+//    else
+//    {
+//        while (tmp->next)
+//            tmp = tmp->next;
+//        tmp->next = new;
+//    }
+//}
+//
+//int main()
+//{
+//    t_param *param;
+//    t_player *temp;
+//
+//    param = (t_param*)malloc(sizeof(t_param));
+//    param->players = NULL;
+//
+//    add_players(param, 12);
+//    add_players(param, 4);
+//    add_players(param, 2);
+//    add_players(param, 0);
+//    add_players(param, 0);
+//
+//    add_players(param, 8);
+//    temp = param->players;
+//    sort_players(param);
+//    while (temp)
+//    {
+//        ft_putnbr(temp->numb);
+//        ft_putstr("\n");
+//        temp = temp->next;
+//    }
+//
+//}
+
 /*t_op get_command(int pc)
 {
 	t_op    op_tab[17] =
@@ -31,11 +98,10 @@
 	return (op_tab[pc - 1]);
 }*/
 
-void get_args(t_val *val, unsigned char *map, t_processor *proc)
-{
-	val->val1 = (map[proc->pc + 1] & 0xc0) >> 6;
-	val->val2 = (map[proc->pc + 1] & 0x30) >> 4;
-	val->val3 = (map[proc->pc + 1] & 0x0c) >> 2;
+void get_args(t_val *val, unsigned char *map, t_processor *proc) {
+    val->val1 = (map[proc->pc + 1] & 0xc0) >> 6;
+    val->val2 = (map[proc->pc + 1] & 0x30) >> 4;
+    val->val3 = (map[proc->pc + 1] & 0x0c) >> 2;
 }
 /*TODO find why here we need to move for 26 bits to left and 30 to right and so long..
  *

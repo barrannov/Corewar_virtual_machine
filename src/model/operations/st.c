@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 19:35:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/30 22:05:23 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/30 22:16:08 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ static void	write_value(t_param *params, t_processor *proc, unsigned int r)
 	if (adr < 0)
 		adr = adr + MEM_SIZE;
 	params->map[adr] = proc->reg[r] >> 24;
+	print_map(params);
 	params->map[adr + 1] = (proc->reg[r] << 8) >> 24;
+	print_map(params);
 	params->map[adr + 2] = (proc->reg[r] << 16) >> 24;
+	print_map(params);
 	params->map[adr + 3] = (proc->reg[r] << 24) >> 24;
 }
 
