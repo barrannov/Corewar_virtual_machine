@@ -60,6 +60,7 @@ typedef struct			s_val
 }						t_val;
 
 
+void sort_players(t_param *param);
 void	handle_check(t_param *param);
 int		check_args(t_val *val);
 void	add_process(t_param *params, int pc, int numb);
