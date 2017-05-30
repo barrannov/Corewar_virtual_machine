@@ -15,11 +15,16 @@
 static void	write_value(t_param *params, t_processor *proc, unsigned int r)
 {
 	unsigned int	adr;
+	int t;
 
-	adr = proc->pc + handle_ind(params, proc, 3, 1);
+	t = handle_ind(params, proc, 3, 1);
+	adr = proc->pc + t;
 	params->map[adr] = proc->reg[r] >> 24;
+	print_map(params);
 	params->map[adr + 1] = (proc->reg[r] << 8) >> 24;
+	print_map(params);
 	params->map[adr + 2] = (proc->reg[r] << 16) >> 24;
+	print_map(params);
 	params->map[adr + 3] = (proc->reg[r] << 24) >> 24;
 }
 

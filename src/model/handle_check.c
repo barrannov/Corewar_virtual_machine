@@ -10,27 +10,31 @@ void deleteFirst(t_processor** list)
     }
 }
 
-void delete_dead_processes(t_processor **processes) {
-    //TODO func delets all nodes with 'is_alive = 0'
-    t_processor *temp_proc;
-    t_processor *next;
-    t_processor *before;
+void delete_dead_processes(t_processor **head)
+{
+    if(!head || !(*head)) return ;
+    t_processor * tmp = *head;
+    t_processor * listToDel;
 
-    if((*processes)->is_alive == 0)
-        deleteFirst(processes);
-    temp_proc = *processes;
-    while (temp_proc)
+    if(tmp->is_alive == 0)
     {
-        if (temp_proc->next->is_alive == 0) {
-            before = temp_proc->next;
-            next = before->next;
-            free(before);
-            temp_proc = next;
+        *head = (*head)->next;
+        free(tmp);
+    }
+    while(tmp->next)
+    {
+        if(tmp->next->is_alive == 0)
+        {
+            listToDel = tmp->next;
+            tmp->next = tmp->next->next;
+            free(listToDel);
+            if(!tmp->next)
+                break;
         }
-        else
-            temp_proc = temp_proc->next;
+        tmp = tmp->next;
     }
 }
+
 
 int more_then_nbr_lives(t_player *player) {
     t_player *temp_play;

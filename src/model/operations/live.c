@@ -34,5 +34,5 @@ void	handle_live(t_param *params, t_processor *proc)
     arg = handle_dir(params, proc, 4, 1);
     live_to_chemp(params->players, arg);
     proc->is_alive = 1;
-    proc->pc = (proc->pc + 4) % MEM_SIZE;
+    proc->pc = (proc->pc + 5) % MEM_SIZE;
 }
