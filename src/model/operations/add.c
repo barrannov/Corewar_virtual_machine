@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 22:33:04 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 17:51:46 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/31 19:05:55 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	handle_add(t_param *params, t_processor *proc)
 	unsigned int	r1;
 	unsigned int	r2;
 	unsigned int	r3;
-	
+
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
 	r1 = params->map[(proc->pc + 2) % MEM_SIZE] - 1;
@@ -28,9 +28,10 @@ void	handle_add(t_param *params, t_processor *proc)
 			r2 < 16 && r3 < 16)
 	{
 		proc->reg[r3] = proc->reg[r1] + proc->reg[r2];
-		proc->reg[r3] == 0 ? (proc->carry = 1) : (proc->carry = 0);
-		proc->pc = (proc->pc + 5) % MEM_SIZE;
+		proc->reg[r3] == 0 ? (proc->carry = 1) :
+			(proc->carry = 0);
+		proc->pc = (proc->pc + count_steps(val, 4)) % MEM_SIZE;
 	}
 	else
-		proc->pc = (proc->pc + 1) % MEM_SIZE;
+		proc->pc = (proc->pc + count_steps(val, 4)) % MEM_SIZE;
 }
