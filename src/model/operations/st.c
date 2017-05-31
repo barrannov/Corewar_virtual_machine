@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 19:35:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/30 22:39:26 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/31 19:56:38 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ void		handle_st(t_param *params, t_processor *proc)
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
-	r1 = params->map[(proc->pc + 2) % MEM_SIZE] - 1;
-	r2 = params->map[(proc->pc + 3) % MEM_SIZE] - 1;
-	if (val->val1 == 1 && val->val2 == 1 && r1 > 0 && r1 < REG_NUMBER &&
-			r2 > 0 && r2 < REG_NUMBER)
+	r1 = params->map[((proc->pc + 2) % MEM_SIZE)];
+	r2 = params->map[((proc->pc + 3) % MEM_SIZE)];
+	if (val->val1 == 1 && val->val2 == 1 && r1 > 0 && r1 <= REG_NUMBER &&
+			r2 > 0 && r2 <= REG_NUMBER)
 	{
-		proc->reg[params->map[r2]] = proc->reg[r1];
+		proc->reg[params->map[r2 - 1]] = proc->reg[r1 - 1];
 		proc->pc = (proc->pc + count_steps(val, 3)) % MEM_SIZE;
 	}
-	else if (val->val1 == 1 && val->val2 == 3 && r1 > 0 && r1 < REG_NUMBER)
+	else if (val->val1 == 1 && val->val2 == 3 && r1 > 0 && r1 <= REG_NUMBER)
 	{
-		write_value(params, proc, r1);
+		write_value(params, proc, r1 - 1);
 		proc->pc = (proc->pc + count_steps(val, 3)) % MEM_SIZE;
 	}
 	else
