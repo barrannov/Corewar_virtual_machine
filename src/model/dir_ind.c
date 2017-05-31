@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 18:46:35 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/30 22:19:13 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ unsigned int	change_endian(unsigned char *big_ptr, int am_byte)
 		i++;
 	}
 	if (am_byte == 4)
-		little = (unsigned int)ptr[0] * 16777216 + ptr[1] * 65536 + ptr[2] * 256 + ptr[3];
+		little = (unsigned int)ptr[0] * 16777216 + ptr[1] * 65536 + ptr[2] *
+			256 + ptr[3];
 	else
 		little = (unsigned int)ptr[0] * 256 + ptr[1];
 	return (little);
@@ -39,10 +40,11 @@ unsigned int	change_endian(unsigned char *big_ptr, int am_byte)
  *
  */
 //TODO change skip bytes aamount
-unsigned int	handle_dir(t_param *param, t_processor *proc, int am_byte, int pos)
+unsigned int	handle_dir(t_param *param, t_processor *proc, short int am_byte,
+		short int pos)
 {
 	unsigned char	dir[am_byte];
-	unsigned int	res;
+	int				res;
 	int				i;
 
 	i = 0;
@@ -52,7 +54,10 @@ unsigned int	handle_dir(t_param *param, t_processor *proc, int am_byte, int pos)
 		i++;
 	}
 	res = change_endian(dir, am_byte);
-	return (res);
+	if (am_byte == 2)
+		return ((short)res);
+	else
+		return ((int)res);
 }
 
 unsigned int	handle_ind(t_param *param, t_processor *proc, int pos, char idx)

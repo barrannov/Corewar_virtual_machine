@@ -6,56 +6,33 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:50:05 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 14:25:21 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/31 16:48:17 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-void	set_cycles_ld(t_processor *proc)
-{
-    proc->waite_cycles = 5;
-}
-
-void	print_reg(t_processor *proc)// for testing, delete it
-{
-    int i;
-
-    i = -1;
-    while (++i < REG_NUMBER)
-        printf("reg %d = %d\n", i + 1, proc->reg[i]);
-}
-
 static void	load_value(t_param *param, t_processor *proc, unsigned int value)
 {
-    if (param->map[(proc->pc + 6) % MEM_SIZE] > 0 &&
-			param->map[(proc->pc + 6) % MEM_SIZE] < REG_NUMBER)
-    {
-        value == 0 ? (proc->carry = 1) :
-			(proc->carry = 0);
-        proc->reg[(param->map[proc->pc + 6]) % MEM_SIZE - 1] = value;
-        proc->pc = (proc->pc + 7) % MEM_SIZE;
-    }
-    else
-        proc->pc = (proc->pc + 1) % MEM_SIZE;
+	value == 0 ? (proc->carry = 1) :
+		(proc->carry = 0);
+	proc->reg[(param->map[proc->pc + 6]) % MEM_SIZE - 1] = value;
 }
 
-void	handle_ld(t_param *params, t_processor *proc)
+void		handle_ld(t_param *params, t_processor *proc)
 {
-    t_val			*val;
-    unsigned int	arg;
+	t_val			*val;
+	unsigned int	arg;
+	short int		r;
 
-    val = malloc(sizeof(t_val));
-    get_args(val, params->map, proc);
-    if (val->val1 == 2)
-        arg = handle_dir(params, proc, 4, 2);
-    else if (val->val1 == 3)
-        arg = handle_ind(params, proc, 2, 1);
-    else
-    {
-        proc->pc = (proc->pc + 1) % MEM_SIZE;
-        return ;
-    }
-    load_value(params, proc, arg);
-    print_reg(proc);
+	val = malloc(sizeof(t_val));
+	get_args(val, params->map, proc);
+	r = params->map[(proc->pc + 6) % MEM_SIZE];
+	if (val->val1 == 2 && r > 0 && r < REG_NUMBER)
+		arg = handle_dir(params, proc, 4, 2);
+	else if (val->val1 == 3 && r > 0 && r < REG_NUMBER)
+		arg = handle_ind(params, proc, 2, 1);
+	if ((val->val1 == 2 || val->val1 == 3) && r > 0 && r < REG_NUMBER)
+		load_value(params, proc, arg);
+	proc->pc = (proc->pc + count_steps(val, 2)) % MEM_SIZE;
 }
