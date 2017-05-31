@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 13:22:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/31 20:55:50 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/05/31 21:40:18 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,9 @@ void		handle_ldi(t_param *params, t_processor *proc)
 	t_val			*val;
 	int				arg1;
 	int				arg2;
-	static int		move[2] = {0, 0};
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
-	val->val1 == 1 ? move[0]++ : (move[0] += 2);
-	val->val2 == 1 ? move[1]++ : (move[1] += 2);
 	if (check_args(val))
 	{
 		arg1 = arg_1(params, proc, val);
