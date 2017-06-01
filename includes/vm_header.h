@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/30 22:15:22 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 12:03:51 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	check_args(t_val *val);
 void add_process(t_param *params, int pc, int numb);
 void					logic(t_player *players);
 void 					set_cycles_ld(t_processor *pro);
-int	get_arg(t_param *params, t_processor *proc, char val, int pos);
-int			get_move(char val);
+int	get_arg_or_xor_and(t_param *params, t_processor *proc, char val, int pos);
+int			get_move_or_xor_and(char val);
 
 //operations
 void 					handle_ld(t_param *params, t_processor *proc);
@@ -112,6 +112,8 @@ int						vm_get_numb(char **argv, int n, int *numb);
 void					get_args(t_val *val, unsigned char *map, t_processor *proc);
 t_player        		*read_file_vm(char *file, int numb);
 void					vm_get_flags(t_fl *flags, char **argv);
-unsigned int			handle_dir(t_param *param, t_processor *proc, short int am_byte, short int pos);
-unsigned int			handle_ind(t_param *param, t_processor *proc, int pos, char idx);
+unsigned int			handle_dir(t_param *param, t_processor *proc,
+		short int am_byte, short int pos);
+unsigned int			handle_ind(t_param *param, t_processor *proc, int pos,
+		char idx, char label);
 #endif

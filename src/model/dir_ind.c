@@ -6,42 +6,28 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/30 22:19:13 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 12:31:54 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../includes/vm_header.h"
-
-unsigned int	change_endian(unsigned char *big_ptr, int am_byte)
+static unsigned int	get_res_from_hex(unsigned char *ptr, int am_byte)
 {
-	unsigned int	little;
-	unsigned char	*ptr;
-	int				i;
-	int				j;
+	unsigned int	result;
 
-	j = am_byte - 1;
-	i = 0;
-	ptr = malloc(sizeof(unsigned char) * am_byte);
-	while (i < am_byte)
-	{
-		ptr[i] = big_ptr[i];
-		j--;
-		i++;
-	}
 	if (am_byte == 4)
-		little = (unsigned int)ptr[0] * 16777216 + ptr[1] * 65536 + ptr[2] *
-			256 + ptr[3];
+		result = (unsigned int)ptr[0] * 0x1000000 + ptr[1] * 0x10000 + ptr[2] *
+			0x100 + ptr[3];
 	else
-		little = (unsigned int)ptr[0] * 256 + ptr[1];
-	return (little);
+		result = (unsigned int)ptr[0] * 0x100 + ptr[1];
+	return (result);
 }
 
-/*TODO chech how to change return of little endian with more universal solution
- *
+/* This function takes sting (4 chars), which contain 4 bytes in hex, and
+ * transforms this string to unsigned int.  
  */
-//TODO change skip bytes aamount
-unsigned int	handle_dir(t_param *param, t_processor *proc, short int am_byte,
-		short int pos)
+unsigned int		handle_dir(t_param *param, t_processor *proc,
+		short int am_byte, short int pos)
 {
 	unsigned char	dir[am_byte];
 	int				res;
@@ -53,18 +39,32 @@ unsigned int	handle_dir(t_param *param, t_processor *proc, short int am_byte,
 		dir[i] = param->map[(proc->pc + pos + i) % MEM_SIZE];
 		i++;
 	}
-	res = change_endian(dir, am_byte);
+	res = get_res_from_hex(dir, am_byte);
 	if (am_byte == 2)
 		return ((short)res);
 	else
 		return ((int)res);
 }
+/* Function read "am_byte" bytes from memory at adress "pc + pos"
+ * if we need to read 2 bytes, it returns short value, in case with 4
+ * bytes - returns int
+ */
 
-unsigned int	handle_ind(t_param *param, t_processor *proc, int pos, char idx)
+unsigned int		handle_ind(t_param *param, t_processor *proc, int pos,
+		char idx, char label)
 {
 	if (idx == 0)
-		return (handle_dir(param, proc, 2, handle_dir(param, proc, 2, pos)));
+		return (handle_dir(param, proc, (short)label,
+					handle_dir(param, proc, 2, pos)));
 	else
-		return (handle_dir(param, proc, 2, handle_dir(param, proc, 2, pos)
-					% IDX_MOD));
+		return (handle_dir(param, proc, (short)label,
+					handle_dir(param, proc, 2, pos) % IDX_MOD));
 }
+/* Hande ind:
+ * pos is position, where starts first indirect element.
+ * idx - flag to see where we need to use %IDX_MOD
+ * label - flag shows what size of memory need to read)
+ *
+ * function read "label" bytes from memory part, that we get whom result
+ * 			of handle dir function
+ */

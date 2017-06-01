@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:27:25 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/31 21:45:43 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 11:46:33 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	arg_1(t_param *params, t_processor *proc, t_val *val)
 	else if (val->val1 == 2)
 		return (handle_dir(params, proc, 2, 2));
 	else
-		return (handle_ind(params, proc, 2, 0));
+		return (handle_ind(params, proc, 2, 0, 2));
 }
 
 static int	arg_2(t_param *params, t_processor *proc, t_val *val)

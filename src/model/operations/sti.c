@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:41:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/28 18:26:19 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 11:55:32 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static unsigned int	arg_1(t_param *params, t_processor *proc, t_val *val)
 	else if (val->val2 == 2)
 		return (handle_dir(params, proc, 2, 2));
 	else
-		return (handle_ind(params, proc, 2, 1));
+		return (handle_ind(params, proc, 2, 1, 2));
 }
 
 static unsigned int	arg_2(t_param *params, t_processor *proc, t_val *val)
@@ -68,7 +68,3 @@ void				handle_sti(t_param *params, t_processor *proc)
 	else
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 }
-
-/* TODO Find how to handle first argument in case it will be IND
- *
- */
