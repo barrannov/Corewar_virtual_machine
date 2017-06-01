@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 18:43:34 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 14:06:39 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 18:08:12 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		handle_xor(t_param *params, t_processor *proc)
 		arg1 = get_arg_or_xor_and(params, proc, val->val1, 2);
 		arg2 = get_arg_or_xor_and(params, proc, val->val2, 2 + mv1);
 		proc->reg[params->map[(proc->pc + count_steps(val, 8) - 1)
-			% MEM_SIZE] - 1] =arg1 ^ arg2;
+			% MEM_SIZE] - 1] = arg1 ^ arg2;
 		(arg1 ^ arg2) == 0 ? (proc->carry = 1) :
 			(proc->carry = 0);
 		proc->pc = (proc->pc + count_steps(val, 8)) % MEM_SIZE;

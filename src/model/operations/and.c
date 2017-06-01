@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:47:37 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 14:08:00 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 18:10:02 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	handle_and(t_param *params, t_processor *proc)
 	mv2 = get_move_or_xor_and(val->val2);
 	if (!check_args_or_xor_and(val))
 		proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
-	else	
+	else
 	{
 		arg1 = get_arg_or_xor_and(params, proc, val->val1, 2);
 		arg2 = get_arg_or_xor_and(params, proc, val->val2, 2 + mv1);

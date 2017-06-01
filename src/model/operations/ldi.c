@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 13:22:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 14:04:28 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 18:08:40 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static short int	arg_2(t_param *params, t_processor *proc, t_val *val)
 		return (handle_dir(params, proc, 2, 2 + pos));
 }
 
-void		handle_ldi(t_param *params, t_processor *proc)
+void				handle_ldi(t_param *params, t_processor *proc)
 {
 	t_val		*val;
 	short int	arg1;

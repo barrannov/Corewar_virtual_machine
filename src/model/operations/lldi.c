@@ -6,13 +6,13 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:27:25 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 14:06:01 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 18:11:00 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-static int          check_args_lldi(t_val *val)
+static int	check_args_lldi(t_val *val)
 {
 	if (val->val1 != 1 && val->val1 != 2 && val->val1 != 3)
 		return (0);
