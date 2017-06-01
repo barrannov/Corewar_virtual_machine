@@ -30,6 +30,7 @@ typedef struct			s_param
 	struct s_processor	*processors;
     int                 amount_checks;
 	int					amount_champs;
+	int					amount_proc;
 }						t_param;
 
 typedef struct			s_player

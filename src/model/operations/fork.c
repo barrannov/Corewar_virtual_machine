@@ -35,7 +35,8 @@ static void	copy_process_on_the_top(t_param *param, t_processor *proc, unsigned 
 void	handle_fork(t_param *param, t_processor *proc)
 {
     unsigned int	adr;
-	
+
+    param->amount_proc++;
     adr = (proc->pc + (handle_dir(param, proc, 2, 1) % IDX_MOD)) % MEM_SIZE;
     copy_process_on_the_top(param, proc, adr);
 	proc->pc = (proc->pc + 3) % MEM_SIZE;

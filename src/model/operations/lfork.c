@@ -36,6 +36,7 @@ void	handle_lfork(t_param *param, t_processor *proc)
 {
     unsigned int	adr;
 
+    param->amount_proc++;
     adr = (proc->pc + handle_dir(param, proc, 2, 1)) % MEM_SIZE;
     copy_process_on_the_top(param, proc, adr);
 	proc->pc = (proc->pc + 2) % MEM_SIZE;

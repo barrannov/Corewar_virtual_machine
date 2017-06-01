@@ -30,7 +30,7 @@ void                        handle_zjmp(t_param *par, t_processor *proc) {
 
     value = get_swap_short_value(&par->map[proc->pc + 1]);
     if (proc->carry)
-        proc->pc += (value % IDX_MOD);
+        proc->pc += (value % IDX_MOD) % MEM_SIZE;
     else
-        proc->pc += 3;
+        proc->pc = (proc->pc + 3) % MEM_SIZE;
 }

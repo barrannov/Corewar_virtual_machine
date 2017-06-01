@@ -32,6 +32,7 @@ void add_process(t_param *params, int pc, int numb)
 	new->reg[0] = numb;
 	new->carry = 0;
 	new->waite_cycles = 0;
+	new->is_alive = 0;
 	new->next = NULL;
 	tmp = params->processors;
 	if (!params->processors)
