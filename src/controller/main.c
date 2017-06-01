@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 11:47:44 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 17:41:58 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 19:08:54 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int				main(int argc, char **argv)
 		vm_print_usage();
 		return (0);
 	}
-	logic(get_player(argc, argv));
+	logic(get_player(argc, argv), flags);
 	return (0);
 }

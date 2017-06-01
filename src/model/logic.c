@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/26 15:47:01 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 19:26:05 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int amount_lst_el(t_processor *procs)
 void execute_command(t_processor *process, t_param *param) {
     if (process->waite_cycles != 0)
         return;
-//	if (process->prog_counter == 0) //delete it
-//		process->prog_counter = 3;
     if (param->map[process->pc] == 1)
         handle_live(param, process);
     else if (param->map[process->pc] == 2)
@@ -194,13 +192,19 @@ void output_the_winner(t_player *players)
         }
 }
 
-void special_for_denchik(t_param *params)
+void special_for_denchik(t_param *params, t_fl *flags)
 {
     t_processor *temp_proc;
 
     temp_proc = params->processors;
-    while (temp_proc) {
-        if(params->cycle == 856)
+    while (temp_proc)
+	{
+		if (params->cycle == flags->dump)
+		{
+			print_map(params);
+			exit (1);
+		}
+        if (params->cycle == 856)
         {
 
         }
@@ -218,16 +222,16 @@ void special_for_denchik(t_param *params)
     }
 }
 
-void algorithm(t_param *params) {
+void algorithm(t_param *params, t_fl *flags) {
 
     params->cycle = 0;
     while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0) {
-        special_for_denchik(params);
+        special_for_denchik(params, flags);
         if (params->cycle > 2500)
         {
            // print_map(params);
     }
-        ft_putstr("cycle_to_die: ");
+   /*     ft_putstr("cycle_to_die: ");
         ft_putnbr(params->cycle_to_die);
         ft_putchar('\n');
         ft_putstr("cycle: ");
@@ -235,13 +239,15 @@ void algorithm(t_param *params) {
         ft_putchar('\n');
         ft_putstr("amount_proc: ");
         ft_putnbr(amount_lst_el(params->processors));
-        ft_putchar('\n');
+        ft_putchar('\n');*/
         params->cycle++;
     }
+	if (params->cycle < flags->dump)
+		print_map(params);
     output_the_winner(params->players);
 }
 
-void logic(t_player *players)
+void logic(t_player *players, t_fl *flags)
 {
     t_param *param;
     param = malloc(sizeof(t_param));
@@ -252,11 +258,11 @@ void logic(t_player *players)
     get_processes(param);
     param->amount_champs = 0;
     param->cycle_to_die = CYCLE_TO_DIE;
-    print_map(param);
+//    print_map(param);
 //    execute_command(param->processors, param);
-    algorithm(param); //start of algorithm
+    algorithm(param, flags); //start of algorithm
 //    printf("step 2\n");
 //	execute_command(param->players->processors, param);
-    print_map(param);
+  //  print_map(param);
 
 }

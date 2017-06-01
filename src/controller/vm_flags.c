@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 18:00:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/22 22:07:44 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 19:38:44 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	get_dump(t_fl *flags, char **argv)
 			if (!argv[i + 1])
 				print_cant_read_source_file(argv[i]);
 			flags->dump = ft_atoi(argv[i + 1]);
-			if (flags->dump == 0)
-				print_cant_read_source_file(argv[i]);
+			if (ft_atoi(argv[i + 1]) == 0)
+				dump_error();
 		}
 	}
 	if (flags->dump < 0)
-		print_cant_read_source_file(argv[i]);
+		dump_error();
 }
 
 void	get_vis(t_fl *flags, char **argv)
