@@ -6,11 +6,22 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:27:25 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 11:46:33 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:06:01 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
+
+static int          check_args_lldi(t_val *val)
+{
+	if (val->val1 != 1 && val->val1 != 2 && val->val1 != 3)
+		return (0);
+	if (val->val2 != 1 && val->val2 != 2)
+		return (0);
+	if (val->val3 != 1)
+		return (0);
+	return (1);
+}
 
 static int	arg_1(t_param *params, t_processor *proc, t_val *val)
 {
@@ -42,7 +53,7 @@ void		handle_lldi(t_param *params, t_processor *proc)
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
-	if (check_args(val))
+	if (check_args_lldi(val))
 	{
 		arg1 = arg_1(params, proc, val);
 		arg2 = arg_2(params, proc, val);

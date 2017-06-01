@@ -6,13 +6,24 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 13:22:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 11:47:23 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:04:28 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-static int	arg_1(t_param *params, t_processor *proc, t_val *val)
+static int			check_args_ldi(t_val *val)
+{
+	if (val->val1 != 1 && val->val1 != 2 && val->val1 != 3)
+		return (0);
+	if (val->val2 != 1 && val->val2 != 2)
+		return (0);
+	if (val->val3 != 1)
+		return (0);
+	return (1);
+}
+
+static short int	arg_1(t_param *params, t_processor *proc, t_val *val)
 {
 	if (val->val1 == 1)
 		return (proc->reg[params->map[(proc->pc + 2) % MEM_SIZE] - 1]);
@@ -22,7 +33,7 @@ static int	arg_1(t_param *params, t_processor *proc, t_val *val)
 		return (handle_ind(params, proc, 2, 1, 2));
 }
 
-static int	arg_2(t_param *params, t_processor *proc, t_val *val)
+static short int	arg_2(t_param *params, t_processor *proc, t_val *val)
 {
 	char	pos;
 
@@ -36,13 +47,13 @@ static int	arg_2(t_param *params, t_processor *proc, t_val *val)
 
 void		handle_ldi(t_param *params, t_processor *proc)
 {
-	t_val			*val;
-	int				arg1;
-	int				arg2;
+	t_val		*val;
+	short int	arg1;
+	short int	arg2;
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
-	if (check_args(val))
+	if (check_args_ldi(val))
 	{
 		arg1 = arg_1(params, proc, val);
 		arg2 = arg_2(params, proc, val);

@@ -6,13 +6,13 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:47:37 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 12:03:40 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:08:00 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-int		check_args(t_val *val)
+int		check_args_or_xor_and(t_val *val)
 {
 	if (val->val1 != 1 && val->val1 != 2 && val->val1 != 3)
 		return (0);
@@ -60,7 +60,7 @@ void	handle_and(t_param *params, t_processor *proc)
 	get_args(val, params->map, proc);
 	mv1 = get_move_or_xor_and(val->val1);
 	mv2 = get_move_or_xor_and(val->val2);
-	if (!check_args(val))
+	if (!check_args_or_xor_and(val))
 		proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
 	else	
 	{

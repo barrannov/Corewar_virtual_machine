@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 18:43:34 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 12:17:24 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:06:39 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		handle_xor(t_param *params, t_processor *proc)
 	get_args(val, params->map, proc);
 	mv1 = get_move_or_xor_and(val->val1);
 	mv2 = get_move_or_xor_and(val->val2);
-	if (!check_args(val))
+	if (!check_args_or_xor_and(val))
 		proc->pc = (proc->pc + 1) % MEM_SIZE;
 	else
 	{

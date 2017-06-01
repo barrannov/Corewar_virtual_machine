@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 12:03:51 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:07:17 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void					handle_aff(t_param *params, t_processor *proc);
 
 //
 int amount_lst_el(t_processor *procs);
-int                     check_args(t_val *val);
+int                     check_args_or_xor_and(t_val *val);
 void					set_cycles_live(t_processor *proc);
 void 					create_map(t_player *players, t_param *param);
 void					print_map(t_param *param);
