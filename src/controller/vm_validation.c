@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:32:31 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/24 17:56:36 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 17:55:19 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_player		*read_file_vm(char *file, int numb)
 	char		*res;
 	header_t	*header;
 
-	header = malloc(sizeof(header_t));
 	res = malloc(sizeof(char *) * sizeof(header_t));
 	fd = open(file, O_RDONLY);
 	read(fd, res, sizeof(header_t));

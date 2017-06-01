@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 11:47:44 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/25 16:30:28 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/01 17:41:58 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,13 @@ static t_player	*get_player(int argc, char **argv)
 			}
 		}
 	}
-	 return (player);
+	return (player);
 }
 
 int				main(int argc, char **argv)
 {
 	t_fl	*flags;
-//	t_param *param;
 
-//	param = malloc(sizeof(t_param));
 	flags = malloc(sizeof(t_fl));
 	vm_get_flags(flags, argv);
 	if (argc == 1)
@@ -64,7 +62,6 @@ int				main(int argc, char **argv)
 		vm_print_usage();
 		return (0);
 	}
-//	create_map(get_player(argc, argv), param);
 	logic(get_player(argc, argv));
 	return (0);
 }
