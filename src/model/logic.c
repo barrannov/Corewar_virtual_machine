@@ -75,7 +75,7 @@ void execute_command(t_processor *process, t_param *param) {
         handle_lfork(param, process);
     else if (param->map[process->pc] == 16)
         handle_aff(param, process);
-    else if (param->map[process->pc] == 0)
+    else
         process->pc = (process->pc + 1) % MEM_SIZE;
 }
 
@@ -223,19 +223,19 @@ void algorithm(t_param *params) {
     params->cycle = 0;
     while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0) {
         special_for_denchik(params);
-//        if (params->cycle > 2500)
-//        {
-//            print_map(params);
-//    }
+        if (params->cycle > 2500)
+        {
+           // print_map(params);
+    }
         ft_putstr("cycle_to_die: ");
         ft_putnbr(params->cycle_to_die);
         ft_putchar('\n');
         ft_putstr("cycle: ");
         ft_putnbr(params->cycle);
         ft_putchar('\n');
-//        ft_putstr("amount_proc: ");
-//        ft_putnbr(amount_lst_el(params->processors));
-//        ft_putchar('\n');
+        ft_putstr("amount_proc: ");
+        ft_putnbr(amount_lst_el(params->processors));
+        ft_putchar('\n');
         params->cycle++;
     }
     output_the_winner(params->players);
@@ -246,6 +246,7 @@ void logic(t_player *players)
     t_param *param;
     param = malloc(sizeof(t_param));
     param->processors = NULL;
+
     param->amount_champs = count_champs(players);
     create_map(players, param);
     get_processes(param);
