@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:34:21 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 19:18:53 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 17:27:25 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void add_process(t_param *params, int pc, int numb)
 	new->carry = 0;
 	new->waite_cycles = 0;
 	new->is_alive = 0;
+	new->player = numb;
 	new->next = NULL;
 	tmp = params->processors;
 	if (!params->processors)
