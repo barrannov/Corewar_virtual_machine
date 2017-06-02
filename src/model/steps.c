@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/30 20:56:44 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/30 23:21:04 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 19:34:52 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ short int			count_steps(t_val *val, short int opcode)
 		third = 1;
 	else if (val->val3 > 0 && opcode > 8 && opcode < 16 && opcode != 13)
 		third = get_dir_indir_short(val->val3);
+	else if (val->val3 > 0 && (opcode == 2 || opcode == 3 || opcode == 13))
+		third = 0;
 	else
 		third = get_dir_indir_long(val->val3);
 	return (first + second + third + cod_byte);

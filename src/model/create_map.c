@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:29:15 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 21:03:58 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 16:19:50 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,8 @@ void	add_to_map(t_player *players, t_param *params, int pc)
 	while (i < (int)players->header->prog_size)
 	{
 		params->map[pc] = players->commands[i];
+		params->map_c[pc] = (unsigned char)players->numb;
 		pc++;
-		i++;
-	}
-}
-
-void	add_null(char *map)
-{
-	int i;
-
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		map[i] = '0';
 		i++;
 	}
 }
@@ -46,9 +35,10 @@ void	create_map(t_player *players, t_param *param)
 	temp_players = players;
 	param->players = players;
 	param->map = (unsigned char *)ft_strnew(MEM_SIZE);
+	param->map_c = (unsigned char *)ft_strnew(MEM_SIZE);
 	while (temp_players)
 	{
-		add_to_map(players, param, pc);
+		add_to_map(temp_players, param, pc);
 		temp_players = temp_players->next;
 		pc += MEM_SIZE / param->amount_champs;
 	}

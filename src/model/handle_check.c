@@ -47,7 +47,7 @@ void	delete_dead_processes(t_processor **str)
 {
     t_processor	*prev;
     t_processor	*cur = (*str);
-    t_processor	*tmp = (*str);
+    t_processor	*tmp;
     t_processor	*next;
     t_processor	*start;
 

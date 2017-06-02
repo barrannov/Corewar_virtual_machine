@@ -6,7 +6,7 @@
 #    By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/29 11:45:35 by oklymeno          #+#    #+#              #
-#    Updated: 2017/05/30 21:27:49 by oklymeno         ###   ########.fr        #
+#    Updated: 2017/06/02 12:19:17 by oklymeno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SOURCES=src/controller/main.c\
 		src/controller/vm_validation.c\
 		src/controller/vm_flags.c\
 		src/view/usage.c\
+		src/view/visualize.c\
 		src/model/logic.c\
 		src/model/create_map.c\
 		src/model/operations/ld.c\
@@ -46,7 +47,7 @@ OBJECTS=$(SOURCES:.c=.o)
 all: $(NAME)
 
 $(NAME):$(OBJECTS)
-	gcc -g -o $(NAME) $(OBJECTS) -L. $(LIBFT)
+	gcc -g -o $(NAME) -lncurses $(OBJECTS) -L. $(LIBFT)
 
 %.o:%.c
 	gcc -g -c $(FLAGS) -o $@ $<

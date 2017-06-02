@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 19:20:58 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 17:26:46 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 # include "libft.h"
 # include "model.h"
 # include <stdio.h>
+# include <ncurses.h>
 
 typedef struct			s_param
 {
 	int					cycle;
 	int					cycle_to_die;
 	unsigned char		*map;
+	unsigned char		*map_c;
 	struct s_player		*players;
 	struct s_processor	*processors;
 	int					amount_checks;
@@ -46,6 +48,7 @@ typedef	struct			s_processor
 {
 	int					you_need_to_wait;
 	int					is_alive;
+	int					player;
 	int					reg[REG_NUMBER];
 	unsigned int		pc;
 	char				carry;
@@ -122,4 +125,6 @@ void					get_args(t_val *val, unsigned char *map,
 t_player				*read_file_vm(char *file, int numb);
 void					vm_get_flags(t_fl *flags, char **argv);
 int						digit(char *str);
+
+void					visualize(t_param *param);
 #endif
