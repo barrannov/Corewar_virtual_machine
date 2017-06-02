@@ -44,6 +44,7 @@ typedef struct			s_player
 
 typedef	struct			s_processor
 {
+	int					you_need_to_wait;
 	int					is_alive;
 	int					reg[REG_NUMBER];
 	unsigned int		pc;
