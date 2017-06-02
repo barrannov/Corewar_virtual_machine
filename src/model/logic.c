@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 18:54:05 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 23:58:47 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,12 +247,13 @@ void special_for_denchik(t_param *params, t_fl *flags)
     }
 }
 
-void algorithm(t_param *params, t_fl *flags) {
-
+void algorithm(t_param *params, t_fl *flags, int key)
+{
     params->cycle = 0;
     while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
 	{
-		visualize(params);
+		if (flags->vis == 1)
+			visualize(params, key);
 
 //        if(params->cycle > 3071)
   //      {
@@ -283,9 +284,20 @@ void algorithm(t_param *params, t_fl *flags) {
     output_the_winner(params->players);
 }
 
+int	init_vis(void)
+{
+	int key;
+
+	initscr();
+	noecho();
+	key = getch();
+	return (key);
+}
+
 void logic(t_player *players, t_fl *flags)
 {
     t_param *param;
+
     param = malloc(sizeof(t_param));
     param->processors = NULL;
 
@@ -294,8 +306,12 @@ void logic(t_player *players, t_fl *flags)
     get_processes(param);
     param->amount_champs = 0;
     param->cycle_to_die = CYCLE_TO_DIE;
-//    execute_command(param->processors, param);
-    algorithm(param, flags); //start of algorithm
+//    execute_command(param->processors, param)
+	if (flags->vis == 1)
+    	algorithm(param, flags, init_vis());
+   	else
+    	algorithm(param, flags, 0);
+			//start of algorithm
  //   print_map(param);
 //    printf("step 2\n");
 //	execute_command(param->players->processors, param);

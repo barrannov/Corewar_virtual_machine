@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_zjmp.c                                          :+:      :+:    :+:   */
+/*   status.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkhlopov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/29 20:32:12 by dkhlopov          #+#    #+#             */
-/*   Updated: 2017/06/02 23:20:08 by oklymeno         ###   ########.fr       */
+/*   Created: 2017/06/03 00:14:37 by oklymeno          #+#    #+#             */
+/*   Updated: 2017/06/03 00:17:39 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/vm_header.h"
+#include "../../includes/vm_header.h"
 
-void	handle_zjmp(t_param *params, t_processor *proc)
+void        print_status(t_param *param, WINDOW *status)
 {
-	if (proc->carry)
-		proc->pc += (handle_dir(params, proc, 2, 1) % IDX_MOD) % MEM_SIZE;
-	else
-		proc->pc = (proc->pc + 3) % MEM_SIZE;
+	wprintw(status, "cycle = %d\n", param->cycle);
+	wprintw(status, "cycle_to_die = %d", param->cycle_to_die);
+	wrefresh(status);
 }
