@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 19:26:05 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 18:54:05 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,15 +166,16 @@ void print_map(t_param *param)//this func must be in view
 
 }
 
-void unset_is_alive_process(t_processor *proc) {
+void	unset_is_alive_process(t_processor *proc) 
+{
     t_processor *live_proc;
 
     live_proc = proc;
-    while (live_proc) {
+    while (live_proc)
+	{
         live_proc->is_alive = 0;
         live_proc = live_proc->next;
     }
-
 }
 
 void output_the_winner(t_player *players)
@@ -218,17 +219,17 @@ void special_for_denchik(t_param *params, t_fl *flags)
     temp_proc = params->processors;
     while (temp_proc)
 	{
-//		if (params->cycle == flags->dump)
-//		{
-//			print_map(params);
-//			//exit (1);
-//		}
+		if (params->cycle == flags->dump && params->cycle > 0)
+		{
+			print_map(params);
+			exit (1);
+		}
 //        if(params->cycle == 2450)
 //        {
 //
 //        }
 
-          set_command_for_proc(temp_proc, params);
+        set_command_for_proc(temp_proc, params);
         execute_process(temp_proc, params);
 //        if(params->cycle > 2526)
 //        {
@@ -239,7 +240,8 @@ void special_for_denchik(t_param *params, t_fl *flags)
 //                 temp_proc->pc = (temp_proc->pc + 1) % MEM_SIZE;
         temp_proc = temp_proc->next;
     }
-    if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0) {
+    if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0) 
+	{
         handle_check(params);
         unset_is_alive_process(params->processors);
     }
@@ -248,12 +250,14 @@ void special_for_denchik(t_param *params, t_fl *flags)
 void algorithm(t_param *params, t_fl *flags) {
 
     params->cycle = 0;
-    while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0) {
+    while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
+	{
+		visualize(params);
 
-        if(params->cycle > 3071)
-        {
-
-        }
+//        if(params->cycle > 3071)
+  //      {
+//
+  //      }
         special_for_denchik(params, flags);
         decrease_wait_cycles(params);
 //        if(params->cycle > 6000)
@@ -273,6 +277,7 @@ void algorithm(t_param *params, t_fl *flags) {
 //            while (1);
         params->cycle++;
     }
+	endwin();
 	if (params->cycle < flags->dump)
 		print_map(params);
     output_the_winner(params->players);
@@ -291,7 +296,7 @@ void logic(t_player *players, t_fl *flags)
     param->cycle_to_die = CYCLE_TO_DIE;
 //    execute_command(param->processors, param);
     algorithm(param, flags); //start of algorithm
-    print_map(param);
+ //   print_map(param);
 //    printf("step 2\n");
 //	execute_command(param->players->processors, param);
   //  print_map(param);
