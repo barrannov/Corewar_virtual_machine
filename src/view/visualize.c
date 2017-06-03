@@ -89,5 +89,4 @@ void		visualize(t_param *param)
 	refresh();
 	wrefresh(status);
 	key_hook(1);
-	usleep(50000);
 }

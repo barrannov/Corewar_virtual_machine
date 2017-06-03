@@ -85,6 +85,6 @@ int		vm_get_numb(char **argv, int n, int *numb)
 	if (n > 2)
 		if (!ft_strcmp(argv[n - 2], "-n") && digit(argv[n - 1]))
 			return (ft_atoi(argv[n - 1]));
-	*numb -= 1;
+	*numb += 1;
 	return (*numb);
 }

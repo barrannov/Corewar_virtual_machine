@@ -21,13 +21,13 @@ void	init_reg(t_processor *proc)
 		proc->reg[i] = 0;
 }
 
-void add_process(t_param *params, int pc, int numb)
+void add_process(t_param *params, short pc, int numb)
 {
 	t_processor	*new;
 	t_processor *tmp;
 //TODO put new proccesses at the top
 	new = malloc(sizeof(t_processor) + 1);
-	new->pc = (short int)pc;
+	new->pc = pc;
 	init_reg(new);
 	new->reg[0] = numb;
 	new->carry = 0;

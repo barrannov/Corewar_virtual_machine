@@ -28,7 +28,8 @@ static void	print_players(t_param *param, WINDOW *status)
 void		print_status(t_param *param, WINDOW *status)
 {
 	wprintw(status, "cycle = %d\n", param->cycle);
-	wprintw(status, "cycle_to_die = %d", param->cycle_to_die);
+	wprintw(status, "cycle_to_die = %d\n", param->cycle_to_die);
+	wprintw(status, "amount_process = %d", param->amount_proc);
 	print_players(param, status);
 	wrefresh(status);
 }

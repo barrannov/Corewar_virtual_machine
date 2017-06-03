@@ -54,7 +54,6 @@ typedef	struct			s_processor
 	int					pc;
 	char				carry;
 	int					waite_cycles;
-	int					you_need_to_wait;
 	struct s_processor	*next;
 }						t_processor;
 
@@ -77,7 +76,7 @@ typedef	struct			s_fl
 void					sort_players(t_param *param);
 void					handle_check(t_param *param);
 int						check_args(t_val *val);
-void					add_process(t_param *params, int pc, int numb);
+void					add_process(t_param *params, short pc, int numb);
 void					logic(t_player *players, t_fl *flags);
 void					set_cycles_ld(t_processor *pro);
 int						amount_lst_el(t_processor *procs);

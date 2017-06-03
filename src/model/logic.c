@@ -37,11 +37,10 @@ int amount_lst_el(t_processor *procs)
     }
     return (i);
 }
-
+void set_command_for_proc(t_processor *process, t_param *param);
 void execute_command(t_processor *process, t_param *param) {
-    if (process->waite_cycles == 1 && process->waite_cycles > 0)
+    if (process->waite_cycles != 0)
         return;
-    process->you_need_to_wait= 0;
     if (param->map[process->pc] == 1)
         handle_live(param, process);
     else if (param->map[process->pc] == 2)
@@ -76,10 +75,14 @@ void execute_command(t_processor *process, t_param *param) {
         handle_aff(param, process);
     else
         process->pc = (process->pc + 1) % MEM_SIZE;
+//    process->you_need_to_wait= 0;
+//    set_command_for_proc(process, param);
+//    if(process->waite_cycles > 0)
+//        process->waite_cycles++;
 }
 
 void set_command_for_proc(t_processor *process, t_param *param) {
-    if (process->you_need_to_wait == 1)
+    if (process->waite_cycles != 0)
         return;
     if (param->map[process->pc] == 1)
         process->waite_cycles = 10;
@@ -113,22 +116,20 @@ void set_command_for_proc(t_processor *process, t_param *param) {
         process->waite_cycles = 1000;
     else if (param->map[process->pc] == 16)
         process->waite_cycles = 2;
-    process->you_need_to_wait = 1;
+//    if(process->waite_cycles > 0)
+//    process->you_need_to_wait = 1;
 }
     void execute_process(t_processor *process, t_param *param) {
 /*
  * At the beginning we are checking waite_cycles, if waite_cycles > 0, it means that process needs to wait this cycles
  * if waite_cycles == 0, it means that the machine is ready to execute command
  * */
-//    if (process->waite_cycles > 0) {
-//        process->waite_cycles--;
-//        if (process->waite_cycles > 0)
-//            return;
-//    }
-        if(process->waite_cycles == 0)
-        {
+    if (process->waite_cycles > 0) {
+        process->waite_cycles--;
+        if (process->waite_cycles > 0)
+            return;
+    }
             execute_command(process, param);
-        }
        // print_map(param);
         /*execute command here
      * */
@@ -174,6 +175,18 @@ void	unset_is_alive_process(t_processor *proc)
     while (live_proc)
 	{
         live_proc->is_alive = 0;
+        live_proc = live_proc->next;
+    }
+}
+
+void	unset_live_amount(t_param *param)
+{
+    t_player *live_proc;
+
+    live_proc = param->players;
+    while (live_proc)
+    {
+        live_proc->live_amount = 0;
         live_proc = live_proc->next;
     }
 }
@@ -224,10 +237,10 @@ void special_for_denchik(t_param *params, t_fl *flags)
 			print_map(params);
 			exit (1);
 		}
-//        if(params->cycle == 2450)
-//        {
-//
-//        }
+        if(params->cycle == 25)
+        {
+
+        }
 
         set_command_for_proc(temp_proc, params);
         execute_process(temp_proc, params);
@@ -244,6 +257,7 @@ void special_for_denchik(t_param *params, t_fl *flags)
 	{
         handle_check(params);
         unset_is_alive_process(params->processors);
+        unset_live_amount(params);
     }
 }
 
@@ -255,12 +269,12 @@ void algorithm(t_param *params, t_fl *flags)
 		if (flags->vis == 1)
 			visualize(params);
 
-//        if(params->cycle > 3071)
-  //      {
-//
-  //      }
+        if(params->cycle > 1614)
+        {
+
+        }
         special_for_denchik(params, flags);
-        decrease_wait_cycles(params);
+      //  decrease_wait_cycles(params);
 //        if(params->cycle > 6000)
 //        {
 //           // while(1);
@@ -271,9 +285,9 @@ void algorithm(t_param *params, t_fl *flags)
 //        ft_putstr("cycle: ");
 //        ft_putnbr(params->cycle);
 //        ft_putchar('\n');
-//        ft_putstr("amount_proc: ");
-//        ft_putnbr(amount_lst_el(params->processors));
-//        ft_putchar('\n');
+        ft_putstr("amount_proc: ");
+        ft_putnbr(amount_lst_el(params->processors));
+        ft_putchar('\n');
 //        if( amount_lst_el(params->processors) >= 390)
 //            while (1);
         params->cycle++;
@@ -291,6 +305,7 @@ void logic(t_player *players, t_fl *flags)
     param->processors = NULL;
 
     param->amount_champs = count_champs(players);
+    param->amount_proc = 1;
     create_map(players, param);
     get_processes(param);
     param->amount_champs = 0;
