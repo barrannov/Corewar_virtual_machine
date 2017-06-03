@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 20:44:18 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 14:37:08 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void					handle_fork(t_param *player, t_processor *proc);
 void					handle_lfork(t_param *param, t_processor *proc);
 void					handle_lldi(t_param *params, t_processor *proc);
 void					handle_lld(t_param *params, t_processor *proc);
-void					handle_zjmp(t_param *par, t_processor *proc);
+void					handle_zjmp(t_param *params, t_processor *proc);
 void					handle_aff(t_param *params, t_processor *proc);
 /*
 ** operation support
@@ -129,4 +129,6 @@ void					vm_get_flags(t_fl *flags, char **argv);
 int						digit(char *str);
 
 void					visualize(t_param *param);
+void					print_status(t_param *param, WINDOW *status);
+void					key_hook(int flag);
 #endif

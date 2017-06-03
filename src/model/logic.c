@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 19:26:05 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 18:54:05 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,6 @@ void	unset_is_alive_process(t_processor *proc)
         live_proc->is_alive = 0;
         live_proc = live_proc->next;
     }
-
 }
 
 void output_the_winner(t_player *players)
@@ -248,12 +247,13 @@ void special_for_denchik(t_param *params, t_fl *flags)
     }
 }
 
-void algorithm(t_param *params, t_fl *flags) {
-
+void algorithm(t_param *params, t_fl *flags)
+{
     params->cycle = 0;
     while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
 	{
-		visualize(params);
+		if (flags->vis == 1)
+			visualize(params);
 
 //        if(params->cycle > 3071)
   //      {
@@ -261,20 +261,20 @@ void algorithm(t_param *params, t_fl *flags) {
   //      }
         special_for_denchik(params, flags);
         decrease_wait_cycles(params);
-//      if(params->cycle > 5978)
-//      {
-//
-//      }
-        ft_putstr("cycle_to_die: ");
-        ft_putnbr(params->cycle_to_die);
-        ft_putchar('\n');
-        ft_putstr("cycle: ");
-        ft_putnbr(params->cycle);
-        ft_putchar('\n');
-        ft_putstr("amount_proc: ");
-        ft_putnbr(amount_lst_el(params->processors));
-        ft_putchar('\n');
-//        if( amount_lst_el(params->processors) >= 3)
+//        if(params->cycle > 6000)
+//        {
+//           // while(1);
+//        }
+//        ft_putstr("cycle_to_die: ");
+//        ft_putnbr(params->cycle_to_die);
+//        ft_putchar('\n');
+//        ft_putstr("cycle: ");
+//        ft_putnbr(params->cycle);
+//        ft_putchar('\n');
+//        ft_putstr("amount_proc: ");
+//        ft_putnbr(amount_lst_el(params->processors));
+//        ft_putchar('\n');
+//        if( amount_lst_el(params->processors) >= 390)
 //            while (1);
         params->cycle++;
     }
