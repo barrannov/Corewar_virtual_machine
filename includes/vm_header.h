@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 14:37:08 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:07:50 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef	struct			s_processor
 	int					is_alive;
 	int					player;
 	int					reg[REG_NUMBER];
-	unsigned int		pc;
+	int					pc;
 	char				carry;
 	int					waite_cycles;
 	int					you_need_to_wait;
@@ -113,9 +113,9 @@ int						get_arg_or_xor_and(t_param *params, t_processor
 int						get_move_or_xor_and(char val);
 int						check_args_or_xor_and(t_val *val);
 short int				count_steps(t_val *val, short int opcode);
-unsigned int			handle_dir(t_param *param, t_processor *proc,
+int						handle_dir(t_param *param, t_processor *proc,
 		short int am_byte, short int pos);
-unsigned int			handle_ind(t_param *param, t_processor *proc, int pos,
+int						handle_ind(t_param *param, t_processor *proc, int pos,
 		char idx, char label);
 /*
 ** controller

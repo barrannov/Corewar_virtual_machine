@@ -6,27 +6,27 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 12:31:54 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:40:22 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../includes/vm_header.h"
-static unsigned int	get_res_from_hex(unsigned char *ptr, int am_byte)
+static int	get_res_from_hex(unsigned char *ptr, int am_byte)
 {
-	unsigned int	result;
+	int	result;
 
 	if (am_byte == 4)
-		result = (unsigned int)ptr[0] * 0x1000000 + ptr[1] * 0x10000 + ptr[2] *
+		result = (int)ptr[0] * 0x1000000 + ptr[1] * 0x10000 + ptr[2] *
 			0x100 + ptr[3];
 	else
-		result = (unsigned int)ptr[0] * 0x100 + ptr[1];
+		result = (int)ptr[0] * 0x100 + ptr[1];
 	return (result);
 }
 
 /* This function takes sting (4 chars), which contain 4 bytes in hex, and
  * transforms this string to unsigned int.  
  */
-unsigned int		handle_dir(t_param *param, t_processor *proc,
+int		handle_dir(t_param *param, t_processor *proc,
 		short int am_byte, short int pos)
 {
 	unsigned char	dir[am_byte];
@@ -50,15 +50,18 @@ unsigned int		handle_dir(t_param *param, t_processor *proc,
  * bytes - returns int
  */
 
-unsigned int		handle_ind(t_param *param, t_processor *proc, int pos,
+int		handle_ind(t_param *param, t_processor *proc, int pos,
 		char idx, char label)
 {
+	int adr;
+
+	adr = handle_dir(param, proc, 2, pos);
+	if (adr < 0)
+		adr = adr + MEM_SIZE;
 	if (idx == 0)
-		return (handle_dir(param, proc, (short)label,
-					handle_dir(param, proc, 2, pos)));
+		return (handle_dir(param, proc, (short)label, adr));
 	else
-		return (handle_dir(param, proc, (short)label,
-					handle_dir(param, proc, 2, pos) % IDX_MOD));
+		return (handle_dir(param, proc, (short)label, adr % IDX_MOD));
 }
 /* Hande ind:
  * pos is position, where starts first indirect element.

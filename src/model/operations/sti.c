@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:41:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 19:03:49 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:30:21 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,22 @@ static int			check_args_sti(t_val *val)
 }
 
 static void			write_value(t_param *params, t_processor *proc,
-		short int r, short int adr)
+		short int r, int adr)
 {
-	params->map[adr % MEM_SIZE] = proc->reg[r] >> 24;
-	params->map[(adr + 1) % MEM_SIZE] = (proc->reg[r] << 8) >> 24;
-	params->map[(adr + 2) % MEM_SIZE] = (proc->reg[r] << 16) >> 24;
-	params->map[(adr + 3) % MEM_SIZE] = (proc->reg[r] << 24) >> 24;
-	params->map_c[adr % MEM_SIZE] = proc->player;
-	params->map_c[(adr + 1) % MEM_SIZE] = proc->player;
-	params->map_c[(adr + 2) % MEM_SIZE] = proc->player;
-	params->map_c[(adr + 3) % MEM_SIZE] = proc->player;
+	adr = adr % MEM_SIZE;
+	if (adr < 0)
+		adr = adr + MEM_SIZE;
+	params->map[adr] = proc->reg[r] >> 24;
+	params->map[adr + 1] = (proc->reg[r] << 8) >> 24;
+	params->map[adr + 2] = (proc->reg[r] << 16) >> 24;
+	params->map[adr + 3] = (proc->reg[r] << 24) >> 24;
+	params->map_c[adr] = proc->player;
+	params->map_c[adr + 1] = proc->player;
+	params->map_c[adr + 2] = proc->player;
+	params->map_c[adr + 3] = proc->player;
 }
 
-static short int	arg_1(t_param *params, t_processor *proc, t_val *val)
+static int	arg_1(t_param *params, t_processor *proc, t_val *val)
 {
 	if (val->val2 == 1)
 		return (proc->reg[params->map[(proc->pc + 3) % MEM_SIZE] - 1]);
@@ -46,7 +49,7 @@ static short int	arg_1(t_param *params, t_processor *proc, t_val *val)
 		return (handle_ind(params, proc, 3, 1, 2));
 }
 
-static short int	arg_2(t_param *params, t_processor *proc, t_val *val)
+static int	arg_2(t_param *params, t_processor *proc, t_val *val)
 {
 	char	pos;
 
@@ -61,8 +64,8 @@ static short int	arg_2(t_param *params, t_processor *proc, t_val *val)
 void				handle_sti(t_param *params, t_processor *proc)
 {
 	t_val		*val;
-	short int	arg1;
-	short int	arg2;
+	int			arg1;
+	int			arg2;
 	short int	reg_n;
 
 	val = malloc(sizeof(t_val));

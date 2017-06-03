@@ -6,7 +6,7 @@
 /*   By: dkhlopov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 20:32:12 by dkhlopov          #+#    #+#             */
-/*   Updated: 2017/06/02 23:20:08 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:08:17 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 void	handle_zjmp(t_param *params, t_processor *proc)
 {
+	short res;
+
 	if (proc->carry)
-		proc->pc += (handle_dir(params, proc, 2, 1) % IDX_MOD) % MEM_SIZE;
+	{
+		res = (handle_dir(params, proc, 2, 1) % IDX_MOD) % MEM_SIZE;
+		proc->pc += res;
+		if (proc->pc < 0)
+			proc->pc = MEM_SIZE + proc->pc;
+	}
 	else
 		proc->pc = (proc->pc + 3) % MEM_SIZE;
 }
