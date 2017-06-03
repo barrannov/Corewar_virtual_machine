@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 12:13:10 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 00:24:06 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 15:06:50 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,34 +75,18 @@ static void	print_map_vis(WINDOW *wnd, t_param *param)
 	wrefresh(wnd);
 }
 
-void		key_hook(int key)
-{
-	static int flag = 0;
-	
-	while (1)
-	{
-		if (key == 27)
-		{
-			endwin();
-			exit(1);
-		}
-		if (key == 's')
-			flag++;
-		if (flag % 2 == 1)
-			return ;
-	}
-}
-
-void		visualize(t_param *param, int key)
+void		visualize(t_param *param)
 {
 	WINDOW *wnd;
 	WINDOW *status;
 
+	initscr();
+	noecho();
 	wnd = newwin(64, 201, 1, 1);
-	status = newwin(100, 20, 65, 1);
+	status = newwin(100, 100, 65, 1);
 	print_status(param, status);
 	print_map_vis(wnd, param);
 	refresh();
 	wrefresh(status);
-	key_hook(key);
+	key_hook(1);
 }

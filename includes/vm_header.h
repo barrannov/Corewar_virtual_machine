@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 00:16:44 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 14:37:08 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ t_player				*read_file_vm(char *file, int numb);
 void					vm_get_flags(t_fl *flags, char **argv);
 int						digit(char *str);
 
-void					visualize(t_param *param, int key);
+void					visualize(t_param *param);
 void					print_status(t_param *param, WINDOW *status);
+void					key_hook(int flag);
 #endif
