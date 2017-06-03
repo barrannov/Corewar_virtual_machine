@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 12:13:10 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 15:06:50 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:43:30 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,5 @@ void		visualize(t_param *param)
 	refresh();
 	wrefresh(status);
 	key_hook(1);
+	usleep(50000);
 }

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 19:35:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 19:21:09 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:31:09 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	write_value(t_param *params, t_processor *proc, unsigned int r)
 {
-	short int	adr;
-	short int	ind;
+	int	adr;
+	int	ind;
 
 	ind = (handle_dir(params, proc, 2, 3));
 	adr = proc->pc + (ind % IDX_MOD);
@@ -33,9 +33,9 @@ static void	write_value(t_param *params, t_processor *proc, unsigned int r)
 
 void		handle_st(t_param *params, t_processor *proc)
 {
-	t_val			*val;
-	unsigned int	r1;
-	unsigned int	r2;
+	t_val		*val;
+	short int	r1;
+	short int	r2;
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
