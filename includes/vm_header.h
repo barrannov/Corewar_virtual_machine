@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 17:26:46 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 20:44:18 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct			s_player
 	header_t			*header;
 	int					live;
 	int					live_amount;
+	int					pos;
 	int					numb;
 	unsigned char		*commands;
 	struct s_player		*next;
@@ -53,6 +54,7 @@ typedef	struct			s_processor
 	unsigned int		pc;
 	char				carry;
 	int					waite_cycles;
+	int					you_need_to_wait;
 	struct s_processor	*next;
 }						t_processor;
 

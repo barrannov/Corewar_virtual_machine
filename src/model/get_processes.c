@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:34:21 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 17:27:25 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 21:06:27 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void add_process(t_param *params, int pc, int numb)
 	t_processor *tmp;
 //TODO put new proccesses at the top
 	new = malloc(sizeof(t_processor) + 1);
-	new->pc = (unsigned int)pc;
+	new->pc = (short int)pc;
 	init_reg(new);
 	new->reg[0] = numb;
 	new->carry = 0;
@@ -53,7 +53,7 @@ void	get_processes(t_param *param)
 	tmp = param->players;
 	while (tmp)
 	{
-		add_process(param, 0, tmp->numb);
+		add_process(param, tmp->pos, tmp->numb);
 		tmp = tmp->next;
 	}
 }

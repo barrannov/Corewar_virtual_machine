@@ -166,11 +166,13 @@ void print_map(t_param *param)//this func must be in view
 
 }
 
-void unset_is_alive_process(t_processor *proc) {
+void	unset_is_alive_process(t_processor *proc)
+{
     t_processor *live_proc;
 
     live_proc = proc;
-    while (live_proc) {
+    while (live_proc)
+	{
         live_proc->is_alive = 0;
         live_proc = live_proc->next;
     }
@@ -216,26 +218,19 @@ void special_for_denchik(t_param *params, t_fl *flags)
     t_processor *temp_proc;
 
     temp_proc = params->processors;
-    ft_putchar('\n');
-
-    ft_putstr("1 proc pc: ");
-    ft_putnbr(params->processors->pc);
-    ft_putchar('\n');
-    ft_putchar('\n');
-
     while (temp_proc)
 	{
-//		if (params->cycle == flags->dump)
-//		{
-//			print_map(params);
-//			//exit (1);
-//		}
+		if (params->cycle == flags->dump && params->cycle > 0)
+		{
+			print_map(params);
+			exit (1);
+		}
 //        if(params->cycle == 2450)
 //        {
 //
 //        }
 
-          set_command_for_proc(temp_proc, params);
+        set_command_for_proc(temp_proc, params);
         execute_process(temp_proc, params);
 //        if(params->cycle > 2526)
 //        {
@@ -246,7 +241,8 @@ void special_for_denchik(t_param *params, t_fl *flags)
 //                 temp_proc->pc = (temp_proc->pc + 1) % MEM_SIZE;
         temp_proc = temp_proc->next;
     }
-    if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0) {
+    if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0)
+	{
         handle_check(params);
         unset_is_alive_process(params->processors);
     }
@@ -256,11 +252,13 @@ void algorithm(t_param *params, t_fl *flags) {
 
     params->cycle = 0;
     while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
-    {
-//        if(params->cycle == 835)
-//        {
+	{
+		visualize(params);
+
+//        if(params->cycle > 3071)
+  //      {
 //
-//        }
+  //      }
         special_for_denchik(params, flags);
         decrease_wait_cycles(params);
 //      if(params->cycle > 5978)
@@ -280,6 +278,7 @@ void algorithm(t_param *params, t_fl *flags) {
 //            while (1);
         params->cycle++;
     }
+	endwin();
 	if (params->cycle < flags->dump)
 		print_map(params);
     output_the_winner(params->players);

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:29:08 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 18:06:18 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 19:08:08 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	copy_process_on_the_top(t_param *param, t_processor *proc,
 	new = (t_processor *)malloc(sizeof(t_processor));
 	new->carry = proc->carry;
 	new->is_alive = 0;
+	new->player = proc->player;
 	new->waite_cycles = 0;
 	new->pc = pc;
 	while (i < 16)

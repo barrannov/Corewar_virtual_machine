@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:29:15 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 16:19:50 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/02 20:51:30 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	create_map(t_player *players, t_param *param)
 	while (temp_players)
 	{
 		add_to_map(temp_players, param, pc);
+		temp_players->pos = pc;
 		temp_players = temp_players->next;
 		pc += MEM_SIZE / param->amount_champs;
 	}
