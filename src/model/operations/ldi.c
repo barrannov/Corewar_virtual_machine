@@ -60,9 +60,6 @@ void				handle_ldi(t_param *params, t_processor *proc)
 		proc->reg[params->map[(proc->pc + count_steps(val, 10) - 1) % MEM_SIZE]
 			- 1] = handle_dir(params, proc, REG_SIZE, (((arg1 + arg2)
 							% IDX_MOD) % MEM_SIZE));
-		proc->reg[params->map[(proc->pc + count_steps(val, 10) - 1) % MEM_SIZE]
-			- 1] == 0 ? (proc->carry = 1) :
-			(proc->carry = 0);
 		proc->pc = (proc->pc + count_steps(val, 10)) % MEM_SIZE;
 	}
 	else
