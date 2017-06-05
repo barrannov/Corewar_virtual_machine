@@ -47,14 +47,14 @@ typedef struct			s_player
 
 typedef	struct			s_processor
 {
-	int					you_need_to_wait;
 	int					is_alive;
 	int					player;
 	int					reg[REG_NUMBER];
 	int					pc;
 	char				carry;
 	int					waite_cycles;
-	struct s_processor	*next;
+    unsigned char       temp_command;
+    struct s_processor	*next;
 }						t_processor;
 
 typedef struct			s_val

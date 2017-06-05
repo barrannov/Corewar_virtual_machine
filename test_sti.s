@@ -8,23 +8,3 @@ live %2
 fork %10
 live %2
 fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-fork %10
-live %2
-
