@@ -76,8 +76,6 @@ void				handle_sti(t_param *params, t_processor *proc)
 		arg1 = arg_1(params, proc, val);
 		arg2 = arg_2(params, proc, val);
 		write_value(params, proc, reg_n, proc->pc + arg1 + arg2);
-		proc->reg[reg_n] == 0 ? (proc->carry = 1) :
-			(proc->carry = 0);
 		proc->pc = (proc->pc + count_steps(val, 11)) % MEM_SIZE;
 	}
 	else
