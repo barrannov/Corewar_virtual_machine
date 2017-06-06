@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 19:39:49 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 22:33:47 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void				vm_print_usage(void)
 			"    -n N      : Means that Player after this flag will be \n"
 			"                Player number N. If there is no -n flag,\n"
 			"                the next available number will be given to \n"
-			"                Player \n"
+			"                Player, starting from 1 \n"
 			"    -v        : Visualisation option\n");
 }
 

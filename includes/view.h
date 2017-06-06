@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:21:49 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 20:09:16 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 22:54:54 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # define MAX_UINT = 4294967295
 
-#include "libft.h"
+#include "vm_header.h"
 
 void	print_cant_read_source_file(char *name);
 void	vm_print_usage(void);
 void	dump_error(void);
 void	say_live(char *name);
+void	print_map(unsigned char *map);
+char	*ft_itoa_base(int value, int base);
 
 #endif //VIRTUAL_MACHINE_VIEW_H

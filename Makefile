@@ -6,7 +6,7 @@
 #    By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/29 11:45:35 by oklymeno          #+#    #+#              #
-#    Updated: 2017/06/03 14:41:47 by oklymeno         ###   ########.fr        #
+#    Updated: 2017/06/06 22:54:11 by oklymeno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,10 @@ SOURCES=src/controller/main.c\
 		src/view/usage.c\
 		src/view/visualize.c\
 		src/view/status.c\
+		src/view/print_map.c\
 		src/view/key_hook.c\
+		src/view/say_live.c\
+		src/view/ft_itoa_base.c\
 		src/model/logic.c\
 		src/model/create_map.c\
 		src/model/operations/ld.c\
