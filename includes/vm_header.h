@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 18:07:50 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 22:28:53 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef	struct			s_fl
 {
 	int	dump;
 	int vis;
+	int	play;
 }						t_fl;
 
 /*
@@ -76,7 +77,6 @@ typedef	struct			s_fl
 void					sort_players(t_param *param);
 void					handle_check(t_param *param);
 int						check_args(t_val *val);
-void					add_process(t_param *params, short pc, int numb);
 void					logic(t_player *players, t_fl *flags);
 void					set_cycles_ld(t_processor *pro);
 int						amount_lst_el(t_processor *procs);
@@ -93,7 +93,6 @@ void					handle_st(t_param *params, t_processor *proc);
 void					handle_add(t_param *params, t_processor *proc);
 void					handle_sub(t_param *params, t_processor *proc);
 void					handle_and(t_param *params, t_processor *proc);
-void					handle_live(t_param *params, t_processor *proc);
 void					handle_or(t_param *params, t_processor *proc);
 void					handle_xor(t_param *params, t_processor *proc);
 void					handle_ldi(t_param *params, t_processor *proc);
@@ -104,6 +103,8 @@ void					handle_lldi(t_param *params, t_processor *proc);
 void					handle_lld(t_param *params, t_processor *proc);
 void					handle_zjmp(t_param *params, t_processor *proc);
 void					handle_aff(t_param *params, t_processor *proc);
+void					handle_live(t_param *params, t_processor *proc,
+		int play);
 /*
 ** operation support
 */
@@ -115,7 +116,7 @@ short int				count_steps(t_val *val, short int opcode);
 int						handle_dir(t_param *param, t_processor *proc,
 		short int am_byte, short int pos);
 int						handle_ind(t_param *param, t_processor *proc, int pos,
-		char idx, char label);
+		char opcode);
 /*
 ** controller
 */
