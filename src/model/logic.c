@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 18:54:05 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 23:15:35 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int count_champs(t_player *players) {
     return (res);
 }
 
-void print_map(t_param *param)//this func must be in view
+/*void print_map(t_param *param)//this func must be in view
 {
     int i;
 
@@ -167,7 +167,7 @@ void print_map(t_param *param)//this func must be in view
     }
     printf("\n");
 
-}
+}*/
 
 void	unset_is_alive_process(t_processor *proc)
 {
@@ -236,7 +236,7 @@ void special_for_denchik(t_param *params, t_fl *flags)
 	{
 		if (params->cycle == flags->dump && params->cycle > 0)
 		{
-			print_map(params);
+			print_map(params->map);
 			exit (1);
 		}
         if(params->cycle == 25)
@@ -274,7 +274,6 @@ void algorithm(t_param *params, t_fl *flags)
 	{
 		if (flags->vis == 1) {
             visualize(params);
-          //  usleep(300000);
         }
 
         if(params->cycle > 4365)
@@ -301,7 +300,7 @@ void algorithm(t_param *params, t_fl *flags)
     }
 	endwin();
 	if (params->cycle < flags->dump)
-		print_map(params);
+		print_map(params->map);
     output_the_winner(params->players);
 }
 
@@ -319,7 +318,6 @@ void logic(t_player *players, t_fl *flags)
     param->cycle_to_die = CYCLE_TO_DIE;
 //    execute_command(param->processors, param);
     algorithm(param, flags); //start of algorithm
-    print_map(param);
 //    printf("step 2\n");
 //	execute_command(param->players->processors, param);
   //  print_map(param);
