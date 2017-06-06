@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:34:21 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 21:06:27 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 21:47:59 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,13 @@ void add_process(t_param *params, short pc, int numb)
 void	get_processes(t_param *param)
 {
 	t_player	*tmp;
+	int			numb;
 
+	numb = 0;
 	tmp = param->players;
 	while (tmp)
 	{
-		add_process(param, tmp->pos, tmp->numb);
+		add_process(param, tmp->pos, ++numb);
 		tmp = tmp->next;
 	}
 }
