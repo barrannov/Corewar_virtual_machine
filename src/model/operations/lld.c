@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:20:57 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 18:11:58 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 22:09:19 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		handle_lld(t_param *params, t_processor *proc)
 	if (val->val1 == 2)
 		arg = handle_dir(params, proc, 4, 2);
 	else if (val->val1 == 3)
-		arg = handle_ind(params, proc, 2, 0, 4);
+		arg = handle_ind(params, proc, 2, 13);
 	else
 	{
 		proc->pc = (proc->pc + 1) % MEM_SIZE;

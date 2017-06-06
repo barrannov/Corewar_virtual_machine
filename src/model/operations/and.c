@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:47:37 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 18:10:02 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 22:08:22 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		get_arg_or_xor_and(t_param *params, t_processor *proc, char val,
 	else if (val == 2)
 		return (handle_dir(params, proc, 4, pos));
 	else if (val == 3)
-		return (handle_ind(params, proc, pos, 1, 4));
+		return (handle_ind(params, proc, pos, 6));
 	else
 		return (0);
 }
