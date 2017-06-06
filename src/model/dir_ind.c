@@ -6,11 +6,12 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:11:01 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 18:40:22 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 22:16:24 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/vm_header.h"
+#include "../../includes/vm_header.h"
+
 static int	get_res_from_hex(unsigned char *ptr, int am_byte)
 {
 	int	result;
@@ -23,10 +24,12 @@ static int	get_res_from_hex(unsigned char *ptr, int am_byte)
 	return (result);
 }
 
-/* This function takes sting (4 chars), which contain 4 bytes in hex, and
- * transforms this string to unsigned int.  
- */
-int		handle_dir(t_param *param, t_processor *proc,
+/*
+** This function takes sting (4 chars), which contain 4 bytes in hex, and
+** transforms this string to unsigned int.
+*/
+
+int			handle_dir(t_param *param, t_processor *proc,
 		short int am_byte, short int pos)
 {
 	unsigned char	dir[am_byte];
@@ -45,29 +48,42 @@ int		handle_dir(t_param *param, t_processor *proc,
 	else
 		return ((int)res);
 }
-/* Function read "am_byte" bytes from memory at adress "pc + pos"
- * if we need to read 2 bytes, it returns short value, in case with 4
- * bytes - returns int
- */
 
-int		handle_ind(t_param *param, t_processor *proc, int pos,
-		char idx, char label)
+/*
+** Function read "am_byte" bytes from memory at adress "pc + pos"
+** if we need to read 2 bytes, it returns short value, in case with 4
+** bytes - returns int
+*/
+
+static char	get_label(char opcode)
 {
-	int adr;
+	if (opcode == 10 || opcode == 11 || opcode == 16)
+		return (2);
+	return (4);
+}
 
+int			handle_ind(t_param *param, t_processor *proc, int pos,
+		char opcode)
+{
+	int		adr;
+	char	label;
+
+	label = get_label(opcode);
 	adr = handle_dir(param, proc, 2, pos);
 	if (adr < 0)
 		adr = adr + MEM_SIZE;
-	if (idx == 0)
+	if (opcode == 2 || opcode == 6 || opcode == 10 || opcode == 11)
 		return (handle_dir(param, proc, (short)label, adr));
 	else
 		return (handle_dir(param, proc, (short)label, adr % IDX_MOD));
 }
-/* Hande ind:
- * pos is position, where starts first indirect element.
- * idx - flag to see where we need to use %IDX_MOD
- * label - flag shows what size of memory need to read)
- *
- * function read "label" bytes from memory part, that we get whom result
- * 			of handle dir function
- */
+
+/*
+** Hande ind:
+** pos is position, where starts first indirect element.
+** idx - flag to see where we need to use %IDX_MOD
+** label - flag shows what size of memory need to read)
+**
+** function read "label" bytes from memory part, that we get whom result
+** 			of handle dir function
+*/
