@@ -27,7 +27,7 @@ void		handle_ld(t_param *params, t_processor *proc)
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
-	r = params->map[(proc->pc + 6) % MEM_SIZE];
+	r = params->map[(proc->pc + 6) % MEM_SIZE] - 1;
 	if (val->val1 == 2 && r > 0 && r < REG_NUMBER)
 		arg = handle_dir(params, proc, 4, 2);
 	else if (val->val1 == 3 && r > 0 && r < REG_NUMBER)

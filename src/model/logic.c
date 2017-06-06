@@ -272,12 +272,13 @@ void algorithm(t_param *params, t_fl *flags)
     params->cycle = 0;
     while (params->cycle_to_die > 0  && amount_lst_el(params->processors) > 0)
 	{
-		if (flags->vis == 1)
-			visualize(params);
+		if (flags->vis == 1) {
+            visualize(params);
+          //  usleep(300000);
+        }
 
-        if(params->cycle > 2554)
+        if(params->cycle > 4365)
         {
-
         }
         special_for_denchik(params, flags);
       //  decrease_wait_cycles(params);
@@ -288,9 +289,9 @@ void algorithm(t_param *params, t_fl *flags)
 //        ft_putstr("cycle_to_die: ");
 //        ft_putnbr(params->cycle_to_die);
 //        ft_putchar('\n');
-        ft_putstr("cycle: ");
-        ft_putnbr(params->cycle);
-        ft_putchar('\n');
+//        ft_putstr("cycle: ");
+//        ft_putnbr(params->cycle);
+//        ft_putchar('\n');
 //        ft_putstr("amount_proc: ");
 //        ft_putnbr(amount_lst_el(params->processors));
 //        ft_putchar('\n');

@@ -53,7 +53,7 @@ typedef	struct			s_processor
 	int					pc;
 	char				carry;
 	int					waite_cycles;
-    unsigned char       temp_command;
+    unsigned int       temp_command;
     struct s_processor	*next;
 }						t_processor;
 
