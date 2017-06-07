@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/model.h"
+#include "../../../includes/vm_header.h"
 
 void	handle_aff(t_param *params, t_processor *proc)
 {
@@ -21,7 +21,7 @@ void	handle_aff(t_param *params, t_processor *proc)
 	if (reg > 0 && reg < 16)
 	{
 		res = proc->reg[reg] % 256;
-		ft_putchar(res);
+//		ft_putchar(res);
 		proc->pc = (proc->pc + 2) % MEM_SIZE;
 	}
 	else

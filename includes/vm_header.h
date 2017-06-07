@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 22:37:35 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/03 18:07:50 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 # include "controller.h"
 # include "view.h"
-# include "op.h"
+# include "../op.h"
 # include "libft.h"
-# include "model.h"
 # include <stdio.h>
 # include <ncurses.h>
 
@@ -53,8 +52,8 @@ typedef	struct			s_processor
 	int					pc;
 	char				carry;
 	int					waite_cycles;
-    unsigned int       temp_command;
-    struct s_processor	*next;
+	unsigned	int		temp_command;
+	struct s_processor	*next;
 }						t_processor;
 
 typedef struct			s_val
@@ -85,6 +84,14 @@ void					create_map(t_player *players, t_param *param);
 //void					print_map(t_param *param);
 void					get_vis(t_fl *flags, char **argv);
 void					get_processes(t_param *param);
+void					execute_command(t_processor *process, t_param *param);
+void					set_command_for_proc(t_processor *process, t_param *param);
+void					execute_process(t_processor *process, t_param *param);
+int						count_champs(t_player *players);
+void					output_the_winner(t_player *players);
+void					unset_is_alive_process(t_processor *proc);
+void					unset_live_amount(t_param *param);
+int						amount_lst_el_players(t_player *player);
 /*
 ** commands
 */
@@ -103,8 +110,7 @@ void					handle_lldi(t_param *params, t_processor *proc);
 void					handle_lld(t_param *params, t_processor *proc);
 void					handle_zjmp(t_param *params, t_processor *proc);
 void					handle_aff(t_param *params, t_processor *proc);
-void					handle_live(t_param *params, t_processor *proc,
-		int play);
+void					handle_live(t_param *params, t_processor *proc);
 /*
 ** operation support
 */

@@ -68,7 +68,7 @@ void				handle_sti(t_param *params, t_processor *proc)
 	int			arg2;
 	short int	reg_n;
 
-	val = malloc(sizeof(t_val));
+	val = (t_val*)malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
 	reg_n = params->map[(proc->pc + 2) % MEM_SIZE] - 1;
 	if (check_args_sti(val))
