@@ -81,7 +81,6 @@ void					set_cycles_ld(t_processor *pro);
 int						amount_lst_el(t_processor *procs);
 void					set_cycles_live(t_processor *proc);
 void					create_map(t_player *players, t_param *param);
-//void					print_map(t_param *param);
 void					get_vis(t_fl *flags, char **argv);
 void					get_processes(t_param *param);
 void					execute_command(t_processor *process, t_param *param);
