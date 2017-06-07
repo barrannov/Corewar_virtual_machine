@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 12:13:10 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 18:43:30 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/06 21:48:42 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	init_colors(t_player *players)
 		init_pair(tmp->numb, color, COLOR_BLACK);
 		init_pair(255 - tmp->numb, 7, color);
 		color++;
+		refresh();
 		tmp = tmp->next;
 	}
 }
