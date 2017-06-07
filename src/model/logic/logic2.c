@@ -6,7 +6,7 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 22:55:06 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/06 22:59:44 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:10:48 by abaranov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,3 @@ int					count_champs(t_player *players)
 	}
 	return (res);
 }
-
-//void				print_map(t_param *param)
-//{
-//	int i;
-//
-//	i = -1;
-//	while (++i < MEM_SIZE)
-//	{
-//		if (i % 64 == 0)
-//		{
-//			printf("\n");
-//			printf("row # ");
-//		}
-//		if (param->map[i] == 0)
-//			printf("%.2x ", param->map[i]);
-//		else
-//			printf("\033[32;1m%.2x\033[0m ", param->map[i]);
-//	}
-//	printf("\n");
-//}

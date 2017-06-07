@@ -52,7 +52,7 @@ void		get_processes(t_param *param)
 	tmp = param->players;
 	while (tmp)
 	{
-		add_process(param, tmp->pos, ++numb, tmp->numb);
+		add_process(param, (short)tmp->pos, ++numb, tmp->numb);
 		tmp = tmp->next;
 	}
 }

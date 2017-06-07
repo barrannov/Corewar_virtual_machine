@@ -6,7 +6,7 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 23:00:07 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/06 23:01:59 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:19:01 by abaranov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,16 @@ static	void		help_set(t_processor *process)
 		process->waite_cycles = 2;
 }
 
-void				set_command_for_proc(t_processor *process, t_param *param) {
-    if (process->waite_cycles != 0)
-        return;
-    process->temp_command = param->map[process->pc];
-    if (process->temp_command == 1)
-    {
-        process->is_alive++;
-        process->waite_cycles = 10;
-}
+void				set_command_for_proc(t_processor *process, t_param *param)
+{
+	if (process->waite_cycles != 0)
+		return ;
+	process->temp_command = param->map[process->pc];
+	if (process->temp_command == 1)
+	{
+		process->is_alive++;
+		process->waite_cycles = 10;
+	}
 	else if (process->temp_command == 2)
 		process->waite_cycles = 5;
 	else if (process->temp_command == 3)

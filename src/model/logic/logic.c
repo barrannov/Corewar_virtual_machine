@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 19:25:05 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:26:40 by abaranov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,9 @@ void				special_for_denchik(t_param *params, t_fl *flags)
 {
 	t_processor *temp_proc;
 
-           int i = 0;
 	temp_proc = params->processors;
-
 	while (temp_proc)
 	{
-        if(params->cycle == 10992)
-        {
-
-
-        }
 		if (params->cycle == flags->dump && params->cycle > 0)
 		{
 			print_map(params->map);
@@ -60,7 +53,6 @@ void				special_for_denchik(t_param *params, t_fl *flags)
 		set_command_for_proc(temp_proc, params);
 		execute_process(temp_proc, params);
 		temp_proc = temp_proc->next;
-        i++;
 	}
 	if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0)
 	{
@@ -75,11 +67,9 @@ void				algorithm(t_param *params, t_fl *flags)
 	params->cycle = 0;
 	while (params->cycle_to_die > 0 && params->amount_proc > 0)
 	{
-
 		if (flags->vis == 1)
 			visualize(params);
 		special_for_denchik(params, flags);
-
 		params->cycle++;
 	}
 	endwin();
@@ -92,8 +82,6 @@ void				logic(t_player *players, t_fl *flags)
 {
 	t_param *param;
 
-
-    //TODO too big champion error handle
 	param = malloc(sizeof(t_param));
 	param->processors = NULL;
 	param->amount_champs = count_champs(players);
@@ -105,4 +93,3 @@ void				logic(t_player *players, t_fl *flags)
 	algorithm(param, flags);
 	print_map(param->map);
 }
-

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:45:48 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/02 19:04:53 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 19:46:22 by abaranov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void		handle_fork(t_param *param, t_processor *proc)
 	unsigned int	adr;
 
 	param->amount_proc++;
-	adr = (proc->pc + (handle_dir(param, proc, 2, 1) % IDX_MOD)) % MEM_SIZE;
+	adr = (unsigned)(proc->pc +
+			(handle_dir(param, proc, 2, 1) % IDX_MOD)) % MEM_SIZE;
 	copy_process_on_the_top(param, proc, adr);
 	proc->pc = (proc->pc + 3) % MEM_SIZE;
 }

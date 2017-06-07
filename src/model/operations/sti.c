@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:41:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 20:05:45 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:33:34 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void			write_value(t_param *params, t_processor *proc,
 	params->map_c[adr + 3] = 256 - proc->player;
 }
 
-static int	arg_1(t_param *params, t_processor *proc, t_val *val)
+static int			arg_1(t_param *params, t_processor *proc, t_val *val)
 {
 	if (val->val2 == 1)
 		return (proc->reg[params->map[(proc->pc + 3) % MEM_SIZE] - 1]);
@@ -49,7 +49,7 @@ static int	arg_1(t_param *params, t_processor *proc, t_val *val)
 		return (handle_ind(params, proc, 3, 11));
 }
 
-static int	arg_2(t_param *params, t_processor *proc, t_val *val)
+static int			arg_2(t_param *params, t_processor *proc, t_val *val)
 {
 	char	pos;
 

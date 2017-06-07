@@ -6,15 +6,21 @@
 /*   By: dkhlopov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 20:32:12 by dkhlopov          #+#    #+#             */
-/*   Updated: 2017/06/07 20:29:18 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:33:22 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
+<<<<<<< HEAD
 void	handle_zjmp(t_param *params, t_processor *proc)
 {
 	short	res;
+=======
+void				handle_zjmp(t_param *params, t_processor *proc)
+{
+	short res;
+>>>>>>> fbeaa32599e452e5efc4a9e78cef86257b88da6b
 
 	if (proc->carry)
 	{
