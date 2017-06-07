@@ -84,7 +84,7 @@ void				set_command_for_proc(t_processor *process, t_param *param) {
     process->temp_command = param->map[process->pc];
     if (process->temp_command == 1)
     {
-        process->is_alive++;
+       	process->is_alive++;
         process->waite_cycles = 10;
 }
 	else if (process->temp_command == 2)

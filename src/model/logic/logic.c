@@ -62,7 +62,7 @@ void				special_for_denchik(t_param *params, t_fl *flags)
 		temp_proc = temp_proc->next;
         i++;
 	}
-	if (params->cycle % params->cycle_to_die == 0 && params->cycle > 0)
+	if (params->cycle  % params->cycle_to_die== 0 && params->cycle > 0)
 	{
 		handle_check(params);
 		unset_is_alive_process(params->processors);
