@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/03 18:07:50 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:20:02 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ int						digit(char *str);
 
 void					visualize(t_param *param);
 void					print_status(t_param *param, WINDOW *status);
+void					print_size_error(char *name);
 void					key_hook(int flag);
 #endif

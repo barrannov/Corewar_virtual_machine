@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 16:32:31 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/01 17:55:19 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:23:39 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_player		*read_file_vm(char *file, int numb)
 	header = (header_t *)res;
 	header->magic = move_bits(header->magic);
 	header->prog_size = move_bits(header->prog_size);
+	if (header->prog_size > CHAMP_MAX_SIZE)
+		print_size_error(header->prog_name);
 	if (header->magic != COREWAR_EXEC_MAGIC)
 		print_cant_read_source_file(file);
 	return (get_player(header, fd, numb));

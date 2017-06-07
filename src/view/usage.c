@@ -6,11 +6,19 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 22:33:47 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:25:10 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm_header.h"
+
+void				print_size_error(char *name)
+{
+	ft_putstr_fd("Player ", 2);
+	ft_putstr_fd(name, 2);
+	ft_putstr_fd(" is too big for this machine\n", 2);
+	exit(1);
+}
 
 /*
 ** prints usage
