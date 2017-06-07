@@ -6,19 +6,16 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 21:42:54 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/06 21:46:57 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:53:03 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm_header.h"
 
-void				delete_dead_processes(t_processor **str)
+static void			delete_first(t_processor **str)
 {
-	t_processor	*prev;
 	t_processor	*cur;
 	t_processor	*tmp;
-	t_processor	*next;
-	t_processor	*start;
 
 	cur = (*str);
 	while (cur && cur->is_alive == 0)
@@ -28,6 +25,24 @@ void				delete_dead_processes(t_processor **str)
 		tmp->next = NULL;
 		free(tmp);
 	}
+}
+
+static void			free_tmp(t_processor *tmp)
+{
+	tmp->next = NULL;
+	free(tmp);
+}
+
+void				delete_dead_processes(t_processor **str)
+{
+	t_processor	*prev;
+	t_processor	*cur;
+	t_processor	*tmp;
+	t_processor	*next;
+	t_processor	*start;
+
+	delete_first(str);
+	cur = (*str);
 	start = cur;
 	if (amount_lst_el(cur) > 0)
 		while (cur->next)
@@ -37,8 +52,7 @@ void				delete_dead_processes(t_processor **str)
 			{
 				next = cur->next->next;
 				tmp = cur->next;
-				tmp->next = NULL;
-				free(tmp);
+				free_tmp(tmp);
 				cur->next = next;
 				prev->next = cur->next;
 			}
