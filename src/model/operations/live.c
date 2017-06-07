@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 18:17:30 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 23:15:59 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 19:47:48 by abaranov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	live_to_chemp(t_player *players, int arg)
 		{
 			temp_player->live = 1;
 			temp_player->live_amount++;
-			//say_live(temp_player->header->prog_name);
+			say_live(temp_player->header->prog_name);
 		}
 		else
 			temp_player->live = 0;
@@ -37,6 +37,5 @@ void	handle_live(t_param *params, t_processor *proc)
 
 	arg = handle_dir(params, proc, 4, 1);
 	live_to_chemp(params->players, arg);
-	//proc->is_alive++;
 	proc->pc = (proc->pc + 5) % MEM_SIZE;
 }

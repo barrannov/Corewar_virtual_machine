@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 17:16:27 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/29 21:05:33 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 19:49:02 by abaranov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	handle_aff(t_param *params, t_processor *proc)
 	if (reg > 0 && reg < 16)
 	{
 		res = proc->reg[reg] % 256;
-//		ft_putchar(res);
+		ft_putchar(res);
 		proc->pc = (proc->pc + 2) % MEM_SIZE;
 	}
 	else
