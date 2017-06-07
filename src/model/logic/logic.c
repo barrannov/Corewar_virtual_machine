@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 22:48:08 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/07 19:25:05 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void				special_for_denchik(t_param *params, t_fl *flags)
 
 void				algorithm(t_param *params, t_fl *flags)
 {
-	int i;
 	params->cycle = 0;
 	while (params->cycle_to_die > 0 && params->amount_proc > 0)
 	{
