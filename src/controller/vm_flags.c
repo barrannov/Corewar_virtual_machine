@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 18:00:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 21:02:20 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 21:37:35 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,10 @@ void	get_vis(t_fl *flags, char **argv)
 
 void	vm_get_flags(t_fl *flags, char **argv)
 {
-	int n;
-
-	n = -1;
 	flags->dump = 0;
 	flags->vis = 0;
-	flags->play = 0;
 	get_dump(flags, argv);
 	get_vis(flags, argv);
-	while (argv[++n])
-		if (!ft_strcmp("-p", argv[n]))
-			flags->play = 1;
 }
 
 int		vm_get_numb(char **argv, int n, int *numb)

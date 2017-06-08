@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 17:41:23 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 20:33:34 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:38:30 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void				handle_sti(t_param *params, t_processor *proc)
 	}
 	else
 		proc->pc = (proc->pc + count_steps(val, 11)) % MEM_SIZE;
+	free(val);
 }

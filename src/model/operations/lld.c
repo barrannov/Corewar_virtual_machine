@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:20:57 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 22:09:19 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:37:36 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void		handle_lld(t_param *params, t_processor *proc)
 		return ;
 	}
 	load_value(params, proc, arg);
+	free(val);
 }
