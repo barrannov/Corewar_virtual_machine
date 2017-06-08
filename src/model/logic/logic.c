@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 20:26:40 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/07 22:07:35 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void				algorithm(t_param *params, t_fl *flags)
 		special_for_denchik(params, flags);
 		params->cycle++;
 	}
-	endwin();
+	if (flags->vis == 1)
+		endwin();
 	if (params->cycle < flags->dump)
 		print_map(params->map);
 	output_the_winner(params->players);

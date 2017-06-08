@@ -6,7 +6,7 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 21:42:54 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/07 20:53:03 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/07 22:02:24 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void			delete_first(t_processor **str)
 		tmp = cur;
 		cur = cur->next;
 		tmp->next = NULL;
+		if (tmp)
 		free(tmp);
 	}
 }
@@ -41,10 +42,10 @@ void				delete_dead_processes(t_processor **str)
 	t_processor	*next;
 	t_processor	*start;
 
-	delete_first(str);
 	cur = (*str);
+	delete_first(&cur);
 	start = cur;
-	if (amount_lst_el(cur) > 0)
+	if (cur && cur->next)
 		while (cur->next)
 		{
 			prev = cur;
