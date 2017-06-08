@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 22:07:35 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:29:14 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,6 @@ void				special_for_denchik(t_param *params, t_fl *flags)
 	temp_proc = params->processors;
 	while (temp_proc)
 	{
-   //     if(temp_proc && temp_proc->pc > 4096)
-     //   {
-       //     temp_proc->pc = temp_proc->pc % MEM_SIZE;
-        //}
-  //      if (temp_proc->index == 87 && params->cycle == 7210)
-   //     {
-//
-  //      }
 		if (params->cycle == flags->dump && params->cycle > 0)
 		{
 			print_map(params->map);
@@ -73,23 +65,12 @@ void				special_for_denchik(t_param *params, t_fl *flags)
 void				algorithm(t_param *params, t_fl *flags)
 {
 	params->cycle = 0;
-	while (params->cycle_to_die > 0 && params->amount_proc > 0) {
-        if (params->cycle == 7300) {
-
-        }
-        if (flags->vis == 1 && params->cycle >  2480)
-        {
-            visualize(params);
-          // usleep(800000);
-    }
+	while (params->cycle_to_die > 0 && params->amount_proc > 0)
+	{
+		if (flags->vis == 1)
+			visualize(params);
 		special_for_denchik(params, flags);
 		params->cycle++;
-//		ft_putstr("cycle: ");
-//		ft_putnbr(params->cycle);
-//		ft_putchar('\n');
-//        ft_putstr("camount_proc : ");
-//        ft_putnbr(params->amount_proc);
-//        ft_putchar('\n');
 	}
 	if (flags->vis == 1)
 		endwin();
@@ -112,5 +93,4 @@ void				logic(t_player *players, t_fl *flags)
     param->amount_champs = 0;
 	param->cycle_to_die = CYCLE_TO_DIE;
 	algorithm(param, flags);
-	//print_map(param->map);
 }

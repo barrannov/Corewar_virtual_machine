@@ -6,23 +6,24 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 21:42:54 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/08 19:59:30 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:08:49 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm_header.h"
 
-void deletefirst (t_processor **head) {
-	t_processor *tmp = *head;
-	if (tmp == NULL) return;
-	*head = tmp->next;
-	free (tmp);
-}
-
 static void			delete_first(t_processor **str)
 {
+	t_processor *tmp;
+
 	while (*str && (*str)->is_alive == 0)
-		deletefirst(str);
+	{
+		tmp = (*str);
+		if (tmp == NULL)
+			return ;
+		(*str) = tmp->next;
+		free(tmp);
+	}
 }
 
 static void			free_tmp(t_processor *tmp)
@@ -62,40 +63,21 @@ void				delete_dead_processes(t_processor **str)
 
 int					more_then_nbr_lives_players(t_player *player)
 {
-    t_player *temp_play;
+	t_player	*temp_play;
 
-    temp_play = player;
-    while (temp_play)
-    {
-        if (temp_play->live_amount >= NBR_LIVE)
-            return (1);
-        temp_play = temp_play->next;
-    }
-    return (0);
+	temp_play = player;
+	while (temp_play)
+	{
+		if (temp_play->live_amount >= NBR_LIVE)
+			return (1);
+		temp_play = temp_play->next;
+	}
+	return (0);
 }
-//int					more_then_nbr_lives(t_processor *processor)
-//{
-//	t_processor *temp_proc;
-//
-//	temp_proc = processor;
-//	while (temp_proc)
-//	{
-//		if (temp_proc->is_alive >= NBR_LIVE)
-//			return (1);
-//		temp_proc = temp_proc->next;
-//	}
-//	return (0);
-//}
 
 void				handle_check(t_param *param)
 {
 	delete_dead_processes(&param->processors);
-//    ft_putstr("cycle: ");
-//	ft_putnbr(param->cycle);
-//	ft_putchar('\n');
-//    ft_putstr("amount: ");
-//	ft_putnbr(param->amount_proc);
-//	ft_putchar('\n');
 	param->amount_proc = amount_lst_el(param->processors);
 	if (more_then_nbr_lives_players(param->players))
 	{

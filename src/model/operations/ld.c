@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:50:05 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 22:08:41 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:31:56 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void		handle_ld(t_param *params, t_processor *proc)
 	if ((val->val1 == 2 || val->val1 == 3) && r > 0 && r < REG_NUMBER)
 		load_value(params, proc, arg);
 	proc->pc = (proc->pc + count_steps(val, 2)) % MEM_SIZE;
+	free(val);
 }

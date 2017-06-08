@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 18:37:58 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 20:20:02 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:04:54 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void					output_the_winner(t_player *players);
 void					unset_is_alive_process(t_processor *proc);
 void					unset_live_amount(t_param *param);
 int						amount_lst_el_players(t_player *player);
+void					deletefirst(t_processor **head);
 /*
 ** commands
 */
