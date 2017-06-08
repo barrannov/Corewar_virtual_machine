@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 22:33:04 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/05/31 19:05:55 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:36:05 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	handle_add(t_param *params, t_processor *proc)
 	}
 	else
 		proc->pc = (proc->pc + count_steps(val, 4)) % MEM_SIZE;
+	free(val);
 }

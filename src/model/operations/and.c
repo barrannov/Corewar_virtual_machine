@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:47:37 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/08 19:54:02 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 21:15:35 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,17 @@ void	handle_and(t_param *params, t_processor *proc)
 	t_val	*val;
 	int		arg1;
 	int		arg2;
-	int		mv1;
 	int		index;
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
-	mv1 = get_move_or_xor_and(val->val1);
 	if (!check_args_or_xor_and(val))
 		proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
 	else
 	{
 		arg1 = get_arg_or_xor_and(params, proc, val->val1, 2);
-		arg2 = get_arg_or_xor_and(params, proc, val->val2, 2 + mv1);
+		arg2 = get_arg_or_xor_and(params, proc, val->val2, 2 +
+				get_move_or_xor_and(val->val1));
 		index = params->map[(proc->pc + count_steps(val, 6) - 1)
 			% MEM_SIZE] - 1;
 		if (index >= 0 && index <= 15)
@@ -75,4 +74,5 @@ void	handle_and(t_param *params, t_processor *proc)
 		}
 		proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
 	}
+	free(val);
 }

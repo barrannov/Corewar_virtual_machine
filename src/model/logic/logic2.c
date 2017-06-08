@@ -6,13 +6,39 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 22:55:06 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/07 20:10:48 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/08 21:07:48 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-void				execute_process(t_processor *process, t_param *param)
+int		amount_lst_el_players(t_player *player)
+{
+	int	i;
+
+	i = 0;
+	while (player)
+	{
+		i++;
+		player = player->next;
+	}
+	return (i);
+}
+
+int		amount_lst_el(t_processor *procs)
+{
+	int i;
+
+	i = 0;
+	while (procs)
+	{
+		i++;
+		procs = procs->next;
+	}
+	return (i);
+}
+
+void	execute_process(t_processor *process, t_param *param)
 {
 	if (process->waite_cycles > 0)
 	{
@@ -23,7 +49,7 @@ void				execute_process(t_processor *process, t_param *param)
 	execute_command(process, param);
 }
 
-int					count_champs(t_player *players)
+int		count_champs(t_player *players)
 {
 	int			res;
 	t_player	*tmp;

@@ -6,36 +6,27 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 22:17:51 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/08 20:29:14 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 21:36:17 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/vm_header.h"
 
-int					amount_lst_el_players(t_player *player)
+static void			free_all(t_param *param)
 {
-	int i;
-
-	i = 0;
-	while (player)
-	{
-		i++;
-		player = player->next;
-	}
-	return (i);
-}
-
-int					amount_lst_el(t_processor *procs)
-{
-	int i;
-
-	i = 0;
-	while (procs)
-	{
-		i++;
-		procs = procs->next;
-	}
-	return (i);
+	free(param->processors);
+	free(param->map);
+	free(param->map_c);
+	free(param->players->next->next->header);
+	free(param->players->next->next->commands);
+	free(param->players->next->next);
+	free(param->players->next->header);
+	free(param->players->next->commands);
+	free(param->players->next);
+	free(param->players->header);
+	free(param->players->commands);
+	free(param->players);
+	free(param);
 }
 
 void				special_for_denchik(t_param *params, t_fl *flags)
@@ -89,8 +80,15 @@ void				logic(t_player *players, t_fl *flags)
 	param->amount_proc = 1;
 	create_map(players, param);
 	get_processes(param);
+<<<<<<< HEAD
     sort_players(param);
     param->amount_champs = 0;
+=======
+	param->amount_champs = 0;
+	flags->vis == 1 ? (param->print_live = 0) : 
+		(param->print_live = 1);
+>>>>>>> 2f57ced58183925dfb7559681d61e56fb7b6e2af
 	param->cycle_to_die = CYCLE_TO_DIE;
 	algorithm(param, flags);
+	free_all(param);
 }

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 14:27:25 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 22:09:33 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:37:11 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void		handle_lldi(t_param *params, t_processor *proc)
 	}
 	else
 		proc->pc = (proc->pc + count_steps(val, 14)) % MEM_SIZE;
+	free(val);
 }
