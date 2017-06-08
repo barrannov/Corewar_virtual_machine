@@ -14,25 +14,25 @@
 
 void				sort_players(t_param *param)
 {
-	t_player	*tmpptr;
-	t_player	*tmpnxt;
+	t_processor	*tmpptr;
+	t_processor	*tmpnxt;
 	int			tmp;
 
-	tmpptr = param->players;
-	tmpnxt = param->players->next;
+	tmpptr = param->processors;
+	tmpnxt = param->processors->next;
 	while (tmpnxt != NULL)
 	{
 		while (tmpnxt != tmpptr)
 		{
-			if (tmpnxt->numb > tmpptr->numb)
+			if (tmpnxt->player > tmpptr->player)
 			{
-				tmp = tmpptr->numb;
-				tmpptr->numb = tmpnxt->numb;
-				tmpnxt->numb = tmp;
+				tmp = tmpptr->player;
+				tmpptr->player = tmpnxt->player;
+				tmpnxt->player = tmp;
 			}
 			tmpptr = tmpptr->next;
 		}
-		tmpptr = param->players;
+		tmpptr = param->processors;
 		tmpnxt = tmpnxt->next;
 	}
 }

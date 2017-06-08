@@ -108,7 +108,8 @@ void				logic(t_player *players, t_fl *flags)
 	param->amount_proc = 1;
 	create_map(players, param);
 	get_processes(param);
-	param->amount_champs = 0;
+    sort_players(param);
+    param->amount_champs = 0;
 	param->cycle_to_die = CYCLE_TO_DIE;
 	algorithm(param, flags);
 	//print_map(param->map);
