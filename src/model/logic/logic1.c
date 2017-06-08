@@ -6,7 +6,7 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 22:53:51 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/06 22:54:45 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:12:14 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void				output_the_winner(t_player *players)
 			}
 			temp_player = temp_player->next;
 		}
-    print_winner(players->numb, players->header->prog_name);
+	print_winner(players->numb, players->header->prog_name);
 }

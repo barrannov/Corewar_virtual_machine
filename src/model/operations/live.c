@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 18:17:30 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 19:47:48 by abaranov         ###   ########.fr       */
+/*   Updated: 2017/06/08 20:10:09 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	live_to_chemp(t_player *players, int arg)
 		{
 			temp_player->live = 1;
 			temp_player->live_amount++;
-		//	say_live(temp_player->header->prog_name);
+			say_live(temp_player->header->prog_name);
 		}
 		else
 			temp_player->live = 0;
