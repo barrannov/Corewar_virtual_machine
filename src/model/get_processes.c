@@ -34,7 +34,8 @@ static void	add_process(t_param *params, short pc, int numb, int player_numb)
 	new->is_alive = 0;
 	new->player = numb;
 	new->next = NULL;
-	if (!params->processors)
+    new->index = params->amount_proc + 1;
+    if (!params->processors)
 		params->processors = new;
 	else
 	{
