@@ -19,7 +19,7 @@ static void	print_players(t_param *param, WINDOW *status)
 	tmp = param->players;
 	while (tmp)
 	{
-		wprintw(status, "\nPlayer %s\n", tmp->header->prog_name); 
+		wprintw(status, "\nPlayer %s\n", tmp->header->prog_name);
 		wprintw(status, "Lives in period: %d", tmp->live_amount);
 		tmp = tmp->next;
 	}

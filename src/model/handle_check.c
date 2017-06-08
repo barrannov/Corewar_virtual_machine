@@ -12,19 +12,21 @@
 
 #include "../../includes/vm_header.h"
 
+void deletefirst (t_processor **head) {
+	t_processor *tmp = *head;            // save old head for freeing.
+	if (tmp == NULL) return;             // list empty? then do nothing.
+	*head = tmp->next;                   // advance head to second node.
+	free (tmp);                          // free old head.
+}
+
 static void			delete_first(t_processor **str)
 {
-	t_processor	*cur;
-	t_processor	*tmp;
-
-	cur = (*str);
-	while (cur && cur->is_alive == 0)
+//	printf("before %d\n", amount_lst_el(*str));
+	while (*str && (*str)->is_alive == 0)
 	{
-		tmp = cur;
-		cur = cur->next;
-		tmp->next = NULL;
-		free(tmp);
+		deletefirst(str);
 	}
+	//printf("after %d\n", amount_lst_el(*str));
 }
 
 static void			free_tmp(t_processor *tmp)
@@ -62,24 +64,44 @@ void				delete_dead_processes(t_processor **str)
 	(*str) = start;
 }
 
-int					more_then_nbr_lives(t_processor *processor)
+int					more_then_nbr_lives_players(t_player *player)
 {
-	t_processor *temp_proc;
+    t_player *temp_play;
 
-	temp_proc = processor;
-	while (temp_proc)
-	{
-		if (temp_proc->is_alive >= NBR_LIVE)
-			return (1);
-		temp_proc = temp_proc->next;
-	}
-	return (0);
+    temp_play = player;
+    while (temp_play)
+    {
+        if (temp_play->live_amount >= NBR_LIVE)
+            return (1);
+        temp_play = temp_play->next;
+    }
+    return (0);
 }
+//int					more_then_nbr_lives(t_processor *processor)
+//{
+//	t_processor *temp_proc;
+//
+//	temp_proc = processor;
+//	while (temp_proc)
+//	{
+//		if (temp_proc->is_alive >= NBR_LIVE)
+//			return (1);
+//		temp_proc = temp_proc->next;
+//	}
+//	return (0);
+//}
 
 void				handle_check(t_param *param)
 {
 	delete_dead_processes(&param->processors);
-	if (more_then_nbr_lives(param->processors))
+//    ft_putstr("cycle: ");
+//	ft_putnbr(param->cycle);
+//	ft_putchar('\n');
+//    ft_putstr("amount: ");
+//	ft_putnbr(param->amount_proc);
+//	ft_putchar('\n');
+	param->amount_proc = amount_lst_el(param->processors);
+	if (more_then_nbr_lives_players(param->players))
 	{
 		param->cycle_to_die -= CYCLE_DELTA;
 		param->amount_checks = 0;

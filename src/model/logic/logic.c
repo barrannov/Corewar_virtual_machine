@@ -65,12 +65,23 @@ void				special_for_denchik(t_param *params, t_fl *flags)
 void				algorithm(t_param *params, t_fl *flags)
 {
 	params->cycle = 0;
-	while (params->cycle_to_die > 0 && params->amount_proc > 0)
-	{
-		if (flags->vis == 1)
-			visualize(params);
+	while (params->cycle_to_die > 0 && params->amount_proc > 0) {
+     //   if (params->cycle == 1614) {
+
+       // }
+        if (flags->vis == 1)
+        {
+            visualize(params);
+            //usleep(100000);
+    }
 		special_for_denchik(params, flags);
 		params->cycle++;
+//		ft_putstr("cycle: ");
+//		ft_putnbr(params->cycle);
+//		ft_putchar('\n');
+//        ft_putstr("camount_proc : ");
+//        ft_putnbr(params->amount_proc);
+//        ft_putchar('\n');
 	}
 	endwin();
 	if (params->cycle < flags->dump)

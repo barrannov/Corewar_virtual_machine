@@ -23,7 +23,7 @@ void	live_to_chemp(t_player *players, int arg)
 		{
 			temp_player->live = 1;
 			temp_player->live_amount++;
-			say_live(temp_player->header->prog_name);
+		//	say_live(temp_player->header->prog_name);
 		}
 		else
 			temp_player->live = 0;
