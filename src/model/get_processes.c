@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 17:34:21 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/07 21:28:18 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 19:58:10 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	add_process(t_param *params, short pc, int numb, int player_numb)
 	new->is_alive = 0;
 	new->player = numb;
 	new->next = NULL;
-    new->index = params->amount_proc + 1;
-    if (!params->processors)
+	new->index = params->amount_proc + 1;
+	if (!params->processors)
 		params->processors = new;
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: oklymeno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 15:47:37 by oklymeno          #+#    #+#             */
-/*   Updated: 2017/06/06 22:08:22 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 19:54:02 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,25 @@ void	handle_and(t_param *params, t_processor *proc)
 	int		arg1;
 	int		arg2;
 	int		mv1;
-	int		mv2;
-	int 	index;
-	int 	step1;
+	int		index;
 
 	val = malloc(sizeof(t_val));
 	get_args(val, params->map, proc);
 	mv1 = get_move_or_xor_and(val->val1);
-	mv2 = get_move_or_xor_and(val->val2);
 	if (!check_args_or_xor_and(val))
 		proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
-	else {
+	else
+	{
 		arg1 = get_arg_or_xor_and(params, proc, val->val1, 2);
 		arg2 = get_arg_or_xor_and(params, proc, val->val2, 2 + mv1);
-		step1 = count_steps(val, 6) - 1;
-		index = params->map[(proc->pc + step1) % MEM_SIZE] - 1;
-		if (index < 0 || index > 15)
-			proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
-		else
+		index = params->map[(proc->pc + count_steps(val, 6) - 1)
+			% MEM_SIZE] - 1;
+		if (index >= 0 && index <= 15)
 		{
 			proc->reg[index] = arg1 & arg2;
 			(arg1 & arg2) == 0 ? (proc->carry = 1) :
 			(proc->carry = 0);
-			proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
 		}
+		proc->pc = (proc->pc + count_steps(val, 6)) % MEM_SIZE;
 	}
 }

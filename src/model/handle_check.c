@@ -6,27 +6,23 @@
 /*   By: abaranov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 21:42:54 by abaranov          #+#    #+#             */
-/*   Updated: 2017/06/08 19:41:33 by oklymeno         ###   ########.fr       */
+/*   Updated: 2017/06/08 19:59:30 by oklymeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm_header.h"
 
 void deletefirst (t_processor **head) {
-	t_processor *tmp = *head;            // save old head for freeing.
-	if (tmp == NULL) return;             // list empty? then do nothing.
-	*head = tmp->next;                   // advance head to second node.
-	free (tmp);                          // free old head.
+	t_processor *tmp = *head;
+	if (tmp == NULL) return;
+	*head = tmp->next;
+	free (tmp);
 }
 
 static void			delete_first(t_processor **str)
 {
-//	printf("before %d\n", amount_lst_el(*str));
 	while (*str && (*str)->is_alive == 0)
-	{
 		deletefirst(str);
-	}
-	//printf("after %d\n", amount_lst_el(*str));
 }
 
 static void			free_tmp(t_processor *tmp)
