@@ -62,4 +62,5 @@ void				output_the_winner(t_player *players)
 			}
 			temp_player = temp_player->next;
 		}
+    print_winner(players->numb, players->header->prog_name);
 }

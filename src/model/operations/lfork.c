@@ -25,6 +25,7 @@ static void	copy_process_on_the_top(t_param *param, t_processor *proc,
 	new->player = proc->player;
 	new->waite_cycles = 0;
 	new->pc = pc;
+    new->index = param->amount_proc + 1;
 	while (i < 16)
 	{
 		new->reg[i] = proc->reg[i];
